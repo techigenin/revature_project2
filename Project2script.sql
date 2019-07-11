@@ -4,6 +4,11 @@ create table manager
 	manager_name varchar(50)
 )
 
+create table customer (
+	email varchar(50) PRIMARY key
+);
+
+
 create table festival_event 
 (
 	event_number serial primary key,
