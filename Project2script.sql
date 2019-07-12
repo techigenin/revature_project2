@@ -68,5 +68,6 @@ alter table crew add foreign key (crew_email) references validation(val_email);
 alter table promoter add foreign key (promo_email) references validation(val_email);
 alter table artist add foreign key (artist_email) references validation(val_email);
 alter table stage add foreign key (event_number) references festival_event(event_number);
+alter table stage add foreign key (crew_email) references crew(crew_email);
 alter table festival_event add foreign key (manager_email) references manager(manager_email);
 alter table schedule add foreign key (stage_number) references stage(stage_number);
