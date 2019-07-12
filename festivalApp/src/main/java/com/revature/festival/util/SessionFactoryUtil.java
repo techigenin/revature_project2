@@ -10,7 +10,7 @@ private static SessionFactory sf;
 	
 	static {
 		Configuration configuration = new Configuration().configure();
-		configuration.setProperty("hibernate.connection.username", System.getenv("FEST_USER"));
+		configuration.setProperty("hibernate.connection.username", System.getenv("FEST_USERNAME"));
 		configuration.setProperty("hibernate.connection.password", System.getenv("FEST_PASSWORD"));
 		configuration.setProperty("hibernate.connection.url", System.getenv("FEST_DATABASE"));
 		
