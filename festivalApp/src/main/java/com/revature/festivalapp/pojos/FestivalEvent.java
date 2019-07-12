@@ -3,6 +3,8 @@ package com.revature.festivalapp.pojos;
 import java.time.LocalDate;
 
 public class FestivalEvent {
+	
+	
 	private Integer eventNumer;
 	private Integer audieceCapacity;
 	private String eventName;
