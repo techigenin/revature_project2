@@ -2,6 +2,7 @@ package com.revature.festivalapp.pojos;
 
 public class Artist extends User {
 	
+	
 	private String artistName;
 
 	public Artist() {
