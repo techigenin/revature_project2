@@ -2,15 +2,38 @@ package com.revature.festivalapp.pojos;
 
 import java.time.LocalDate;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="festival_event")
 public class FestivalEvent {
+	
+	@Id
+	@Column(name="event_number")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer eventNumer;
+	
+	@Column(name="audience_capacity")
 	private Integer audieceCapacity;
+	
+	@Column(name="event_name")
 	private String eventName;
+	
+	@Column(name="event_location")
 	private String eventLocation;
+	
+	@Column(name="event_start_date")
 	private LocalDate startDate;
+	
+	@Column(name="event_end_date")
 	private LocalDate endDate;
+	
+	@Column(name="event_desc")
 	private String eventDescription;
+	
+	@Column(name="manager_email")
 	private String managerEmail;
+	
 	public FestivalEvent() {
 		super();
 		// TODO Auto-generated constructor stub
