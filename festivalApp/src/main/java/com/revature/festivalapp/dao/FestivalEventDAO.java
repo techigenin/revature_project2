@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.revature.festivalapp.pojos.FestivalEvent;
 
-public interface FestivalEventDao {
+public interface FestivalEventDAO {
 	
 	public void updateFestivalEvent(FestivalEvent fe);
 	

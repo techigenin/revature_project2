@@ -10,11 +10,9 @@ import org.hibernate.Transaction;
 import com.revature.festival.util.SessionFactoryUtil;
 import com.revature.festivalapp.pojos.FestivalEvent;
 
-public class FestivalEventDaoPostresImpl implements FestivalEventDao {
+public class FestivalEventDAOImpl implements FestivalEventDAO {
 
 	SessionFactory sf = SessionFactoryUtil.getSessionFactory();
-	
-	
 	
 	@Override
 	public void updateFestivalEvent(FestivalEvent fe) {
@@ -35,7 +33,9 @@ public class FestivalEventDaoPostresImpl implements FestivalEventDao {
 	@Override
 	public void deleteFestivalEvent(FestivalEvent fe) {
 		Session sess = sf.openSession();
+		Transaction tx = sess.beginTransaction();
 		sess.delete(fe);
+		tx.commit();
 		sess.close();
 	}
 	
