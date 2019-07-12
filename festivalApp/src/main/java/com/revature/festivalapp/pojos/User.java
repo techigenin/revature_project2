@@ -1,5 +1,8 @@
 package com.revature.festivalapp.pojos;
 
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class User {
 	private String email;
 
