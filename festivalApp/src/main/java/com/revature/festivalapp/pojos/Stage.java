@@ -1,9 +1,25 @@
 package com.revature.festivalapp.pojos;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="stage")
 public class Stage {
+	
+	@Id
+	@Column(name="stage_number")
 	private Integer stageNumber;
+	
+	@Column(name="event_number")
 	private Integer eventNumber;
+	
+	@Column(name="stage_name")
 	private String stageName;
+	
+	@Column(name="crew_email")
 	private String crewEmail;
 	public Stage() {
 		super();
