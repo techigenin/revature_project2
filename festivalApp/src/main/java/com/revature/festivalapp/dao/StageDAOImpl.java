@@ -8,53 +8,55 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.revature.festival.util.SessionFactoryUtil;
-import com.revature.festivalapp.pojos.FestivalEvent;
+import com.revature.festivalapp.pojos.Stage;
 
-public class FestivalEventDaoPostresImpl implements FestivalEventDao {
-
+public class StageDAOImpl implements StageDAO {
 	SessionFactory sf = SessionFactoryUtil.getSessionFactory();
-	
-	
-	
-	@Override
-	public void updateFestivalEvent(FestivalEvent fe) {
-		Session sess = sf.openSession();
-		sess.update(fe);
-		sess.close();
-	}
+
 
 	@Override
-	public void insertFestivalEvent(FestivalEvent fe) {
+	public void updateStage(Stage stage) {
 		Session sess = sf.openSession();
-		Transaction tx = sess.beginTransaction();
-		sess.save(fe);
-		tx.commit();
-		sess.close();
-	}
-
-	@Override
-	public void deleteFestivalEvent(FestivalEvent fe) {
-		Session sess = sf.openSession();
-		sess.delete(fe);
-		sess.close();
-	}
-	
-	@Override
-	public FestivalEvent getFestivalEventById(int id) {
-		Session sess = sf.openSession();
-		FestivalEvent fe = (FestivalEvent) sess.get(FestivalEvent.class, id);
+		sess.update(stage);
 		sess.close();
 		
-		return fe;
+
 	}
 
 	@Override
-	public List<FestivalEvent> getAllFestivalEvents() {
+	public void insertStage(Stage stage) {
 		Session sess = sf.openSession();
-		Criteria crit = sess.createCriteria(FestivalEvent.class);
-		List<FestivalEvent> result = crit.list();
+		Transaction tx = sess.beginTransaction();
+		sess.save(stage);
+		tx.commit();
+		sess.close();
+
+	}
+
+	@Override
+	public void deleteStage(Stage stage) {
+		Session sess = sf.openSession();
+		sess.delete(stage);
+		sess.close();
+
+	}
+
+	@Override
+	public Stage getStageById(int id) {
+		Session sess = sf.openSession();
+		Stage stage = (Stage) sess.get(Stage.class, id);
+		sess.close();
+		return stage;
+	}
+
+	@Override
+	public List<Stage> getAllStages() {
+		Session sess = sf.openSession();
+		Criteria crit = sess.createCriteria(Stage.class);
+		List<Stage> result = crit.list();
 		sess.close();
 		return result;
 	}
+
 
 }

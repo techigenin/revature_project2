@@ -6,7 +6,7 @@ import com.revature.festivalapp.pojos.FestivalEvent;
 
 public interface FestivalEventDao {
 	
-	public void updateFestivalEvant(FestivalEvent fe);
+	public void updateFestivalEvent(FestivalEvent fe);
 	
 	public void insertFestivalEvent(FestivalEvent fe);
 	
