@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="festival_event")
 public class FestivalEvent {
-	
+  
 	@Id
 	@Column(name="event_number")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
