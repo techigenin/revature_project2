@@ -3,7 +3,7 @@ package com.revature.festival.driver;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-
+import com.revature.festival.logs.LoggingUtil;
 import com.revature.festival.util.SessionFactoryUtil;
 
 public class FestivalDriver {
@@ -13,7 +13,7 @@ private static SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 		Session sess = sf.openSession();
 		
 		sess.close();
-		System.out.println("Everything is fine.");
+		LoggingUtil.trace("Everything is fine.");
 		
 	}
 }

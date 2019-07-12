@@ -1,9 +1,35 @@
 package com.revature.festivalapp.pojos;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="stage")
 public class Stage {
+	
+	@Id
+	@Column(name="stage_number")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer stageNumber;
+	
+	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinColumn(name="event_number")
 	private Integer eventNumber;
+	
+	@Column(name="stage_name")
 	private String stageName;
+	
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinColumn(name="crew_email")
 	private String crewEmail;
 	public Stage() {
 		super();
