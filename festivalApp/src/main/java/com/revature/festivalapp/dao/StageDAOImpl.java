@@ -63,7 +63,7 @@ public class StageDAOImpl implements StageDAO {
 		Session sess = sf.openSession();
 		Criteria crit = sess.createCriteria(Stage.class).add(Restrictions.eq("stage_name", stagename));
 		Stage stage = (Stage) crit.uniqueResult();
-		
+		sess.close();
 		return stage;
 	}
 
