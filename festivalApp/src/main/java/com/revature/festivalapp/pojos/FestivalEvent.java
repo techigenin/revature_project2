@@ -124,6 +124,4 @@ public class FestivalEvent {
 				+ ", eventDescription=" + eventDescription + ", manager=" + manager + "]";
 	}
 	
-	
-	
 }
