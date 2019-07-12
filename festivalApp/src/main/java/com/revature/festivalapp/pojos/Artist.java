@@ -8,6 +8,7 @@ import javax.persistence.Table;
 @Table(name="artist")
 public class Artist extends User {
 	
+
 	@Column(name="artist_name")
 	private String artistName;
 

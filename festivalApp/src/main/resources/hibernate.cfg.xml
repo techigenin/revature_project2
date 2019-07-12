@@ -8,8 +8,5 @@
 		<property name="hibernate.format_sql">true</property>
 		<property name="hibernate.connection.pool_size">5</property>
 		
-		<mapping class="org.revature.domains.HoneyPot"/>
-		<mapping class="org.revature.domains.Bear"/>
-		<mapping class="org.revature.domains.Cave"/>
 	</session-factory>
 </hibernate-configuration>
