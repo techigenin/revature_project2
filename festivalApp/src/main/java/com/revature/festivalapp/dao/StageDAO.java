@@ -12,7 +12,7 @@ public interface StageDAO {
 	
 	public void deleteStage(Stage stage);
 	
-	//public Stage getStagebyName(Stage stagename); ??
+	public Stage getStagebyName(String stagename);
 	
 	public Stage getStageById(int id);
 	
