@@ -1,6 +1,14 @@
 package com.revature.festivalapp.pojos;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="promoter")
 public class Promoter extends User {
+	
+//	@Column(name="artist_name")
 	private String promoterName;
 
 	public Promoter() {

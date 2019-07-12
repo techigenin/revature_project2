@@ -1,5 +1,10 @@
 package com.revature.festivalapp.pojos;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="crew")
 public class Crew extends User {
 
 	public Crew() {

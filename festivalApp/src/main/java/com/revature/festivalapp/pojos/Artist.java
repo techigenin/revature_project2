@@ -1,8 +1,15 @@
 package com.revature.festivalapp.pojos;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="artist")
 public class Artist extends User {
 	
-	
+
+	@Column(name="artist_name")
 	private String artistName;
 
 	public Artist() {
