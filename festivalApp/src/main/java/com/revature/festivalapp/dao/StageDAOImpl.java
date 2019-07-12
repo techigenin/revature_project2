@@ -14,13 +14,11 @@ import com.revature.festivalapp.pojos.Stage;
 public class StageDAOImpl implements StageDAO {
 	SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 
-
 	@Override
 	public void updateStage(Stage stage) {
 		Session sess = sf.openSession();
 		sess.update(stage);
 		sess.close();
-		
 
 	}
 
@@ -48,6 +46,7 @@ public class StageDAOImpl implements StageDAO {
 		Stage stage = (Stage) sess.get(Stage.class, id);
 		sess.close();
 		return stage;
+		
 	}
 
 	@Override
@@ -57,6 +56,7 @@ public class StageDAOImpl implements StageDAO {
 		List<Stage> result = crit.list();
 		sess.close();
 		return result;
+		
 	}
 
 	public Stage getStagebyName(String stagename) {
@@ -66,6 +66,4 @@ public class StageDAOImpl implements StageDAO {
 		sess.close();
 		return stage;
 	}
-
-
 }
