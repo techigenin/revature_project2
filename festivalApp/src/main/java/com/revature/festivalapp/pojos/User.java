@@ -4,18 +4,35 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public class User {
+	
+	private int user_id;
+	
 	private String email;
-
-	public User(String email) {
-		super();
-		this.email = email;
-	}
 
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
-	}	
-	
+	}
+
+	public User(int user_id, String email) {
+		super();
+		this.user_id = user_id;
+		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "User [user_id=" + user_id + ", email=" + email + "]";
+	}
+
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -23,5 +40,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
+	
 }
+	
