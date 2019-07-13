@@ -14,6 +14,6 @@ private static SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 		
 		sess.close();
 		LoggingUtil.trace("Everything is fine.");
-		
+		System.out.println();
 	}
 }
