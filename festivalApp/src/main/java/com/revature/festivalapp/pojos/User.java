@@ -3,7 +3,7 @@ package com.revature.festivalapp.pojos;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class User {
+public abstract class User  {
 	
 	private int user_id;
 	

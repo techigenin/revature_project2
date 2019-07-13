@@ -12,9 +12,11 @@ public class Crew extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Crew(String email) {
-		super(email);
+	public Crew(int user_id, String email) {
+		super(user_id, email);
 		// TODO Auto-generated constructor stub
 	}
+
+
 
 }

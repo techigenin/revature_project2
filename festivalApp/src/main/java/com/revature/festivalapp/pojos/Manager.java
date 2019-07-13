@@ -14,13 +14,15 @@ public class Manager extends User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Manager(String managerEmail, String managerName) {
-		super(managerEmail);
-		this.managerName = managerName;
-	}
+
 	public String getManagerName() {
 		return managerName;
 	}
+	public Manager(int user_id, String email) {
+		super(user_id, email);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void setManagerName(String managerName) {
 		this.managerName = managerName;
 	}

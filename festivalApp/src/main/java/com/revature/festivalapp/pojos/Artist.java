@@ -10,15 +10,14 @@ public class Artist extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Artist(String email) {
-		super(email);
+
+
+	public Artist(int user_id, String email) {
+		super(user_id, email);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Artist(String email, String artistName) {
-		super(email);
-		this.artistName = artistName;
-	}
+
 
 	public String getArtistName() {
 		return artistName;

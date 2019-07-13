@@ -8,14 +8,9 @@ public class Promoter extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Promoter(String email) {
-		super(email);
+	public Promoter(int user_id, String email) {
+		super(user_id, email);
 		// TODO Auto-generated constructor stub
-	}
-
-	public Promoter(String email, String promoterName) {
-		super(email);
-		this.promoterName = promoterName;
 	}
 
 	public String getPromoterName() {
