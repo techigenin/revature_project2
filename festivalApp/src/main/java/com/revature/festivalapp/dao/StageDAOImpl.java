@@ -17,7 +17,9 @@ public class StageDAOImpl implements StageDAO {
 	@Override
 	public void updateStage(Stage stage) {
 		Session sess = sf.openSession();
+		Transaction tx = sess.beginTransaction();
 		sess.update(stage);
+		tx.commit();
 		sess.close();
 
 	}
@@ -35,7 +37,9 @@ public class StageDAOImpl implements StageDAO {
 	@Override
 	public void deleteStage(Stage stage) {
 		Session sess = sf.openSession();
+		Transaction tx = sess.beginTransaction();
 		sess.delete(stage);
+		tx.commit();
 		sess.close();
 
 	}
