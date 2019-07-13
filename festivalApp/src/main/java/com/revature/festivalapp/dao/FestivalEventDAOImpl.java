@@ -17,7 +17,9 @@ public class FestivalEventDAOImpl implements FestivalEventDAO {
 	@Override
 	public void updateFestivalEvent(FestivalEvent fe) {
 		Session sess = sf.openSession();
+		Transaction tx = sess.beginTransaction();
 		sess.update(fe);
+		tx.commit();
 		sess.close();
 	}
 

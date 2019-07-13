@@ -1,14 +1,64 @@
 
 create table manager
 (
-	manager_email varchar(50) primary key,
+	id serial primary key,
 	manager_name varchar(50)	
 );
 
 create table customer (
-	email varchar(50) PRIMARY key
+	id serial PRIMARY key
 );
 
+create table crew
+(
+	id serial primary key
+);
+
+create table promoter
+(
+	id serial primary key,
+	promo_name varchar(50)
+);
+
+create table artist 
+(
+	id serial primary key,
+	artist_name varchar(50)
+);
+
+create table validation -- user pojo
+(
+	id serial primary key,
+	val_email varchar(50),
+	val_password varchar(50)
+);
+
+create table event_role (
+	id serial, -- user id
+	event_id serial,
+	user_role integer
+);
+
+alter table event_role add foreign key (id) references validation(id);
+alter table event_role add foreign key (event_id) references festival_event(event_number);
+alter table event_role add foreign key (user_role) references roles(role_num);
+
+create table roles (
+	role_num integer unique,
+	role_description varchar(20)
+);
+
+insert into roles values (1, 'manager');
+insert into roles values (2, 'promoter');
+insert into roles values (3, 'artist');
+insert into roles values (4, 'crew');
+insert into roles values (5, 'customer');
+
+alter table manager add foreign key (id) references validation(id);
+alter table customer add foreign key (id) references validation(id);
+alter table crew add foreign key (id) references validation(id);
+alter table promoter add foreign key (id) references validation(id);
+alter table artist add foreign key (id) references validation(id);
 
 create table festival_event 
 (
@@ -20,12 +70,6 @@ create table festival_event
 	event_end_date date,
 	event_desc varchar(500),
 	manager_email varchar(50)
-);
-
-create table validation
-(
-	val_email varchar(50) primary key,
-	val_password varchar(50)
 );
 
 create table stage
@@ -44,22 +88,6 @@ create table schedule
 	artist_name varchar(50),
 	
 	primary key (stage_number, start_time)
-);
-
-create table crew
-(
-	crew_email varchar(50) primary key
-);
-
-create table promoter
-(
-	promo_email varchar(50) primary key
-);
-
-create table artist 
-(
-	artist_email varchar(50) primary key,
-	artist_name varchar(50)
 );
 
 alter table manager add foreign key (manager_email) references validation(val_email);
