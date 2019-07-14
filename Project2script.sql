@@ -30,7 +30,8 @@ create table validation -- user pojo
 (
 	id serial primary key,
 	val_email varchar(50),
-	val_password varchar(50)
+	val_password varchar(50),
+	collected_roles varchar(50) -- combination of all roles in all events
 );
 
 create table event_role (
