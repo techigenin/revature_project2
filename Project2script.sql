@@ -30,18 +30,16 @@ create table validation -- user pojo
 (
 	id serial primary key,
 	val_email varchar(50),
-	val_password varchar(50)
+	val_password varchar(50),
+	collected_roles varchar(50) -- combination of all roles in all events
 );
 
 create table event_role (
 	id serial, -- user id
 	event_id serial,
-	user_role integer
+	user_role integer,
+	primary key (id, event_id)
 );
-
-alter table event_role add foreign key (id) references validation(id);
-alter table event_role add foreign key (event_id) references festival_event(event_number);
-alter table event_role add foreign key (user_role) references roles(role_num);
 
 create table roles (
 	role_num integer unique,
@@ -53,12 +51,6 @@ insert into roles values (2, 'promoter');
 insert into roles values (3, 'artist');
 insert into roles values (4, 'crew');
 insert into roles values (5, 'customer');
-
-alter table manager add foreign key (id) references validation(id);
-alter table customer add foreign key (id) references validation(id);
-alter table crew add foreign key (id) references validation(id);
-alter table promoter add foreign key (id) references validation(id);
-alter table artist add foreign key (id) references validation(id);
 
 create table festival_event 
 (
@@ -99,3 +91,13 @@ alter table stage add foreign key (event_number) references festival_event(event
 alter table stage add foreign key (crew_email) references crew(crew_email);
 alter table festival_event add foreign key (manager_email) references manager(manager_email);
 alter table schedule add foreign key (stage_number) references stage(stage_number);
+
+alter table manager add foreign key (id) references validation(id);
+alter table customer add foreign key (id) references validation(id);
+alter table crew add foreign key (id) references validation(id);
+alter table promoter add foreign key (id) references validation(id);
+alter table artist add foreign key (id) references validation(id);
+
+alter table event_role add foreign key (id) references validation(id);
+alter table event_role add foreign key (event_id) references festival_event(event_number);
+alter table event_role add foreign key (user_role) references roles(role_num);
