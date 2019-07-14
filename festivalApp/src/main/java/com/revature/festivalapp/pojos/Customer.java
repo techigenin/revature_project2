@@ -11,6 +11,4 @@ public class Customer extends User {
 		super(user_id, email);
 		// TODO Auto-generated constructor stub
 	}
-
-	
 }

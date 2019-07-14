@@ -3,6 +3,7 @@ package com.revature.festivalapp.dao;
 import java.util.List;
 
 import com.revature.festivalapp.pojos.FestivalEvent;
+import com.revature.festivalapp.pojos.Manager;
 
 public interface FestivalEventDAO {
 	
@@ -15,5 +16,7 @@ public interface FestivalEventDAO {
 	public FestivalEvent getFestivalEventById(int id);
 	
 	public List<FestivalEvent> getAllFestivalEvents();
+	
+	public List<FestivalEvent> getAllFestivalEventsByManager(Manager m);
 
 }

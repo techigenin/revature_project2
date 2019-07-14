@@ -6,9 +6,11 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import com.revature.festival.util.SessionFactoryUtil;
 import com.revature.festivalapp.pojos.FestivalEvent;
+import com.revature.festivalapp.pojos.Manager;
 
 public class FestivalEventDAOImpl implements FestivalEventDAO {
 
@@ -57,6 +59,16 @@ public class FestivalEventDAOImpl implements FestivalEventDAO {
 		List<FestivalEvent> result = crit.list();
 		sess.close();
 		return result;
+	}
+
+	@Override
+	public List<FestivalEvent> getAllFestivalEventsByManager(Manager m) {
+		Session sess = sf.openSession();
+		Criteria cr = sess.createCriteria(FestivalEvent.class);
+		cr.add(Restrictions.eq("manager_email", m.getEmail()));
+		List<FestivalEvent> events = cr.list();
+		sess.close();
+		return events;
 	}
 
 }
