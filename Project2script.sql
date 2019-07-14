@@ -85,10 +85,8 @@ create table schedule
 alter table stage add foreign key (event_number) references festival_event(event_number);
 alter table schedule add foreign key (stage_number) references stage(stage_number);
 
-commit;
-
-alter table stage add foreign key (crew_id) references crew(id); -- fix this
-alter table festival_event add foreign key (manager_id) references manager(id); -- fix this
+alter table stage add foreign key (crew_id) references crew(id);
+alter table festival_event add foreign key (manager_id) references manager(id);
 
 alter table manager add foreign key (id) references users(id);
 alter table customer add foreign key (id) references users(id);

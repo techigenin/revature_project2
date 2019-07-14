@@ -1,5 +1,6 @@
 package com.revature.festivalapp.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -56,7 +57,13 @@ public class FestivalEventDAOImpl implements FestivalEventDAO {
 	public List<FestivalEvent> getAllFestivalEvents() {
 		Session sess = sf.openSession();
 		Criteria crit = sess.createCriteria(FestivalEvent.class);
-		List<FestivalEvent> result = crit.list();
+		
+		List<FestivalEvent> result = new ArrayList<FestivalEvent>();
+		
+		for (Object o : crit.list())
+			if (o instanceof FestivalEvent)
+				result.add((FestivalEvent)o);
+			
 		sess.close();
 		return result;
 	}
@@ -66,9 +73,14 @@ public class FestivalEventDAOImpl implements FestivalEventDAO {
 		Session sess = sf.openSession();
 		Criteria cr = sess.createCriteria(FestivalEvent.class);
 		cr.add(Restrictions.eq("manager_email", m.getEmail()));
-		List<FestivalEvent> events = cr.list();
+		
+		List<FestivalEvent> events = new ArrayList<FestivalEvent>();
+		
+		for (Object o : cr.list())
+			if (o instanceof FestivalEvent)
+				events.add((FestivalEvent)o);
+		
 		sess.close();
 		return events;
 	}
-
 }
