@@ -26,7 +26,7 @@ create table artist
 	artist_name varchar(50)
 );
 
-create table validation -- user pojo
+create table users -- user pojo
 (
 	id serial primary key,
 	val_email varchar(50),
@@ -61,7 +61,7 @@ create table festival_event
 	event_start_date date,
 	event_end_date date,
 	event_desc varchar(500),
-	manager_email varchar(50)
+	manager_id serial
 );
 
 create table stage
@@ -69,7 +69,7 @@ create table stage
 	stage_number int primary key,
 	event_number int,
 	stage_name varchar(50),
-	crew_email varchar(50) 
+	crew_id serial 
 );
 
 create table schedule
@@ -82,22 +82,20 @@ create table schedule
 	primary key (stage_number, start_time)
 );
 
-alter table manager add foreign key (manager_email) references validation(val_email);
-alter table customer add foreign key (email) references validation(val_email);
-alter table crew add foreign key (crew_email) references validation(val_email);
-alter table promoter add foreign key (promo_email) references validation(val_email);
-alter table artist add foreign key (artist_email) references validation(val_email);
 alter table stage add foreign key (event_number) references festival_event(event_number);
-alter table stage add foreign key (crew_email) references crew(crew_email);
-alter table festival_event add foreign key (manager_email) references manager(manager_email);
 alter table schedule add foreign key (stage_number) references stage(stage_number);
 
-alter table manager add foreign key (id) references validation(id);
-alter table customer add foreign key (id) references validation(id);
-alter table crew add foreign key (id) references validation(id);
-alter table promoter add foreign key (id) references validation(id);
-alter table artist add foreign key (id) references validation(id);
+commit;
 
-alter table event_role add foreign key (id) references validation(id);
+alter table stage add foreign key (crew_id) references crew(id); -- fix this
+alter table festival_event add foreign key (manager_id) references manager(id); -- fix this
+
+alter table manager add foreign key (id) references users(id);
+alter table customer add foreign key (id) references users(id);
+alter table crew add foreign key (id) references users(id);
+alter table promoter add foreign key (id) references users(id);
+alter table artist add foreign key (id) references users(id);
+
+alter table event_role add foreign key (id) references users(id);
 alter table event_role add foreign key (event_id) references festival_event(event_number);
 alter table event_role add foreign key (user_role) references roles(role_num);
