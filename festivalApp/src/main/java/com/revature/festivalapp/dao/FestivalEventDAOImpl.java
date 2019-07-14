@@ -58,14 +58,14 @@ public class FestivalEventDAOImpl implements FestivalEventDAO {
 		Session sess = sf.openSession();
 		Criteria crit = sess.createCriteria(FestivalEvent.class);
 		
-		List<FestivalEvent> result = new ArrayList<FestivalEvent>();
+		List<FestivalEvent> results = new ArrayList<FestivalEvent>();
 		
 		for (Object o : crit.list())
 			if (o instanceof FestivalEvent)
-				result.add((FestivalEvent)o);
+				results.add((FestivalEvent)o);
 			
 		sess.close();
-		return result;
+		return results;
 	}
 
 	@Override
@@ -74,13 +74,13 @@ public class FestivalEventDAOImpl implements FestivalEventDAO {
 		Criteria cr = sess.createCriteria(FestivalEvent.class);
 		cr.add(Restrictions.eq("manager_email", m.getEmail()));
 		
-		List<FestivalEvent> events = new ArrayList<FestivalEvent>();
+		List<FestivalEvent> results = new ArrayList<FestivalEvent>();
 		
 		for (Object o : cr.list())
 			if (o instanceof FestivalEvent)
-				events.add((FestivalEvent)o);
+				results.add((FestivalEvent)o);
 		
 		sess.close();
-		return events;
+		return results;
 	}
 }
