@@ -16,11 +16,6 @@ public class Promoter extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Promoter(int user_id, String email, String password, Set<String> collectedRoles) {
-		super(user_id, email, password, collectedRoles);
-		// TODO Auto-generated constructor stub
-	}
-
 	public Promoter(String promoterName) {
 		super();
 		this.promoterName = promoterName;
@@ -28,9 +23,7 @@ public class Promoter extends User {
 
 	@Override
 	public String toString() {
-		return "Promoter [promoterName=" + promoterName + ", toString()=" + super.toString() + ", hashCode()="
-				+ hashCode() + ", getUser_id()=" + getUser_id() + ", getEmail()=" + getEmail() + ", getPassword()="
-				+ getPassword() + ", getCollectedRoles()=" + getCollectedRoles() + ", getClass()=" + getClass() + "]";
+		return "Promoter [promoterName=" + promoterName + "]";
 	}
 
 	public String getPromoterName() {

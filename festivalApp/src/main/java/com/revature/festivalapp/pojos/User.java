@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 // @MappedSuperclass -- Turned out to not be what we wanted...
 @Entity
-@Table(name="users")
+//@Table(name="users")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class User  {
 	
@@ -23,16 +23,16 @@ public abstract class User  {
 	private String password;
 	
 	@Column(name="collected_roles")
-	private Set<String> collectedRoles;
+	private String collectedRoles;
 
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(int user_id, String email, String password, Set<String> collectedRoles) {
+	public User(int userId, String email, String password, String collectedRoles) {
 		super();
-		this.userId = user_id;
+		this.userId = userId;
 		this.email = email;
 		this.password = password;
 		this.collectedRoles = collectedRoles;
@@ -40,7 +40,7 @@ public abstract class User  {
 
 	@Override
 	public String toString() {
-		return "User [user_id=" + userId + ", email=" + email + ", password=" + password + ", collectedRoles="
+		return "User [userId=" + userId + ", email=" + email + ", password=" + password + ", collectedRoles="
 				+ collectedRoles + "]";
 	}
 
@@ -84,12 +84,12 @@ public abstract class User  {
 		return true;
 	}
 
-	public int getUser_id() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUser_id(int user_id) {
-		this.userId = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public String getEmail() {
@@ -108,16 +108,15 @@ public abstract class User  {
 		this.password = password;
 	}
 
-	public Set<String> getCollectedRoles() {
+	public String getCollectedRoles() {
 		return collectedRoles;
 	}
 
 	public void setCollectedRoles(String collectedRoles) {
-		this.collectedRoles.addAll(Arrays.asList(collectedRoles.split(",")));
-	}
-	
-	public void setCollectedRoles(Set<String> collectedRoles) {
 		this.collectedRoles = collectedRoles;
 	}
+
+	
+	
 }
 	

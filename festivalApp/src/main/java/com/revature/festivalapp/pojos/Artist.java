@@ -16,11 +16,6 @@ public class Artist extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Artist(int user_id, String email, String password, Set<String> collectedRoles) {
-		super(user_id, email, password, collectedRoles);
-		// TODO Auto-generated constructor stub
-	}
-
 	public Artist(String artistName) {
 		super();
 		this.artistName = artistName;
@@ -28,9 +23,7 @@ public class Artist extends User {
 
 	@Override
 	public String toString() {
-		return "Artist [artistName=" + artistName + ", toString()=" + super.toString() + ", hashCode()=" + hashCode()
-				+ ", getUser_id()=" + getUser_id() + ", getEmail()=" + getEmail() + ", getPassword()=" + getPassword()
-				+ ", getCollectedRoles()=" + getCollectedRoles() + ", getClass()=" + getClass() + "]";
+		return "Artist [artistName=" + artistName + "]";
 	}
 
 	public String getArtistName() {
@@ -40,6 +33,8 @@ public class Artist extends User {
 	public void setArtistName(String artistName) {
 		this.artistName = artistName;
 	}
+
+	
 
 	
 }

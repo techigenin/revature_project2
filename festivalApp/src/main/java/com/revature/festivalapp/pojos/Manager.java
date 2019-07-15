@@ -17,11 +17,6 @@ public class Manager extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Manager(int user_id, String email, String password, Set<String> collectedRoles) {
-		super(user_id, email, password, collectedRoles);
-		// TODO Auto-generated constructor stub
-	}
-
 	public Manager(String managerName) {
 		super();
 		this.managerName = managerName;
@@ -29,9 +24,7 @@ public class Manager extends User {
 
 	@Override
 	public String toString() {
-		return "Manager [managerName=" + managerName + ", toString()=" + super.toString() + ", hashCode()=" + hashCode()
-				+ ", getUser_id()=" + getUser_id() + ", getEmail()=" + getEmail() + ", getPassword()=" + getPassword()
-				+ ", getCollectedRoles()=" + getCollectedRoles() + ", getClass()=" + getClass() + "]";
+		return "Manager [managerName=" + managerName + "]";
 	}
 
 	public String getManagerName() {
@@ -41,4 +34,6 @@ public class Manager extends User {
 	public void setManagerName(String managerName) {
 		this.managerName = managerName;
 	}
+
+	
 }

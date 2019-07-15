@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+@Entity
 @Embeddable
 public class EventRoleEmbedded implements Serializable {
 
