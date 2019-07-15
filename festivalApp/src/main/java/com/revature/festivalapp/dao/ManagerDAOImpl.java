@@ -6,9 +6,11 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import com.revature.festivalapp.pojos.FestivalEvent;
+import com.revature.festivalapp.pojos.Manager;
 
 public class ManagerDAOImpl extends UserDAOImpl implements ManagerDAO {
 
@@ -35,5 +37,59 @@ public class ManagerDAOImpl extends UserDAOImpl implements ManagerDAO {
 		query.setString("mName", mName);
 		
 		return (int) query.uniqueResult();
+	}
+
+	@Override
+	public void updateManager(Manager m) {
+		Session sess = sf.openSession();
+		Transaction tx = sess.beginTransaction();
+		sess.update(m);
+		tx.commit();
+		sess.close();
+	}
+	
+	@Override
+	public void insertManager(Manager m) {
+		Session sess = sf.openSession();
+		Transaction tx = sess.beginTransaction();
+		sess.save(m);
+		tx.commit();
+		sess.close();
+	}
+
+	@Override
+	public void deleteManager(Manager m) {
+		Session sess = sf.openSession();
+		Transaction tx = sess.beginTransaction();
+		sess.delete(m);
+		tx.commit();
+		sess.close();
+	}
+
+	@Override
+	public Manager getManagerByEmail(String e) {
+		Session sess = sf.openSession();
+		Criteria crit = sess.createCriteria(Manager.class);
+		crit.add(Restrictions.eq("val_email", e));
+		
+		Manager m = (Manager)crit.uniqueResult();
+		sess.close();
+		
+		return m;
+	}
+
+	@Override
+	public List<Manager> getAllManagers() {
+		Session sess = sf.openSession();
+		Criteria crit = sess.createCriteria(Manager.class);
+
+		List<Manager> results = new ArrayList<Manager>();
+		
+		for (Object o : crit.list())
+			if (o instanceof Manager)
+				results.add((Manager)o);
+		
+		sess.close();
+		return results;
 	}
 }

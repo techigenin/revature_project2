@@ -1,3 +1,5 @@
+drop table manager, customer, crew, promoter, artist, users, event_role, roles, festival_event, stage, schedule;
+
 
 create table manager
 (
@@ -31,16 +33,17 @@ create table users -- user pojo
 	id serial primary key,
 	val_email varchar(50),
 	val_password varchar(50),
-	collected_roles varchar(50) -- combination of all roles in all events
+	collected_roles varchar -- combination of all roles in all events
 );
 
 create table event_role (
 	id serial, -- user id
 	event_id serial,
-	user_role integer,
+	user_role varchar,
 	primary key (id, event_id)
 );
 
+-- We could/should probably delete this...
 create table roles (
 	role_num integer unique,
 	role_description varchar(20)
@@ -96,4 +99,3 @@ alter table artist add foreign key (id) references users(id);
 
 alter table event_role add foreign key (id) references users(id);
 alter table event_role add foreign key (event_id) references festival_event(event_number);
-alter table event_role add foreign key (user_role) references roles(role_num);
