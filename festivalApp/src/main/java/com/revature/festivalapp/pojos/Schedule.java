@@ -36,7 +36,7 @@ public class Schedule {
 	private LocalDateTime endTime;
 	
 	@Column(name="artist_name")
-	private String crewEmail;
+	private String artistName;
 		 	
 	public Schedule() {
 		super();
@@ -47,7 +47,7 @@ public class Schedule {
 		this.se=se;
 		
 		this.endTime = endTime;
-		this.crewEmail = crewEmail;
+		this.artistName = crewEmail;
 	}
 
 	
@@ -66,9 +66,9 @@ public class Schedule {
 		this.endTime = endTime;
 	}
 	public String getCrewEmail() {
-		return crewEmail;
+		return artistName;
 	}
 	public void setCrewEmail(String crewEmail) {
-		this.crewEmail = crewEmail;
+		this.artistName = crewEmail;
 	}
 }
