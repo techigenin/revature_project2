@@ -17,7 +17,7 @@
  		<mapping class="com.revature.festivalapp.pojos.EventRole"/>
  		<mapping class="com.revature.festivalapp.pojos.FestivalEvent"/>
 		 <!--<mapping class="com.revature.festivalapp.pojos.Schedule"/>-->
-		<mapping class="com.revature.festivalapp.pojos.Stage"/>
+		<!-- <mapping class="com.revature.festivalapp.pojos.Stage"/> -->
 
 	</session-factory>
 </hibernate-configuration>

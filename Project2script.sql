@@ -99,3 +99,4 @@ alter table artist add foreign key (id) references users(id);
 
 alter table event_role add foreign key (id) references users(id);
 alter table event_role add foreign key (event_id) references festival_event(event_number);
+

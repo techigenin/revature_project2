@@ -1,20 +1,17 @@
 package com.revature.festivalapp.pojos;
 
-import java.util.Arrays;
-import java.util.Set;
-
 import javax.persistence.*;
 
 // @MappedSuperclass -- Turned out to not be what we wanted...
 @Entity
-//@Table(name="users")
+@Table(name="users")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class User  {
 	
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int userId;
+	private int id;
 	
 	@Column(name="val_email")
 	private String email;
@@ -32,7 +29,7 @@ public abstract class User  {
 
 	public User(int userId, String email, String password, String collectedRoles) {
 		super();
-		this.userId = userId;
+		this.id = userId;
 		this.email = email;
 		this.password = password;
 		this.collectedRoles = collectedRoles;
@@ -40,7 +37,7 @@ public abstract class User  {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", email=" + email + ", password=" + password + ", collectedRoles="
+		return "User [userId=" + id + ", email=" + email + ", password=" + password + ", collectedRoles="
 				+ collectedRoles + "]";
 	}
 
@@ -51,7 +48,7 @@ public abstract class User  {
 		result = prime * result + ((collectedRoles == null) ? 0 : collectedRoles.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + userId;
+		result = prime * result + id;
 		return result;
 	}
 
@@ -79,17 +76,17 @@ public abstract class User  {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (userId != other.userId)
+		if (id != other.id)
 			return false;
 		return true;
 	}
 
-	public int getUserId() {
-		return userId;
+	public int getId() {
+		return id;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getEmail() {
