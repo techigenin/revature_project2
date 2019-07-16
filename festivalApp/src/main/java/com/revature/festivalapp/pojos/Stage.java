@@ -23,7 +23,7 @@ public class Stage {
 	
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="event_number")
-	private Integer festivalEvent;
+	private FestivalEvent festivalEvent;
 	
 	@Column(name="stage_name")
 	private String stageName;
@@ -37,17 +37,17 @@ public class Stage {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Stage(Integer stageNumber, Integer eventNumber, String stageName, Crew crew) {
+	public Stage(Integer stageNumber, FestivalEvent festivalEvent, String stageName, Crew crew) {
 		super();
 		this.stageNumber = stageNumber;
-		this.festivalEvent = eventNumber;
+		this.festivalEvent = festivalEvent;
 		this.stageName = stageName;
 		this.crew = crew;
 	}
 
 	@Override
 	public String toString() {
-		return "Stage [stageNumber=" + stageNumber + ", eventNumber=" + festivalEvent + ", stageName=" + stageName
+		return "Stage [stageNumber=" + stageNumber + ", festivalEvent=" + festivalEvent + ", stageName=" + stageName
 				+ ", crew=" + crew + "]";
 	}
 
@@ -59,12 +59,12 @@ public class Stage {
 		this.stageNumber = stageNumber;
 	}
 
-	public Integer getEventNumber() {
+	public FestivalEvent getFestivalEvent() {
 		return festivalEvent;
 	}
 
-	public void setEventNumber(Integer eventNumber) {
-		this.festivalEvent = eventNumber;
+	public void setFestivalEvent(FestivalEvent festivalEvent) {
+		this.festivalEvent = festivalEvent;
 	}
 
 	public String getStageName() {
@@ -82,9 +82,11 @@ public class Stage {
 	public void setCrew(Crew crew) {
 		this.crew = crew;
 	}
-	
-	
+
+
 }
+
+	
 	
 	
 	
