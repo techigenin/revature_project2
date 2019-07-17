@@ -18,7 +18,6 @@ public class Stage {
 	
 	@Id
 	@Column(name="stage_number")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer stageNumber;
 	
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
@@ -29,7 +28,7 @@ public class Stage {
 	private String stageName;
 	
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="id")
+	@JoinColumn(name="crew_id")
 	private User crew;
 
 
@@ -38,7 +37,7 @@ public class Stage {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Stage(Integer stageNumber, Integer eventNumber, String stageName, User crew) {
+	public Stage(Integer stageNumber, FestivalEvent festivalEvent, String stageName, User crew) {
 		super();
 		this.stageNumber = stageNumber;
 		this.festivalEvent = festivalEvent;

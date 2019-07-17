@@ -33,11 +33,13 @@ public class FestivalDriver {
 //		
 //		fd.insertFestivalEvent(fest);
 		
-	User u = new User("this@thatmail.com", "myPassword", "manager, artist", "Rolando Casos", "Pisco Sour", null);
+	//User u = new User("this@thatmail.com", "myPassword", "manager, artist", "Rolando Casos", "Pisco Sour", null);
 				
-		ud.insertUser(u);
+		//ud.insertUser(u);
 		
-		//Stage newstage = new Stage(1, 3, "Lolapalooza" , u);
+		Stage newstage = new Stage(25, fd.getFestivalEventById(1), "newStage", ud.getUser(1));
+		
+		sd.insertStage(newstage);
 		
 		
 		
