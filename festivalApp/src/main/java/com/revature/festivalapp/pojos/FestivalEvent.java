@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 
+import com.revature.festival.util.LocalDateAttributeConverter;
+
 @Entity
 @Table(name="festival_event")
 public class FestivalEvent {
@@ -14,7 +16,7 @@ public class FestivalEvent {
 	private Integer eventNumer;
 	
 	@Column(name="audience_capacity")
-	private Integer audieceCapacity;
+	private Integer audienceCapacity;
 	
 	@Column(name="event_name")
 	private String eventName;
@@ -23,28 +25,30 @@ public class FestivalEvent {
 	private String eventLocation;
 	
 	@Column(name="event_start_date")
+	@Convert(converter=LocalDateAttributeConverter.class)
 	private LocalDate startDate;
 	
 	@Column(name="event_end_date")
+	@Convert(converter=LocalDateAttributeConverter.class)
 	private LocalDate endDate;
 	
 	@Column(name="event_desc")
 	private String eventDescription;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="manager_email")
-	private Manager manager;
+	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, 
+				fetch=FetchType.LAZY)
+	@JoinColumn(name="manager_id")
+	private User manager;
 
 	public FestivalEvent() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public FestivalEvent(Integer eventNumer, Integer audieceCapacity, String eventName, String eventLocation,
-			LocalDate startDate, LocalDate endDate, String eventDescription, Manager manager) {
+	public FestivalEvent(Integer audieceCapacity, String eventName, String eventLocation,
+			LocalDate startDate, LocalDate endDate, String eventDescription, User manager) {
 		super();
-		this.eventNumer = eventNumer;
-		this.audieceCapacity = audieceCapacity;
+		this.audienceCapacity = audieceCapacity;
 		this.eventName = eventName;
 		this.eventLocation = eventLocation;
 		this.startDate = startDate;
@@ -61,12 +65,12 @@ public class FestivalEvent {
 		this.eventNumer = eventNumer;
 	}
 
-	public Integer getAudieceCapacity() {
-		return audieceCapacity;
+	public Integer getAudienceCapacity() {
+		return audienceCapacity;
 	}
 
-	public void setAudieceCapacity(Integer audieceCapacity) {
-		this.audieceCapacity = audieceCapacity;
+	public void setAudienceCapacity(Integer audieceCapacity) {
+		this.audienceCapacity = audieceCapacity;
 	}
 
 	public String getEventName() {
@@ -109,17 +113,17 @@ public class FestivalEvent {
 		this.eventDescription = eventDescription;
 	}
 
-	public Manager getManager() {
+	public User getManager() {
 		return manager;
 	}
 
-	public void setManager(Manager manager) {
+	public void setManager(User manager) {
 		this.manager = manager;
 	}
 
 	@Override
 	public String toString() {
-		return "FestivalEvent [eventNumer=" + eventNumer + ", audieceCapacity=" + audieceCapacity + ", eventName="
+		return "FestivalEvent [eventNumer=" + eventNumer + ", audieceCapacity=" + audienceCapacity + ", eventName="
 				+ eventName + ", eventLocation=" + eventLocation + ", startDate=" + startDate + ", endDate=" + endDate
 				+ ", eventDescription=" + eventDescription + ", manager=" + manager + "]";
 	}
