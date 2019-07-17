@@ -2,6 +2,7 @@ drop table manager, customer, crew, promoter, artist, users, event_role, roles, 
 
 
 select * from users;
+select * from festival_event;
 --select * from manager;
 
 --create table manager

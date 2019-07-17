@@ -37,8 +37,12 @@ public class User  {
 	private String promoterName;
 	
 	@Transient
-	private EventRole eventRole;
+	private EventRole currentRole;
 
+	@Transient
+	private FestivalEvent currentEvent;
+	
+	
 	public User() {
 		super();
 	}
@@ -52,7 +56,7 @@ public class User  {
 		this.managerName = managerName;
 		this.artistName = artistName;
 		this.promoterName = promoterName;
-		this.eventRole = eventRole;
+		this.currentRole = eventRole;
 	}
 
 	public User(String email, String password, String collectedRoles, String managerName, String artistName,
@@ -144,7 +148,7 @@ public class User  {
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", password=" + password + ", collectedRoles=" + collectedRoles
 				+ ", managerName=" + managerName + ", artistName=" + artistName + ", promoterName=" + promoterName
-				+ ", eventRole=" + eventRole + "]";
+				+ ", eventRole=" + currentRole + "]";
 	}
 
 	public int getId() {
@@ -204,11 +208,27 @@ public class User  {
 	}
 
 	public EventRole getEventRole() {
-		return eventRole;
+		return currentRole;
 	}
 
 	public void setEventRole(EventRole eventRole) {
-		this.eventRole = eventRole;
+		this.currentRole = eventRole;
+	}
+	
+	public EventRole getCurrentRole() {
+		return currentRole;
+	}
+
+	public void setCurrentRole(EventRole currentRole) {
+		this.currentRole = currentRole;
+	}
+
+	public FestivalEvent getCurrentEvent() {
+		return currentEvent;
+	}
+
+	public void setCurrentEvent(FestivalEvent currentEvent) {
+		this.currentEvent = currentEvent;
 	}
 }
 	
