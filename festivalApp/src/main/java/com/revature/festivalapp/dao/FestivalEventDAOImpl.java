@@ -76,7 +76,7 @@ public class FestivalEventDAOImpl implements FestivalEventDAO {
 		
 		Session sess = sf.openSession();
 		Criteria cr = sess.createCriteria(FestivalEvent.class);
-		cr.add(Restrictions.eq("manager_id", u.getId()));
+		cr.add(Restrictions.eq("id", u.getId()));
 		
 		List<FestivalEvent> results = new ArrayList<FestivalEvent>();
 		

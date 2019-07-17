@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 
+import com.revature.festival.util.LocalDateAttributeConverter;
+
 @Entity
 @Table(name="festival_event")
 public class FestivalEvent {
@@ -23,16 +25,19 @@ public class FestivalEvent {
 	private String eventLocation;
 	
 	@Column(name="event_start_date")
+	@Convert(converter=LocalDateAttributeConverter.class)
 	private LocalDate startDate;
 	
 	@Column(name="event_end_date")
+	@Convert(converter=LocalDateAttributeConverter.class)
 	private LocalDate endDate;
 	
 	@Column(name="event_desc")
 	private String eventDescription;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="id")
+	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, 
+				fetch=FetchType.LAZY)
+	@JoinColumn(name="manager_id")
 	private User manager;
 
 	public FestivalEvent() {
@@ -40,10 +45,9 @@ public class FestivalEvent {
 		// TODO Auto-generated constructor stub
 	}
 
-	public FestivalEvent(Integer eventNumer, Integer audieceCapacity, String eventName, String eventLocation,
+	public FestivalEvent(Integer audieceCapacity, String eventName, String eventLocation,
 			LocalDate startDate, LocalDate endDate, String eventDescription, User manager) {
 		super();
-		this.eventNumer = eventNumer;
 		this.audieceCapacity = audieceCapacity;
 		this.eventName = eventName;
 		this.eventLocation = eventLocation;
