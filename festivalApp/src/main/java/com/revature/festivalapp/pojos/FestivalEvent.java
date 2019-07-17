@@ -16,7 +16,7 @@ public class FestivalEvent {
 	private Integer eventNumer;
 	
 	@Column(name="audience_capacity")
-	private Integer audieceCapacity;
+	private Integer audienceCapacity;
 	
 	@Column(name="event_name")
 	private String eventName;
@@ -48,7 +48,7 @@ public class FestivalEvent {
 	public FestivalEvent(Integer audieceCapacity, String eventName, String eventLocation,
 			LocalDate startDate, LocalDate endDate, String eventDescription, User manager) {
 		super();
-		this.audieceCapacity = audieceCapacity;
+		this.audienceCapacity = audieceCapacity;
 		this.eventName = eventName;
 		this.eventLocation = eventLocation;
 		this.startDate = startDate;
@@ -65,12 +65,12 @@ public class FestivalEvent {
 		this.eventNumer = eventNumer;
 	}
 
-	public Integer getAudieceCapacity() {
-		return audieceCapacity;
+	public Integer getAudienceCapacity() {
+		return audienceCapacity;
 	}
 
-	public void setAudieceCapacity(Integer audieceCapacity) {
-		this.audieceCapacity = audieceCapacity;
+	public void setAudienceCapacity(Integer audieceCapacity) {
+		this.audienceCapacity = audieceCapacity;
 	}
 
 	public String getEventName() {
@@ -123,7 +123,7 @@ public class FestivalEvent {
 
 	@Override
 	public String toString() {
-		return "FestivalEvent [eventNumer=" + eventNumer + ", audieceCapacity=" + audieceCapacity + ", eventName="
+		return "FestivalEvent [eventNumer=" + eventNumer + ", audieceCapacity=" + audienceCapacity + ", eventName="
 				+ eventName + ", eventLocation=" + eventLocation + ", startDate=" + startDate + ", endDate=" + endDate
 				+ ", eventDescription=" + eventDescription + ", manager=" + manager + "]";
 	}
