@@ -26,6 +26,7 @@ public class Schedule {
 	
 	// we should create sequence in the database table start_time_sequence
 //	@SequenceGenerator(name="start_time_sequence", sequenceName="start_time_sequence")
+	
 	@GeneratedValue(strategy=GenerationType.IDENTITY) // Using serial vs sequence
 	@EmbeddedId
 	//in AttributeOverride we combine the two keys as a composite key 

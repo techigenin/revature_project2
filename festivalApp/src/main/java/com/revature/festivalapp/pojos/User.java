@@ -10,7 +10,7 @@ public abstract class User  {
 	
 	@Id
 	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)// thats for serial 
 	private int id;
 	
 	@Column(name="val_email")
