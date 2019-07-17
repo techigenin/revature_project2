@@ -36,17 +36,16 @@ public class User  {
 	@Column(name="promoter_name")
 	private String promoterName;
 	
+	@Transient
 	private EventRole eventRole;
 
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public User(int id, String email, String password, String collectedRoles, String managerName, String artistName,
+	public User(String email, String password, String collectedRoles, String managerName, String artistName,
 			String promoterName, EventRole eventRole) {
 		super();
-		this.id = id;
 		this.email = email;
 		this.password = password;
 		this.collectedRoles = collectedRoles;
@@ -56,10 +55,9 @@ public class User  {
 		this.eventRole = eventRole;
 	}
 
-	public User(int id, String email, String password, String collectedRoles, String managerName, String artistName,
+	public User(String email, String password, String collectedRoles, String managerName, String artistName,
 			String promoterName) {
 		super();
-		this.id = id;
 		this.email = email;
 		this.password = password;
 		this.collectedRoles = collectedRoles;

@@ -2,41 +2,44 @@ drop table manager, customer, crew, promoter, artist, users, event_role, roles, 
 
 
 select * from users;
-select * from manager;
+--select * from manager;
 
-create table manager
-(
-	id serial primary key,
-	manager_name varchar(50)	
-);
-
-create table customer (
-	id serial PRIMARY key
-);
-
-create table crew
-(
-	id serial primary key
-);
-
-create table promoter
-(
-	id serial primary key,
-	promo_name varchar(50)
-);
-
-create table artist 
-(
-	id serial primary key,
-	artist_name varchar(50)
-);
+--create table manager
+--(
+--	id serial primary key,
+--	manager_name varchar(50)	
+--);
+--
+--create table customer (
+--	id serial PRIMARY key
+--);
+--
+--create table crew
+--(
+--	id serial primary key
+--);
+--
+--create table promoter
+--(
+--	id serial primary key,
+--	promo_name varchar(50)
+--);
+--
+--create table artist 
+--(
+--	id serial primary key,
+--	artist_name varchar(50)
+--);
 
 create table users -- user pojo
 (
 	id serial primary key,
-	val_email varchar(50 unique,
-	val_password varchar(50),
-	collected_roles varchar -- combination of all roles in all events
+	val_email varchar unique,
+	val_password varchar,
+	collected_roles varchar, -- combination of all roles in all events
+	manager_name varchar,
+	artist_name varchar,
+	promoter_name varchar
 );
 
 create table event_role (
