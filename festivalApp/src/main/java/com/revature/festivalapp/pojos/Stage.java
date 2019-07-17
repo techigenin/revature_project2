@@ -29,15 +29,15 @@ public class Stage {
 	private String stageName;
 	
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="crew_email")
-	private Crew crew;
+	@JoinColumn(name="id")
+	private User crew;
 
 	public Stage() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Stage(Integer stageNumber, Integer eventNumber, String stageName, Crew crew) {
+	public Stage(Integer stageNumber, Integer eventNumber, String stageName, User crew) {
 		super();
 		this.stageNumber = stageNumber;
 		this.eventNumber = eventNumber;
@@ -75,11 +75,11 @@ public class Stage {
 		this.stageName = stageName;
 	}
 
-	public Crew getCrew() {
+	public User getCrew() {
 		return crew;
 	}
 
-	public void setCrew(Crew crew) {
+	public void setCrew(User crew) {
 		this.crew = crew;
 	}
 	

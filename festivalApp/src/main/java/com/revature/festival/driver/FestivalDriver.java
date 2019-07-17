@@ -15,12 +15,11 @@ private static SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 		System.out.println("starting");
 		ManagerDAO md = new ManagerDAOImpl();
 		
-		Manager m = new Manager("John Doe");
-		m.setCollectedRoles("manager");
-		m.setEmail("fake@yahoo.com");
-		m.setPassword("password");
+		md.insertManager(new Manager("Billy Bob", "anEmail@yahoo.com", "2134765", "manager"));
 		
-		md.insertManager(m);
+		Manager newMan = md.getManagerByEmail("anEmail@yahoo.com");
+		
+		System.out.println(newMan);
 		
 		LoggingUtil.trace("Everything is fine.");
 		System.out.println("Everything is fine.");

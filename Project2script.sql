@@ -1,6 +1,9 @@
 drop table manager, customer, crew, promoter, artist, users, event_role, roles, festival_event, stage, schedule;
 
 
+select * from users;
+select * from manager;
+
 create table manager
 (
 	id serial primary key,
@@ -31,7 +34,7 @@ create table artist
 create table users -- user pojo
 (
 	id serial primary key,
-	val_email varchar(50),
+	val_email varchar(50 unique,
 	val_password varchar(50),
 	collected_roles varchar -- combination of all roles in all events
 );

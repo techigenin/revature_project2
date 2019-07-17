@@ -32,8 +32,8 @@ public class FestivalEvent {
 	private String eventDescription;
 	
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="manager_email")
-	private Manager manager;
+	@JoinColumn(name="id")
+	private User manager;
 
 	public FestivalEvent() {
 		super();
@@ -41,7 +41,7 @@ public class FestivalEvent {
 	}
 
 	public FestivalEvent(Integer eventNumer, Integer audieceCapacity, String eventName, String eventLocation,
-			LocalDate startDate, LocalDate endDate, String eventDescription, Manager manager) {
+			LocalDate startDate, LocalDate endDate, String eventDescription, User manager) {
 		super();
 		this.eventNumer = eventNumer;
 		this.audieceCapacity = audieceCapacity;
@@ -109,11 +109,11 @@ public class FestivalEvent {
 		this.eventDescription = eventDescription;
 	}
 
-	public Manager getManager() {
+	public User getManager() {
 		return manager;
 	}
 
-	public void setManager(Manager manager) {
+	public void setManager(User manager) {
 		this.manager = manager;
 	}
 

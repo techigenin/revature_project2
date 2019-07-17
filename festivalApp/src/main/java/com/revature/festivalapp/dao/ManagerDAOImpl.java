@@ -67,12 +67,20 @@ public class ManagerDAOImpl extends UserDAOImpl implements ManagerDAO {
 	}
 
 	@Override
-	public Manager getManagerByEmail(String e) {
+	public Manager getManagerByEmail(String em) {
 		Session sess = sf.openSession();
-		Criteria crit = sess.createCriteria(Manager.class);
-		crit.add(Restrictions.eq("val_email", e));
+//		Criteria crit = sess.createCriteria(Manager.class);
+//		crit.add(Restrictions.eq("val_email", em));
+//		
+//		List<Manager> m = (List<Manager>)crit.list();
+//		sess.close();
 		
-		Manager m = (Manager)crit.uniqueResult();
+		String hql = "from Manager where val_email = :eml";
+		Query q = sess.createQuery(hql);
+		q.setString("eml", em);
+		
+		Manager m = (Manager)q.uniqueResult();
+		
 		sess.close();
 		
 		return m;
@@ -91,5 +99,14 @@ public class ManagerDAOImpl extends UserDAOImpl implements ManagerDAO {
 		
 		sess.close();
 		return results;
+	}
+
+	@Override
+	public Manager getManagerById(int id) {
+		Session sess = sf.openSession();
+		Manager m = (Manager)sess.get(Manager.class, id);
+		sess.close();
+		
+		return m;
 	}
 }

@@ -15,6 +15,8 @@ public interface ManagerDAO extends UserDAO {
 	
 	public void deleteManager(Manager m);
 	
+	public Manager getManagerById(int id);
+	
 	public Manager getManagerByEmail(String e);
 	
 	public List<Manager> getAllManagers();

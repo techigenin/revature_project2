@@ -1,12 +1,17 @@
 package com.revature.festivalapp.pojos;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 import javax.persistence.*;
 
 // @MappedSuperclass -- Turned out to not be what we wanted...
 @Entity
 @Table(name="users")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class User  {
+public class User  {
 	
 	@Id
 	@Column(name="id")
@@ -21,64 +26,127 @@ public abstract class User  {
 	
 	@Column(name="collected_roles")
 	private String collectedRoles;
+	
+	@Column(name="manager_name")
+	private String managerName;
+	
+	@Column(name="artist_name")
+	private String artistName;
+	
+	@Column(name="promoter_name")
+	private String promoterName;
+	
+	private EventRole eventRole;
 
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(int userId, String email, String password, String collectedRoles) {
+	public User(int id, String email, String password, String collectedRoles, String managerName, String artistName,
+			String promoterName, EventRole eventRole) {
 		super();
-		this.id = userId;
+		this.id = id;
 		this.email = email;
 		this.password = password;
 		this.collectedRoles = collectedRoles;
+		this.managerName = managerName;
+		this.artistName = artistName;
+		this.promoterName = promoterName;
+		this.eventRole = eventRole;
+	}
+
+	public User(int id, String email, String password, String collectedRoles, String managerName, String artistName,
+			String promoterName) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.collectedRoles = collectedRoles;
+		this.managerName = managerName;
+		this.artistName = artistName;
+		this.promoterName = promoterName;
+	}
+	
+	/**
+	 * When a user is added to an event
+	 * This method ensures that their role is included in collected roles.
+	 * 
+	 * @param role to be added for the user
+	 * @return String which is stored to collected roles
+	 */
+	public String addRole(String role) {
+		Set<String> roles = new HashSet<String>();
+		roles.addAll(Arrays.asList(collectedRoles.split(",")));
+		
+		roles.add(role.toLowerCase());
+		
+		String ret = "";
+		
+		if (roles.size() > 0) {
+			Iterator<String> iterator = roles.iterator();
+			
+			ret += iterator.next();
+			
+			while(iterator.hasNext()) 
+				ret += ", " + iterator.next();
+		}
+		
+		collectedRoles = role;
+		
+		return ret;
+	}
+	
+	/**
+	 * A quick way to check if current user is a manager
+	 * 
+	 * @return boolean, true if user is manager
+	 */
+	public boolean isManager() {
+		return (collectedRoles.toLowerCase().contains("manager")) ? true : false;
+	}
+	
+	/**
+	 * A quick way to check if current user is an artist
+	 * 
+	 * @return boolean, true if user is artist
+	 */
+	public boolean isArtist() {
+		return (collectedRoles.toLowerCase().contains("artist")) ? true : false;
+	}
+	
+	/**
+	 * A quick way to check if current user is a promoter
+	 * 
+	 * @return boolean, true if user is promoter
+	 */
+	public boolean isPromoter() {
+		return (collectedRoles.toLowerCase().contains("promoter")) ? true : false;
+	}
+	
+	/**
+	 * A quick way to check if current user is a crew
+	 * 
+	 * @return boolean, true if user is crew
+	 */
+	public boolean isCrew() {
+		return (collectedRoles.toLowerCase().contains("crew")) ? true : false;
+	}
+	
+	/**
+	 * A quick way to check if current user is a customer
+	 * 
+	 * @return boolean, true if user is customer
+	 */
+	public boolean isCustomer() {
+		return (collectedRoles.toLowerCase().contains("customer")) ? true : false;
 	}
 
 	@Override
 	public String toString() {
-		return "User [userId=" + id + ", email=" + email + ", password=" + password + ", collectedRoles="
-				+ collectedRoles + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((collectedRoles == null) ? 0 : collectedRoles.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + id;
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (collectedRoles == null) {
-			if (other.collectedRoles != null)
-				return false;
-		} else if (!collectedRoles.equals(other.collectedRoles))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
-		if (id != other.id)
-			return false;
-		return true;
+		return "User [id=" + id + ", email=" + email + ", password=" + password + ", collectedRoles=" + collectedRoles
+				+ ", managerName=" + managerName + ", artistName=" + artistName + ", promoterName=" + promoterName
+				+ ", eventRole=" + eventRole + "]";
 	}
 
 	public int getId() {
@@ -113,7 +181,36 @@ public abstract class User  {
 		this.collectedRoles = collectedRoles;
 	}
 
-	
-	
+	public String getManagerName() {
+		return managerName;
+	}
+
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
+
+	public String getArtistName() {
+		return artistName;
+	}
+
+	public void setArtistName(String artistName) {
+		this.artistName = artistName;
+	}
+
+	public String getPromoterName() {
+		return promoterName;
+	}
+
+	public void setPromoterName(String promoterName) {
+		this.promoterName = promoterName;
+	}
+
+	public EventRole getEventRole() {
+		return eventRole;
+	}
+
+	public void setEventRole(EventRole eventRole) {
+		this.eventRole = eventRole;
+	}
 }
 	
