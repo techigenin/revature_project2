@@ -5,9 +5,12 @@ import java.time.LocalDate;
 import com.revature.festival.logs.LoggingUtil;
 import com.revature.festivalapp.dao.FestivalEventDAO;
 import com.revature.festivalapp.dao.FestivalEventDAOImpl;
+import com.revature.festivalapp.dao.StageDAO;
+import com.revature.festivalapp.dao.StageDAOImpl;
 import com.revature.festivalapp.dao.UserDAO;
 import com.revature.festivalapp.dao.UserDAOImpl;
 import com.revature.festivalapp.pojos.FestivalEvent;
+import com.revature.festivalapp.pojos.Stage;
 import com.revature.festivalapp.pojos.User;
 
 public class FestivalDriver {
@@ -16,6 +19,8 @@ public class FestivalDriver {
 		System.out.println("starting");
 		UserDAO ud = new UserDAOImpl();
 		FestivalEventDAO fd = new FestivalEventDAOImpl();
+		
+		StageDAO sd = new StageDAOImpl();
 		
 //		FestivalEvent fest = new FestivalEvent(
 //				2000, 
@@ -28,14 +33,18 @@ public class FestivalDriver {
 //		
 //		fd.insertFestivalEvent(fest);
 		
-//		User u = new User("this@thatmail.com", "myPassword", "manager, artist", "Rolando Casos", "Pisco Sour", null);
+	User u = new User("this@thatmail.com", "myPassword", "manager, artist", "Rolando Casos", "Pisco Sour", null);
 				
-//		ud.insertUser(u);
+		ud.insertUser(u);
 		
-		for (FestivalEvent fe : fd.getAllFestivalEventsByManager(ud.getUserByEmail("this@thatmail.com")))
-			System.out.println(fe.getEventName());
+		//Stage newstage = new Stage(1, 3, "Lolapalooza" , u);
 		
-		LoggingUtil.trace("Everything is fine.");
-		System.out.println("Everything is fine.");
+		
+		
+//		for (FestivalEvent fe : fd.getAllFestivalEventsByManager(ud.getUserByEmail("this@thatmail.com")))
+//			System.out.println(fe.getEventName());
+//		
+//		LoggingUtil.trace("Everything is fine.");
+//		System.out.println("Everything is fine.");
 	}
 }
