@@ -16,14 +16,15 @@ public class ScheduleDAO implements ScheduleDAOImpl {
 	
 	
 	@Override
-	public void DeleteSchedule(int id) {
+	public void DeleteSchedule(int stage_number,String artist_name) {
 		
 		Session sess = sf.openSession();
 		Transaction tx = sess.beginTransaction();
 
-		String hql = "Delete from HoneyPot  where honeyPotId  = :type";
+		String hql = "Delete from Schedule  where artistName  = :artist_name and stageNumber =:stage_number ";
 		Query query = sess.createQuery(hql);
-		query.setParameter("type", id);
+		query.setParameter("type", stage_number);
+		query.setParameter("type", artist_name);
 
 		query.executeUpdate();
 		tx.commit();

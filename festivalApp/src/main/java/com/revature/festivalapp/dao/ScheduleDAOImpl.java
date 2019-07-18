@@ -6,7 +6,7 @@ import com.revature.festivalapp.pojos.Schedule;
 
 public interface ScheduleDAOImpl {
 	
-	public void DeleteSchedule(int id);// Delete by ID
+	public void DeleteSchedule(int stage_number , String artist_name);// Delete by ID
 	public void AddSchedule(Schedule schedule);
 	public List<Schedule> ViewAllSchedule();
 	public void UpdateSchedule(Schedule schedule);
