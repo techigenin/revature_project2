@@ -3,8 +3,11 @@ package com.revature.festivalapp.pojos;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+
+import com.revature.festival.util.LocalDateTimeAttributeConverter;
 
 
 public class ScheduleEmbedded {
@@ -12,8 +15,8 @@ public class ScheduleEmbedded {
 	@OneToOne
 	@JoinColumn(name="stage_number")
 	private Stage  stageNumber;
-
 	
+	@Convert(converter=LocalDateTimeAttributeConverter.class)
 	@Column(name="start_time")
 	private LocalDateTime startTime;
 	
