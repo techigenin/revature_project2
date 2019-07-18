@@ -23,14 +23,13 @@ import javax.persistence.Table;
 public class Schedule {
 //reference for composite key
 //https://www.concretepage.com/hibernate/example-embeddedid-hibernate
-	
-	// we should create sequence in the database table start_time_sequence
+// we should create sequence in the database table start_time_sequence
 //	@SequenceGenerator(name="start_time_sequence", sequenceName="start_time_sequence")
 	
 	@GeneratedValue(strategy=GenerationType.IDENTITY) // Using serial vs sequence
 	@EmbeddedId
-	//in AttributeOverride we combine the two keys as a composite key 
-	@AttributeOverride(name="stage_number", column=@Column(name="start_time"))
+
+	@AttributeOverride(name="stage_number", column=@Column(name="start_time"))	//in AttributeOverride we combine the two keys as a composite key 
 	private ScheduleEmbedded se;
 	
 	@Column(name="end_time")

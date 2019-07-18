@@ -12,4 +12,5 @@ public interface ScheduleDAOImpl {
 	public void UpdateSchedule(Schedule schedule);
 	public List<Schedule> SearchByName (String artist_name);// by artist name incase we gonna use it later 
 
+	
 }

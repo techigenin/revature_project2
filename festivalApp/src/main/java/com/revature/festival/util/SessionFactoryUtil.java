@@ -9,6 +9,7 @@ public class SessionFactoryUtil {
 private static SessionFactory sf;
 	
 	static {
+		
 		Configuration configuration = new Configuration().configure();
 		configuration.setProperty("hibernate.connection.username",System.getenv("BEARS_USERNAME"));
 		configuration.setProperty("hibernate.connection.password",System.getenv("BEARS_PASSWORD"));
