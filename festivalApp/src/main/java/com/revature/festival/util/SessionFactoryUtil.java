@@ -10,9 +10,10 @@ private static SessionFactory sf;
 	
 	static {
 		Configuration configuration = new Configuration().configure();
-		configuration.setProperty("hibernate.connection.username", System.getenv("FEST_USERNAME"));
-		configuration.setProperty("hibernate.connection.password", System.getenv("FEST_PASSWORD"));
-		configuration.setProperty("hibernate.connection.url", "jdbc:postgresql://" + System.getenv("FEST_DATABASE"));
+		configuration.setProperty("hibernate.connection.username",System.getenv("BEARS_USERNAME"));
+		configuration.setProperty("hibernate.connection.password",System.getenv("BEARS_PASSWORD"));
+		configuration.setProperty("hibernate.connection.url"     ,"jdbc:postgresql://"+System.getenv("BEARS_URL")
+		+ ":5432/mohamad_1905java?");
 		
 
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();

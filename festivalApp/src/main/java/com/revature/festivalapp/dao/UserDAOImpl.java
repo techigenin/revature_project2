@@ -19,19 +19,48 @@ public class UserDAOImpl implements UserDAO {
 	SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 	
 	@Override
-	public void updateUser(User u) {
+	public User getUser(int id) throws IllegalArgumentException {
+		
+		if (id < 1)
+			throw new IllegalArgumentException();
+		
 		Session sess = sf.openSession();
-		Transaction tx = sess.beginTransaction();
-		sess.update(u);
-		tx.commit();
+		User u = (User)sess.get(User.class, id);
 		sess.close();
+		
+		return u;
 	}
-
+	
+	public User getUserByEmail(String email) {
+		Session sess = sf.openSession();
+//		Criteria crit = sess.createCriteria(User.class);		
+//		crit.add(Restrictions.eq("val_email", email));
+		
+		String hql = "from User where val_email = :eml";
+		Query q = sess.createQuery(hql);
+		q.setString("eml", email);
+		
+		User u = (User) q.uniqueResult();
+		
+		sess.close();
+		
+		return u;
+	}
+	
 	@Override
 	public void insertUser(User u) {
 		Session sess = sf.openSession();
 		Transaction tx = sess.beginTransaction();
 		sess.save(u);
+		tx.commit();
+		sess.close();
+	}
+	
+	@Override
+	public void updateUser(User u) {
+		Session sess = sf.openSession();
+		Transaction tx = sess.beginTransaction();
+		sess.update(u);
 		tx.commit();
 		sess.close();
 	}
