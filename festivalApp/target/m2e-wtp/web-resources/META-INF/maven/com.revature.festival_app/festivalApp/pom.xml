@@ -4,6 +4,18 @@
   <artifactId>festivalApp</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
+  <dependencyManagement>
+		<dependencies>
+			<!-- https://mvnrepository.com/artifact/org.springframework/spring-framework-bom -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-framework-bom</artifactId>
+				<version>4.3.23.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 <dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -60,6 +72,14 @@
             <artifactId>hibernate-core</artifactId>
             <version>4.3.11.Final</version>
         </dependency>
+        
+       <!-- Spring Dependency -->
+       
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+	
 	</dependencies>
 	        <!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
         <build>

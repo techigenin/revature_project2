@@ -65,7 +65,7 @@ public class StageDAOImpl implements StageDAO {
 
 	public Stage getStagebyName(String stagename) {
 		Session sess = sf.openSession();
-		Criteria crit = sess.createCriteria(Stage.class).add(Restrictions.eq("stage_name", stagename));
+		Criteria crit = sess.createCriteria(Stage.class).add(Restrictions.eq("stageName", stagename));
 		Stage stage = (Stage) crit.uniqueResult();
 		sess.close();
 		return stage;
