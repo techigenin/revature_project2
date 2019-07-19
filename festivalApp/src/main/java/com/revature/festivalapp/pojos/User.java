@@ -131,9 +131,9 @@ public class User  {
 	 * 
 	 * @return boolean, true if user is crew
 	 */
-	public boolean isCrew() {
-		return (collectedRoles.toLowerCase().contains("crew")) ? true : false;
-	}
+		public boolean isCrew() {
+			return (collectedRoles.toLowerCase().contains("crew")) ? true : false;
+		}
 	
 	/**
 	 * A quick way to check if current user is a customer

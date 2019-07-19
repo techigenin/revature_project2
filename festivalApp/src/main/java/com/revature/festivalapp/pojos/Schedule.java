@@ -5,10 +5,9 @@ import java.time.LocalDateTime;
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Convert;
+import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
@@ -17,10 +16,7 @@ import com.revature.festival.util.LocalDateTimeAttributeConverter;
 
 
 @Entity
-//name of the table  in DB
-@Table(name="schedule")
-@IdClass(Stage.class)
-
+@Table(name="schedule")//name of the table  in DB
 public class Schedule {
 //reference for composite key
 //https://www.concretepage.com/hibernate/example-embeddedid-hibernate

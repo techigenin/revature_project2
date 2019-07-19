@@ -1,16 +1,19 @@
 package com.revature.festivalapp.pojos;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
+import javax.persistence.Embeddable;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import com.revature.festival.util.LocalDateTimeAttributeConverter;
-
-
-public class ScheduleEmbedded {
+@Embeddable
+//@IdClass(Stage.class)
+public class ScheduleEmbedded implements Serializable {
 
 	@OneToOne
 	@JoinColumn(name="stage_number")

@@ -12,6 +12,7 @@ import com.revature.festivalapp.pojos.Schedule;
 
 
 public class ScheduleDAO implements ScheduleDAOImpl {
+	
 	public static SessionFactory sf=SessionFactoryUtil.getSessionFactory();
 	
 	
@@ -23,8 +24,8 @@ public class ScheduleDAO implements ScheduleDAOImpl {
 
 		String hql = "Delete from Schedule  where artistName  = :artist_name and stageNumber =:stage_number ";
 		Query query = sess.createQuery(hql);
-		query.setParameter("type", stage_number);
-		query.setParameter("type", artist_name);
+		query.setParameter("stage_number", stage_number);
+		query.setParameter("artist_name", artist_name);
 
 		query.executeUpdate();
 		tx.commit();
@@ -51,8 +52,10 @@ public class ScheduleDAO implements ScheduleDAOImpl {
 		
 		Session sess=sf.openSession();
 		Transaction tx=sess.beginTransaction();
+		
 		Criteria crit = sess.createCriteria(Schedule.class);
 		List<Schedule> result = crit.list();
+	
 		tx.commit();
 		sess.close();
 		return result;
@@ -73,8 +76,11 @@ public class ScheduleDAO implements ScheduleDAOImpl {
 	@Override
 	public List<Schedule> SearchByName(String artist_name) {
 		Session sess = sf.openSession();
-		Criteria crit = sess.createCriteria(Schedule.class).add(eq("artistName", artist_name));
-		List<Schedule> result = crit.list();
+		//Criteria crit = sess.createCriteria(Schedule.class).add(eq("artistName", artist_name));
+		String hql="from Schedule where artistNname =: artist_name ";		
+		Query query = sess.createQuery(hql);
+		query.setParameter("artist_name", artist_name);
+		List<Schedule> result = query.list();
 		sess.close();
 		return result;
 	}
