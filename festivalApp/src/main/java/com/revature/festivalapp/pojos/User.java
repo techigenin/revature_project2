@@ -15,7 +15,7 @@ public class User  {
 	
 	@Id
 	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)// thats for serial 
 	private int id;
 	
 	@Column(name="val_email")
@@ -131,9 +131,9 @@ public class User  {
 	 * 
 	 * @return boolean, true if user is crew
 	 */
-	public boolean isCrew() {
-		return (collectedRoles.toLowerCase().contains("crew")) ? true : false;
-	}
+		public boolean isCrew() {
+			return (collectedRoles.toLowerCase().contains("crew")) ? true : false;
+		}
 	
 	/**
 	 * A quick way to check if current user is a customer
