@@ -20,7 +20,7 @@ public class Stage {
 	@Column(name="stage_number")
 	private Integer stageNumber;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@ManyToOne(cascade=CascadeType.REFRESH, fetch=FetchType.LAZY)
 	@JoinColumn(name="event_number")
 	private FestivalEvent festivalEvent;
 	

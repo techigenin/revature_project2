@@ -47,10 +47,12 @@ public class FestivalDriver {
 		//newstage2.setStageName("gotYou");
 		//sd.updateStage(newstage2);
 		//sd.getStageById(30);
+		//		for (Stage st :sd.getAllStages()) 
+//		System.out.println(st.getStageName());
 		
 		
-		for (Stage st :sd.getAllStages() )
-		System.out.println(st.toString());
+
+		
 		
 		
 		
