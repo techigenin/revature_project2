@@ -1,6 +1,7 @@
 package com.revature.festival.driver;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import com.revature.festival.logs.LoggingUtil;
 import com.revature.festivalapp.dao.FestivalEventDAO;
@@ -36,10 +37,37 @@ public class FestivalDriver {
 	//User u = new User("this@thatmail.com", "myPassword", "manager, artist", "Rolando Casos", "Pisco Sour", null);
 				
 		//ud.insertUser(u);
+		 
+		//THIS WORKS
+		//Stage newstage = new Stage(25, fd.getFestivalEventById(1), "newStage", ud.getUser(1));
+		//sd.insertStage(newstage);
 		
-		Stage newstage = new Stage(25, fd.getFestivalEventById(1), "newStage", ud.getUser(1));
+		//Stage newstage2 = new Stage (30, fd.getFestivalEventById(1), "newStage", ud.getUser(1));
+		//sd.insertStage(newstage2);
+		//newstage2.setStageName("gotYou");
+		//sd.updateStage(newstage2);
+		//sd.getStageById(30);
 		
-		sd.insertStage(newstage);
+		
+		for (Stage st :sd.getAllStages() )
+		System.out.println(st.toString());
+		
+		
+		
+		//sd.deleteStage(newstage2);
+//		 updateStage(Stage stage);
+//		
+//		insertStage(Stage stage);
+//		
+//	    deleteStage(Stage stage);
+//		
+//		 getStagebyName(String stagename);
+//		
+//		 getStageById(int id);
+//		
+//		public List<Stage> getAllStages();
+		
+		
 		
 		
 		
