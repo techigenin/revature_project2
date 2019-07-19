@@ -4,6 +4,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.revature.festival.util.SessionFactoryUtil;
 import com.revature.festivalapp.dao.FestivalEventDAO;
 import com.revature.festivalapp.dao.FestivalEventDAOImpl;
 import com.revature.festivalapp.dao.ScheduleDAO;
@@ -21,10 +25,12 @@ public class FestivalDriver {
 	
 	public static void main(String[] args) {
 		System.out.println("starting");
+		
 		UserDAO ud = new UserDAOImpl();
 		FestivalEventDAO fd = new FestivalEventDAOImpl();
-		
-		StageDAO sd = new StageDAOImpl();
+		StageDAO sd = new StageDAOImpl();	
+		ScheduleDAO schd= new ScheduleDAO();	
+
 		/*
 //		FestivalEvent fest = new FestivalEvent(
 //				2000, 
@@ -39,7 +45,7 @@ public class FestivalDriver {
 		
 	//User u = new User("this@thatmail.com", "myPassword", "manager, artist", "Rolando Casos", "Pisco Sour", null);
 				
-		//ud.insertUser(u);
+		
 		 
 		//THIS WORKS
 		//Stage newstage = new Stage(25, fd.getFestivalEventById(1), "newStage", ud.getUser(1));
@@ -72,7 +78,7 @@ public class FestivalDriver {
 //		
 //		public List<Stage> getAllStages();
 */
-	ScheduleDAO s= new ScheduleDAO();	
+	
 	
 	
 //	System.out.println(s.ViewAllSchedule());
@@ -86,8 +92,21 @@ public class FestivalDriver {
 //	ScheduleEmbedded se = new ScheduleEmbedded(new Stage(5,1,"Revature",ud.getUser(1)),LocalDateTime.parse("2019-09-01T10:10:10"));	
 //	Schedule sc = new Schedule(se, null, "Mohamad")	;	
 //			s.AddSchedule(sc);
-			
-		System.out.println(s.ViewAllSchedule());
-		System.out.println("updated");
+		
+//		Schedule sch = new Schedule(
+//					new ScheduleEmbedded(
+//							sd.getStageById(25), 
+//							LocalDateTime.parse("2019-09-01T18:00:00")), 
+//					LocalDateTime.parse("2019-09-01T22:00:00"), 
+//					ud.getUser(1).getArtistName());
+//		
+//		schd.AddSchedule(sch);
+//		
+//		System.out.println(s.ViewAllSchedule());
+		
+		for (Schedule sch : schd.ViewAllSchedule())
+			System.out.println(sch.getSe().getStageNumber());
+	
+		System.out.println("Done!");
 	}
 }

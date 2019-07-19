@@ -71,6 +71,16 @@ public class Schedule {
 		this.endTime = endTime;
 		this.artistName = artistName;
 	}
+	
+	public Schedule(Stage s, LocalDateTime startTime, LocalDateTime endTime, String artistName) {
+		super();
+
+		ScheduleEmbedded se = new ScheduleEmbedded(s, startTime);
+		
+		this.se = se;
+		this.endTime = endTime;
+		this.artistName = artistName;
+	}
 
 		
 	

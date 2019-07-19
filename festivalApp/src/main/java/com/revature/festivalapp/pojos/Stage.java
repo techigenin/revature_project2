@@ -27,7 +27,7 @@ public class Stage {
 	@Column(name="stage_name")
 	private String stageName;
 	
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToOne(cascade=CascadeType.REFRESH, fetch=FetchType.LAZY)
 	@JoinColumn(name="crew_id")
 	private User crew;
 

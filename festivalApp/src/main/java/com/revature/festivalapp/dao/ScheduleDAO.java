@@ -1,14 +1,21 @@
 package com.revature.festivalapp.dao;
 
 import static org.hibernate.criterion.Restrictions.eq;
+
+import java.sql.ResultSet;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
+
 import com.revature.festival.util.SessionFactoryUtil;
 import com.revature.festivalapp.pojos.Schedule;
+import com.revature.festivalapp.pojos.ScheduleEmbedded;
+import com.revature.festivalapp.pojos.Stage;
 
 
 public class ScheduleDAO implements ScheduleDAOImpl {
@@ -17,22 +24,12 @@ public class ScheduleDAO implements ScheduleDAOImpl {
 	
 	
 	@Override
-	public void DeleteSchedule(int stage_number,String artist_name) {
-		
+	public void DeleteSchedule(Schedule sch) {
 		Session sess = sf.openSession();
 		Transaction tx = sess.beginTransaction();
-
-		String hql = "Delete from Schedule  where artistName  = :artist_name and stageNumber =:stage_number ";
-		Query query = sess.createQuery(hql);
-		query.setParameter("stage_number", stage_number);
-		query.setParameter("artist_name", artist_name);
-
-		query.executeUpdate();
+		sess.delete(sch);
 		tx.commit();
 		sess.close();
-		
-		
-		
 	}
 
 	@Override
@@ -83,6 +80,17 @@ public class ScheduleDAO implements ScheduleDAOImpl {
 		List<Schedule> result = query.list();
 		sess.close();
 		return result;
+	}
+
+	@Override
+	public Schedule getSchedule(Stage s, LocalDateTime ldt) {
+		ScheduleEmbedded se = new ScheduleEmbedded(s, ldt);
+		
+		Session sess = sf.openSession();
+		Schedule sch = (Schedule) sess.get(Schedule.class, se);
+		sess.close();
+		
+		return sch;
 	}
 
 }
