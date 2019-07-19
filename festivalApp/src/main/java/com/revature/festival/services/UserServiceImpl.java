@@ -10,5 +10,11 @@ public class UserServiceImpl implements UserServices {
 		return null;
 	}
 
+	@Override
+	public User saveUser(String email, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }
