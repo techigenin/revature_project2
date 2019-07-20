@@ -34,10 +34,10 @@ public class UserServiceImpl implements UserService {
 		
 		return null;
 	}
-
+	
 	@Override
-	public User saveUser(User u) {
-		return null;
+	public void registerUser(User user) {
+		userDAO.insertUser(user);
 	}
 
 	UserDAO getUserDAO() {

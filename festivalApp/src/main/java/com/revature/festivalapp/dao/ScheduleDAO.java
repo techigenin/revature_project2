@@ -1,16 +1,13 @@
 package com.revature.festivalapp.dao;
 
-import static org.hibernate.criterion.Restrictions.eq;
-
-import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
 import com.revature.festivalapp.pojos.Schedule;

@@ -1,14 +1,13 @@
 package com.revature.festivalapp.pojos;
 
-
 public class UserDTO {
-	
+
 	private String username;
-	private String password;
 	
+	private String password;
+
 	public UserDTO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public UserDTO(String username, String password) {
@@ -37,6 +36,5 @@ public class UserDTO {
 	void setPassword(String password) {
 		this.password = password;
 	}
-
-	
+		
 }
