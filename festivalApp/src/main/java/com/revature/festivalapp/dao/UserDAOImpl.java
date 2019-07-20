@@ -9,11 +9,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Component;
 
 import com.revature.festival.util.SessionFactoryUtil;
 import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.pojos.User;
 
+@Component
 public class UserDAOImpl implements UserDAO {
 
 	SessionFactory sf = SessionFactoryUtil.getSessionFactory();
