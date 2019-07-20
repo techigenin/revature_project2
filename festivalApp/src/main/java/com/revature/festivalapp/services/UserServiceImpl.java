@@ -1,12 +1,16 @@
 package com.revature.festivalapp.services;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.revature.festivalapp.dao.EventRoleDAO;
+import com.revature.festivalapp.dao.EventRoleDAOImpl;
 import com.revature.festivalapp.dao.UserDAO;
 import com.revature.festivalapp.dao.UserDAOImpl;
+import com.revature.festivalapp.pojos.EventRole;
 import com.revature.festivalapp.pojos.Schedule;
 import com.revature.festivalapp.pojos.User;
 
@@ -14,6 +18,7 @@ import com.revature.festivalapp.pojos.User;
 public class UserServiceImpl implements UserService {
 
 	UserDAO userDAO = new UserDAOImpl();
+	EventRoleDAO eventRoleDao = new EventRoleDAOImpl();
 	
 	@Autowired // TODO - Why isn't this working..?
 	void setUserDAO(UserDAO userDAO) {
@@ -40,9 +45,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Collection<? extends Schedule> getAllUserEventsAndRoles() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<EventRole> getAllUserEventsAndRoles(int id) {
+		return eventRoleDao.getAllEventRolesByUserId(id);
 	}
 
 

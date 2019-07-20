@@ -2,6 +2,7 @@ package com.revature.festivalapp.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -15,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.festivalapp.pojos.EventRole;
 import com.revature.festivalapp.pojos.Schedule;
 import com.revature.festivalapp.pojos.User;
 import com.revature.festivalapp.pojos.UserDTO;
@@ -69,14 +72,23 @@ public class LoginController {
 	@PostMapping(value="/userdetails")
 	public @ResponseBody String sendUserDetails(@RequestBody String userName, HttpSession sess) {
 		
-		List<Schedule> schedList = new ArrayList<Schedule>();
+		List<EventRole> evRoleList = new ArrayList<EventRole>();
 		
-		if (userName.equals(sess.getAttribute("user"))) {
-			schedList.addAll(userServices.getAllUserEventsAndRoles());
+		if (sess.getAttribute("user") != null && 
+				userName.equals(((User)sess.getAttribute("user")).getEmail())) {
+			evRoleList.addAll(userServices.getAllUserEventsAndRoles
+					(((User)sess.getAttribute("user")).getId()));
 		}
 			
+		ObjectMapper om = new ObjectMapper();
+		try {
+			String retVal = om.writeValueAsString(evRoleList.toArray(new EventRole[0]));
+			return retVal;
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
 		
-		return null;
+		return "";
 	}
 
 }

@@ -1,8 +1,8 @@
 package com.revature.festivalapp.services;
 
-import java.util.Collection;
+import java.util.List;
 
-import com.revature.festivalapp.pojos.Schedule;
+import com.revature.festivalapp.pojos.EventRole;
 import com.revature.festivalapp.pojos.User;
 
 public interface UserService {
@@ -11,7 +11,7 @@ public interface UserService {
 	
 	public User saveUser(User u);
 
-	public Collection<? extends Schedule> getAllUserEventsAndRoles();
+	public List<EventRole> getAllUserEventsAndRoles(int i);
 	
 }
 
