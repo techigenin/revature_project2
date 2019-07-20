@@ -7,10 +7,13 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import org.springframework.stereotype.Component;
+
 // @MappedSuperclass -- Turned out to not be what we wanted...
 @Entity
 @Table(name="users")
-@Inheritance(strategy = InheritanceType.JOINED)
+//@Inheritance(strategy = InheritanceType.JOINED)
+@Component
 public class User  {
 	
 	@Id
@@ -68,6 +71,12 @@ public class User  {
 		this.managerName = managerName;
 		this.artistName = artistName;
 		this.promoterName = promoterName;
+	}
+	
+	public User(UserDTO u) {
+		super();
+		this.email = u.getUsername();
+		this.password = u.getPassword();
 	}
 	
 	/**
