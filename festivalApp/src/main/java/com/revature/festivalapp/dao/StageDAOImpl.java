@@ -7,10 +7,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Component;
 
 import com.revature.festival.util.SessionFactoryUtil;
 import com.revature.festivalapp.pojos.Stage;
 
+@Component
 public class StageDAOImpl implements StageDAO {
 	SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 
@@ -65,7 +67,7 @@ public class StageDAOImpl implements StageDAO {
 
 	public Stage getStagebyName(String stagename) {
 		Session sess = sf.openSession();
-		Criteria crit = sess.createCriteria(Stage.class).add(Restrictions.eq("stage_name", stagename));
+		Criteria crit = sess.createCriteria(Stage.class).add(Restrictions.eq("stageName", stagename));
 		Stage stage = (Stage) crit.uniqueResult();
 		sess.close();
 		return stage;
