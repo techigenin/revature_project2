@@ -6,19 +6,13 @@ public class UserDTO {
 	
 	private String password;
 
-	public String getUsername() {
-		return username;
+	public UserDTO() {
+		super();
 	}
 
-	public void setUsername(String username) {
+	public UserDTO(String username, String password) {
+		super();
 		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
 		this.password = password;
 	}
 
@@ -27,15 +21,20 @@ public class UserDTO {
 		return "UserDTO [username=" + username + ", password=" + password + "]";
 	}
 
-	public UserDTO() {
-		super();
-		// TODO Auto-generated constructor stub
+	String getUsername() {
+		return username;
 	}
 
-	public UserDTO(String username, String password) {
-		super();
+	void setUsername(String username) {
 		this.username = username;
+	}
+
+	String getPassword() {
+		return password;
+	}
+
+	void setPassword(String password) {
 		this.password = password;
 	}
-	
+		
 }

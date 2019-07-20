@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 
-import com.revature.festival.util.LocalDateAttributeConverter;
+import com.revature.festivalapp.util.LocalDateAttributeConverter;
 
 @Entity
 @Table(name="festival_event")

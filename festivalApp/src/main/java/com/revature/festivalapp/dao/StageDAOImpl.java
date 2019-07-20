@@ -9,8 +9,8 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
-import com.revature.festival.util.SessionFactoryUtil;
 import com.revature.festivalapp.pojos.Stage;
+import com.revature.festivalapp.util.SessionFactoryUtil;
 
 @Component
 public class StageDAOImpl implements StageDAO {
