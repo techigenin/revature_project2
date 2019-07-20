@@ -12,5 +12,7 @@ public interface FestivalEventServices {
 	
 	public void updateFestivalEvent(FestivalEvent fe);
 	
-	public void deleteFestivalEvent(FestivalEvent fe);
+	public abstract void deleteFestivalEvent(FestivalEvent fe);
+
+	
 }

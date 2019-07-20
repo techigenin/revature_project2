@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.festivalapp.dao.FestivalEventDAOImpl;
 import com.revature.festivalapp.pojos.FestivalEvent;
+import com.revature.festivalapp.pojos.User;
 
 @Service
 public class FestivalEventServicesImpl implements FestivalEventServices {
