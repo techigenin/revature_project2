@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
-import com.revature.festival.util.LocalDateTimeAttributeConverter;
+import com.revature.festivalapp.util.LocalDateTimeAttributeConverter;
 
 
 

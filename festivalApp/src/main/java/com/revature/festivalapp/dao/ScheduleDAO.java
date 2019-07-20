@@ -11,13 +11,14 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Component;
 
-import com.revature.festival.util.SessionFactoryUtil;
 import com.revature.festivalapp.pojos.Schedule;
 import com.revature.festivalapp.pojos.ScheduleEmbedded;
 import com.revature.festivalapp.pojos.Stage;
+import com.revature.festivalapp.util.SessionFactoryUtil;
 
-
+@Component
 public class ScheduleDAO implements ScheduleDAOImpl {
 	
 	public static SessionFactory sf=SessionFactoryUtil.getSessionFactory();

@@ -10,7 +10,7 @@ import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-import com.revature.festival.util.LocalDateTimeAttributeConverter;
+import com.revature.festivalapp.util.LocalDateTimeAttributeConverter;
 @Embeddable
 //@IdClass(Stage.class)
 public class ScheduleEmbedded implements Serializable {

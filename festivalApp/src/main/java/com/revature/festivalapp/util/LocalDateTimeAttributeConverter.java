@@ -1,4 +1,4 @@
-package com.revature.festival.util;
+package com.revature.festivalapp.util;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
