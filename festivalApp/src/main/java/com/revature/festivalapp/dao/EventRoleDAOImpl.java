@@ -18,7 +18,7 @@ public class EventRoleDAOImpl implements EventRoleDAO {
 	@Override
 	public EventRole getEventRole(int i) {
 		Session sess = sf.openSession();
-		EventRole er = sess.get(EventRole.class, 1);
+		EventRole er = (EventRole)sess.get(EventRole.class, 1);
 		sess.close();
 		return er;
 	}
