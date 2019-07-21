@@ -6,9 +6,14 @@ import javax.persistence.*;
 @Table(name="event_role")
 public class EventRole {
 	
-	@Column(name="id")
+	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
 	private int id;
+	
+	@Column(name="user_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int userId;
 	
 	@Column(name="event_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

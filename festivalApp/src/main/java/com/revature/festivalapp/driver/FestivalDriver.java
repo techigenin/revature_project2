@@ -32,7 +32,7 @@ public class FestivalDriver {
 		UserDAO ud = new UserDAOImpl();
 		FestivalEventDAO fd = new FestivalEventDAOImpl();
 		StageDAO sd = new StageDAOImpl();	
-		ScheduleDAO schd= new ScheduleDAO();	
+		ScheduleDAO schd= new ScheduleDAOImpl();	
 
 		
 //		FestivalEvent fest = new FestivalEvent(
