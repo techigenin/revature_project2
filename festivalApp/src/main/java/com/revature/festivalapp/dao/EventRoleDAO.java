@@ -6,6 +6,7 @@ import com.revature.festivalapp.pojos.EventRole;
 
 public interface EventRoleDAO {
 	
+	public EventRole getEventRole(int i);
 	public void insertEventRole(EventRole er);
 	public void updateEventRole(EventRole er);
 	public void deleteEventRole(EventRole er);

@@ -8,7 +8,12 @@ import javax.persistence.Convert;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.revature.festivalapp.util.LocalDateTimeAttributeConverter;
@@ -27,8 +32,18 @@ public class Schedule {
 	
 	
 	
-	@EmbeddedId
-	private ScheduleEmbedded se;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="schedule_id")
+	private int scheduleId;
+	
+	@OneToOne
+	@JoinColumn(name="stage_number")
+	private Stage  stageNumber;
+	
+	@Convert(converter=LocalDateTimeAttributeConverter.class)
+	@Column(name="start_time")
+	private LocalDateTime startTime;
 	
 	@Convert(converter=LocalDateTimeAttributeConverter.class)
 	@Column(name="end_time")
@@ -37,57 +52,65 @@ public class Schedule {
 	@Column(name="artist_name")
 	private String artistName;
 
-	public ScheduleEmbedded getSe() {
-		return se;
+	public Schedule() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setSe(ScheduleEmbedded se) {
-		this.se = se;
+	public Schedule(int scheduleId, Stage stageNumber, LocalDateTime startTime, LocalDateTime endTime,
+			String artistName) {
+		super();
+		this.scheduleId = scheduleId;
+		this.stageNumber = stageNumber;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.artistName = artistName;
 	}
 
-	public LocalDateTime getEndTime() {
+	@Override
+	public String toString() {
+		return "Schedule [scheduleId=" + scheduleId + ", stageNumber=" + stageNumber + ", startTime=" + startTime
+				+ ", endTime=" + endTime + ", artistName=" + artistName + "]";
+	}
+
+	int getScheduleId() {
+		return scheduleId;
+	}
+
+	void setScheduleId(int scheduleId) {
+		this.scheduleId = scheduleId;
+	}
+
+	Stage getStageNumber() {
+		return stageNumber;
+	}
+
+	void setStageNumber(Stage stageNumber) {
+		this.stageNumber = stageNumber;
+	}
+
+	LocalDateTime getStartTime() {
+		return startTime;
+	}
+
+	void setStartTime(LocalDateTime startTime) {
+		this.startTime = startTime;
+	}
+
+	LocalDateTime getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(LocalDateTime endTime) {
+	void setEndTime(LocalDateTime endTime) {
 		this.endTime = endTime;
 	}
 
-	public String getArtistName() {
+	String getArtistName() {
 		return artistName;
 	}
 
-	public void setArtistName(String artistName) {
+	void setArtistName(String artistName) {
 		this.artistName = artistName;
-	}
-
-	public Schedule() {
-		super();
-		}
-
-	public Schedule(ScheduleEmbedded se, LocalDateTime endTime, String artistName) {
-		super();
-		this.se = se;
-		this.endTime = endTime;
-		this.artistName = artistName;
-	}
-	
-	public Schedule(Stage s, LocalDateTime startTime, LocalDateTime endTime, String artistName) {
-		super();
-
-		ScheduleEmbedded se = new ScheduleEmbedded(s, startTime);
-		
-		this.se = se;
-		this.endTime = endTime;
-		this.artistName = artistName;
-	}
-
-		
-	
-	
-	@Override
-	public String toString() {
-		return "Schedule [se=" + se + ", endTime=" + endTime + ", artistName=" + artistName + "]";
 	}
 		
 }

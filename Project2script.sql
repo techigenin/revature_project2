@@ -44,7 +44,8 @@ create table users -- user pojo
 );
 
 create table event_role (
-	id serial, -- user id
+	id serial primary key,
+	user_id serial, -- user id
 	event_id serial,
 	user_role varchar
 );
@@ -83,6 +84,7 @@ create table stage
 
 create table schedule
 (
+	schedule_id serial primary key,
 	stage_number int,
 	start_time timestamp,
 	end_time timestamp,

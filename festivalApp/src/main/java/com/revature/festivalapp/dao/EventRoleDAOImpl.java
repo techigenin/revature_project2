@@ -16,6 +16,14 @@ public class EventRoleDAOImpl implements EventRoleDAO {
 	SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 	
 	@Override
+	public EventRole getEventRole(int i) {
+		Session sess = sf.openSession();
+		EventRole er = sess.get(EventRole.class, 1);
+		sess.close();
+		return er;
+	}
+	
+	@Override
 	public void insertEventRole(EventRole er) {
 		Session sess = sf.openSession();
 		Transaction tx = sess.beginTransaction();
