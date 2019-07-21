@@ -3,72 +3,118 @@ package com.revature.festivalapp.pojos;
 import java.time.LocalDateTime;
 
 import javax.persistence.AttributeOverride;
-
 import javax.persistence.Column;
+import javax.persistence.Convert;
+import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.IdClass;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.revature.festivalapp.util.LocalDateTimeAttributeConverter;
 
 
 
 @Entity
-//name of the table  in DB
-@Table(name="schedule")
-@IdClass(Stage.class)
-
+@Table(name="schedule")//name of the table  in DB
 public class Schedule {
 //reference for composite key
 //https://www.concretepage.com/hibernate/example-embeddedid-hibernate
+//we should create sequence in the database table start_time_sequence
+//@SequenceGenerator(name="start_time_sequence", sequenceName="start_time_sequence")	
+//@GeneratedValue(strategy=GenerationType.IDENTITY) // Using serial vs sequence
+//@AttributeOverride(name="stage_number", column=@Column(name="start_time"))	//in AttributeOverride we combine the two keys as a composite key 	
 	
-	// we should create sequence in the database table start_time_sequence
-//	@SequenceGenerator(name="start_time_sequence", sequenceName="start_time_sequence")
-	@GeneratedValue(strategy=GenerationType.IDENTITY) // Using serial vs sequence
-	@EmbeddedId
-	//in AttributeOverride we combine the two keys as a composite key 
-	@AttributeOverride(name="stage_number", column=@Column(name="start_time"))
-	private ScheduleEmbedded se;
 	
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="schedule_id")
+	private int scheduleId;
+	
+	@OneToOne
+	@JoinColumn(name="stage_number")
+	private Stage  stageNumber;
+	
+	@Convert(converter=LocalDateTimeAttributeConverter.class)
+	@Column(name="start_time")
+	private LocalDateTime startTime;
+	
+	@Convert(converter=LocalDateTimeAttributeConverter.class)
 	@Column(name="end_time")
 	private LocalDateTime endTime;
 	
 	@Column(name="artist_name")
 	private String artistName;
-		 	
+
 	public Schedule() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
-	// inside the scheduleEmbedded we have the composite key			
-	public Schedule(ScheduleEmbedded se, LocalDateTime endTime, String crewEmail) {
 
-		this.se=se;
-		
+	public Schedule(int scheduleId, Stage stageNumber, LocalDateTime startTime, LocalDateTime endTime,
+			String artistName) {
+		super();
+		this.scheduleId = scheduleId;
+		this.stageNumber = stageNumber;
+		this.startTime = startTime;
 		this.endTime = endTime;
-		this.artistName = crewEmail;
+		this.artistName = artistName;
 	}
 
-	
-	public ScheduleEmbedded getSe() {
-		return se;
+	@Override
+	public String toString() {
+		return "Schedule [scheduleId=" + scheduleId + ", stageNumber=" + stageNumber + ", startTime=" + startTime
+				+ ", endTime=" + endTime + ", artistName=" + artistName + "]";
 	}
-	public void setSe(ScheduleEmbedded se) {
-		this.se = se;
+
+	int getScheduleId() {
+		return scheduleId;
 	}
-	
-	
-	public LocalDateTime getEndTime() {
+
+	void setScheduleId(int scheduleId) {
+		this.scheduleId = scheduleId;
+	}
+
+	Stage getStageNumber() {
+		return stageNumber;
+	}
+
+	void setStageNumber(Stage stageNumber) {
+		this.stageNumber = stageNumber;
+	}
+
+	LocalDateTime getStartTime() {
+		return startTime;
+	}
+
+	void setStartTime(LocalDateTime startTime) {
+		this.startTime = startTime;
+	}
+
+	LocalDateTime getEndTime() {
 		return endTime;
 	}
-	public void setEndTime(LocalDateTime endTime) {
+
+	void setEndTime(LocalDateTime endTime) {
 		this.endTime = endTime;
 	}
-	public String getCrewEmail() {
+
+	String getArtistName() {
 		return artistName;
 	}
-	public void setCrewEmail(String crewEmail) {
-		this.artistName = crewEmail;
+
+	void setArtistName(String artistName) {
+		this.artistName = artistName;
 	}
+		
 }
+		 	
+
+
+

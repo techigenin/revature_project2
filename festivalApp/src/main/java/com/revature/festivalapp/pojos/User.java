@@ -7,15 +7,18 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import org.springframework.stereotype.Component;
+
 // @MappedSuperclass -- Turned out to not be what we wanted...
 @Entity
 @Table(name="users")
-@Inheritance(strategy = InheritanceType.JOINED)
+//@Inheritance(strategy = InheritanceType.JOINED)
+@Component
 public class User  {
 	
 	@Id
 	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)// thats for serial 
 	private int id;
 	
 	@Column(name="val_email")
@@ -68,6 +71,12 @@ public class User  {
 		this.managerName = managerName;
 		this.artistName = artistName;
 		this.promoterName = promoterName;
+	}
+	
+	public User(UserDTO u) {
+		super();
+		this.email = u.getUsername();
+		this.password = u.getPassword();
 	}
 	
 	/**
@@ -131,9 +140,9 @@ public class User  {
 	 * 
 	 * @return boolean, true if user is crew
 	 */
-	public boolean isCrew() {
-		return (collectedRoles.toLowerCase().contains("crew")) ? true : false;
-	}
+		public boolean isCrew() {
+			return (collectedRoles.toLowerCase().contains("crew")) ? true : false;
+		}
 	
 	/**
 	 * A quick way to check if current user is a customer

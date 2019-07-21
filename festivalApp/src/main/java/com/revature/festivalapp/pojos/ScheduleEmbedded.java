@@ -1,20 +1,30 @@
 package com.revature.festivalapp.pojos;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
+import javax.persistence.Embeddable;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
+import com.revature.festivalapp.util.LocalDateTimeAttributeConverter;
+@Embeddable
+//@IdClass(Stage.class)
+public class ScheduleEmbedded implements Serializable {
 
-public class ScheduleEmbedded {
-
+	@OneToOne
+	@JoinColumn(name="stage_number")
+	private Stage  stageNumber;
 	
-	@Column(name="stage_number")
-	private Integer stageNumber;
-
-	
+	@Convert(converter=LocalDateTimeAttributeConverter.class)
 	@Column(name="start_time")
 	private LocalDateTime startTime;
-	public Integer getStageNumber() {
+	
+	
+	public Stage getStageNumber() {
 		return stageNumber;
 	}
 
@@ -27,7 +37,7 @@ public class ScheduleEmbedded {
 
 
 
-	public ScheduleEmbedded(Integer stageNumber, LocalDateTime startTime) {
+	public ScheduleEmbedded(Stage stageNumber, LocalDateTime startTime) {
 		this.stageNumber = stageNumber;
 		this.startTime = startTime;
 	}
@@ -43,7 +53,7 @@ public class ScheduleEmbedded {
 
 
 
-	public void setStageNumber(Integer stageNumber) {
+	public void setStageNumber(Stage stageNumber) {
 		this.stageNumber = stageNumber;
 	}
 

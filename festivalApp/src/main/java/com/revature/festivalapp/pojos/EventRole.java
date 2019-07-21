@@ -6,72 +6,59 @@ import javax.persistence.*;
 @Table(name="event_role")
 public class EventRole {
 	
-	@EmbeddedId
-	private EventRoleEmbedded idEventId;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
+	private int id;
+	
+	@Column(name="user_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int userId;
+	
+	@Column(name="event_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int eventId;
 	
 	@Column(name="user_role")
 	private String userRole;
 
 	public EventRole() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public EventRole(EventRoleEmbedded id, String userRole) {
+	public EventRole(int id, int eventId, String userRole) {
 		super();
-		this.idEventId = id;
+		this.id = id;
+		this.eventId = eventId;
 		this.userRole = userRole;
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((idEventId == null) ? 0 : idEventId.hashCode());
-		result = prime * result + ((userRole == null) ? 0 : userRole.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		EventRole other = (EventRole) obj;
-		if (idEventId == null) {
-			if (other.idEventId != null)
-				return false;
-		} else if (!idEventId.equals(other.idEventId))
-			return false;
-		if (userRole == null) {
-			if (other.userRole != null)
-				return false;
-		} else if (!userRole.equals(other.userRole))
-			return false;
-		return true;
-	}
-
-	@Override
 	public String toString() {
-		return "EventRole [id=" + idEventId + ", userRole=" + userRole + "]";
+		return "EventRole [id=" + id + ", eventId=" + eventId + ", userRole=" + userRole + "]";
 	}
 
-	public EventRoleEmbedded getIdEventId() {
-		return idEventId;
+	int getId() {
+		return id;
 	}
 
-	public void setIdEventId(EventRoleEmbedded val) {
-		this.idEventId = val;
+	void setId(int id) {
+		this.id = id;
 	}
 
-	public String getUserRole() {
+	int getEventId() {
+		return eventId;
+	}
+
+	void setEventId(int eventId) {
+		this.eventId = eventId;
+	}
+
+	String getUserRole() {
 		return userRole;
 	}
 
-	public void setUserRole(String userRole) {
+	void setUserRole(String userRole) {
 		this.userRole = userRole;
 	}
 }

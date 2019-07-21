@@ -1,4 +1,4 @@
-package com.revature.festival.logs;
+package com.revature.festivalapp.logs;
 
 import org.apache.log4j.Logger;
 

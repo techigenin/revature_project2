@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 
-import com.revature.festival.util.LocalDateAttributeConverter;
+import com.revature.festivalapp.util.LocalDateAttributeConverter;
 
 @Entity
 @Table(name="festival_event")
@@ -35,8 +35,7 @@ public class FestivalEvent {
 	@Column(name="event_desc")
 	private String eventDescription;
 	
-	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, 
-				fetch=FetchType.LAZY)
+	@ManyToOne(cascade= {CascadeType.REFRESH}, fetch=FetchType.LAZY)
 	@JoinColumn(name="manager_id")
 	private User manager;
 
