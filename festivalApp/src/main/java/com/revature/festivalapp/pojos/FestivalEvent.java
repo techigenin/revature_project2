@@ -4,10 +4,13 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 
+import org.springframework.stereotype.Component;
+
 import com.revature.festivalapp.util.LocalDateAttributeConverter;
 
 @Entity
 @Table(name="festival_event")
+@Component
 public class FestivalEvent {
   
 	@Id

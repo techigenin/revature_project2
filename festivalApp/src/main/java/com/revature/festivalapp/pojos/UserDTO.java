@@ -1,5 +1,8 @@
 package com.revature.festivalapp.pojos;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class UserDTO {
 
 	private String username;

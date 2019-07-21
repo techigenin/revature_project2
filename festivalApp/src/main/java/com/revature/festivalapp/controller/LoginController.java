@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,23 +21,23 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.festivalapp.pojos.EventRole;
-import com.revature.festivalapp.pojos.Schedule;
 import com.revature.festivalapp.pojos.User;
 import com.revature.festivalapp.pojos.UserDTO;
 import com.revature.festivalapp.services.UserService;
+import com.revature.festivalapp.services.UserServiceImpl;
+
 
 @Controller
 public class LoginController {
 	
-	UserService userServices;
-	
-	UserService getUserServices() {
-		return userServices;
+	UserService userService;
+
+	UserService getUserService() {
+		return userService;
 	}
 
-	@Autowired
-	void setUserServices(UserService userServices) {
-		this.userServices = userServices;
+	void setUserService(UserService userService) {
+		this.userService = userService;
 	}
 
 	@GetMapping(value="/login", produces="text/html")
@@ -51,8 +52,8 @@ public class LoginController {
 		UserDTO u;
 		try {
 			u = (UserDTO) om.readValue(userIn, UserDTO.class);
-			
-			User validUser = userServices.loginUser(new User(u));
+
+			User validUser = userService.loginUser(new User(u));
 			
 			if (validUser != null) {
 				sess.setAttribute("user", validUser);
@@ -76,7 +77,7 @@ public class LoginController {
 		
 		if (sess.getAttribute("user") != null && 
 				userName.equals(((User)sess.getAttribute("user")).getEmail())) {
-			evRoleList.addAll(userServices.getAllUserEventsAndRoles
+			evRoleList.addAll(userService.getAllUserEventsAndRoles
 					(((User)sess.getAttribute("user")).getId()));
 		}
 			

@@ -7,10 +7,10 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<context:annotation-config></context:annotation-config>
-	<context:component-scan base-package="com.revature"></context:component-scan>
+<!--  	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="com.revature.festivalapp"></context:component-scan> -->
 	<mvc:annotation-driven></mvc:annotation-driven>
-	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
+	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources> 
 
 		<!-- Configure ViewResolver -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -21,5 +21,26 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
+	
+	<bean id="eventRoll" class="com.revature.festivalapp.pojos.EventRole" scope="prototype" autowire="byType"></bean>
+	<bean id="festivalEvent" class="com.revature.festivalapp.pojos.FestivalEvent" scope="prototype"  autowire="byType"></bean>
+	<bean id="schedule" class="com.revature.festivalapp.pojos.Schedule" scope="prototype"  autowire="byType"></bean>
+	<bean id="scheduleEmbedded" class="com.revature.festivalapp.pojos.ScheduleEmbedded" scope="prototype"  autowire="byType"></bean>
+	<bean id="stage" class="com.revature.festivalapp.pojos.Stage" scope="prototype"  autowire="byType"></bean>
+	<bean id="user" class="com.revature.festivalapp.pojos.User" scope="prototype"  autowire="byType"></bean>
+	<bean id="userDTO" class="com.revature.festivalapp.pojos.UserDTO" scope="prototype"  autowire="byType"></bean>
+	
+	<bean id="festivalEventServices" class="com.revature.festivalapp.services.FestivalEventServicesImpl" scope="prototype"  autowire="byName"></bean>
+	<bean id="scheduleServices" class="com.revature.festivalapp.services.ScheduleServicesImpl" scope="prototype"  autowire="byName"></bean>
+	<bean id="stageServices" class="com.revature.festivalapp.services.StageServicesImpl" scope="prototype"  autowire="byName"></bean>
+	<bean id="userService"  class="com.revature.festivalapp.services.UserServiceImpl" scope="singleton"  autowire="byName"></bean>
+ 
+	<bean id="eventRoleDAO" class="com.revature.festivalapp.dao.EventRoleDAOImpl" scope="prototype"  autowire="byName"></bean>
+ 	<bean id="festivalEventDAO" class="com.revature.festivalapp.dao.FestivalEventDAOImpl" scope="prototype"  autowire="byName"></bean>
+ 	<bean id="scheduleDAO" class="com.revature.festivalapp.dao.ScheduleDAOImpl" scope="prototype"  autowire="byName"></bean>
+ 	<bean id="stageDAO" class="com.revature.festivalapp.dao.StageDAOImpl" scope="prototype"  autowire="byName"></bean>
+ 	<bean id="userDAO" class="com.revature.festivalapp.dao.UserDAOImpl" scope="prototype" autowire="byName"></bean>
+  	
+ 	<bean id="loginController" class="com.revature.festivalapp.controller.LoginController" scope="prototype" autowire="byType"></bean>
 
 </beans>

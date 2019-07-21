@@ -2,8 +2,11 @@ package com.revature.festivalapp.pojos;
 
 import javax.persistence.*;
 
+import org.springframework.stereotype.Component;
+
 @Entity
 @Table(name="event_role")
+@Component
 public class EventRole {
 	
 	@Column(name="id")
@@ -19,6 +22,7 @@ public class EventRole {
 
 	public EventRole() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public EventRole(int id, int eventId, String userRole) {
@@ -56,4 +60,6 @@ public class EventRole {
 	void setUserRole(String userRole) {
 		this.userRole = userRole;
 	}
+
+	
 }

@@ -8,6 +8,12 @@ import org.hibernate.cfg.Configuration;
 
 import org.hibernate.service.ServiceRegistry;
 
+import com.revature.festivalapp.pojos.EventRole;
+import com.revature.festivalapp.pojos.FestivalEvent;
+import com.revature.festivalapp.pojos.Schedule;
+import com.revature.festivalapp.pojos.Stage;
+import com.revature.festivalapp.pojos.User;
+
 public class SessionFactoryUtil {
 
 private static SessionFactory sf;
@@ -25,7 +31,14 @@ private static SessionFactory sf;
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 
 		sf = configuration.buildSessionFactory(serviceRegistry);
-
+		
+		sf = configuration.configure("hibernate.cfg.xml")
+				.addAnnotatedClass(User.class)
+				.addAnnotatedClass(EventRole.class)
+				.addAnnotatedClass(FestivalEvent.class)
+				.addAnnotatedClass(Schedule.class)
+				.addAnnotatedClass(Stage.class)
+				.buildSessionFactory();
 	}
 
 	public static SessionFactory getSessionFactory() {

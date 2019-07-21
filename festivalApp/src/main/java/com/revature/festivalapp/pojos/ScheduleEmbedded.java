@@ -10,9 +10,12 @@ import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.springframework.stereotype.Component;
+
 import com.revature.festivalapp.util.LocalDateTimeAttributeConverter;
 @Embeddable
 //@IdClass(Stage.class)
+@Component
 public class ScheduleEmbedded implements Serializable {
 
 	@OneToOne

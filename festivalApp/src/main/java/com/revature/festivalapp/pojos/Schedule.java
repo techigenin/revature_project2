@@ -11,12 +11,15 @@ import javax.persistence.Entity;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 import com.revature.festivalapp.util.LocalDateTimeAttributeConverter;
 
 
 
 @Entity
 @Table(name="schedule")//name of the table  in DB
+@Component
 public class Schedule {
 //reference for composite key
 //https://www.concretepage.com/hibernate/example-embeddedid-hibernate
