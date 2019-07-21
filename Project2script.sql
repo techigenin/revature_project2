@@ -51,16 +51,16 @@ create table event_role (
 );
 
 -- We could/should probably delete this...
-create table roles (
-	role_num integer unique,
-	role_description varchar(20)
-);
-
-insert into roles values (1, 'manager');
-insert into roles values (2, 'promoter');
-insert into roles values (3, 'artist');
-insert into roles values (4, 'crew');
-insert into roles values (5, 'customer');
+--create table roles (
+--	role_num integer unique,
+--	role_description varchar(20)
+--);
+--
+--insert into roles values (1, 'manager');
+--insert into roles values (2, 'promoter');
+--insert into roles values (3, 'artist');
+--insert into roles values (4, 'crew');
+--insert into roles values (5, 'customer');
 
 create table festival_event 
 (
@@ -76,7 +76,7 @@ create table festival_event
 
 create table stage
 (
-	stage_number int primary key,
+	stage_number serial primary key,
 	event_number int,
 	stage_name varchar(50),
 	crew_id serial 
@@ -85,12 +85,18 @@ create table stage
 create table schedule
 (
 	schedule_id serial primary key,
-	stage_number int,
+	stage_number serial,
 	start_time timestamp,
 	end_time timestamp,
-	artist_name varchar(50),
-	
-	primary key (stage_number, start_time)
+	artist_name varchar(50)
+);
+
+create table add_role (
+	req_num 	integer primary key,
+	role_type	varchar,
+	event_num	serial,
+	accepted	boolean,
+	valid		boolean
 );
 
 alter table stage add foreign key (event_number) references festival_event(event_number);
