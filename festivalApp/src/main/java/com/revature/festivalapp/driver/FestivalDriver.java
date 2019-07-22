@@ -7,6 +7,8 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import com.revature.festivalapp.dao.EventRoleDAO;
+import com.revature.festivalapp.dao.EventRoleDAOImpl;
 import com.revature.festivalapp.dao.FestivalEventDAO;
 import com.revature.festivalapp.dao.FestivalEventDAOImpl;
 import com.revature.festivalapp.dao.ScheduleDAO;
@@ -15,11 +17,16 @@ import com.revature.festivalapp.dao.StageDAO;
 import com.revature.festivalapp.dao.StageDAOImpl;
 import com.revature.festivalapp.dao.UserDAO;
 import com.revature.festivalapp.dao.UserDAOImpl;
+import com.revature.festivalapp.pojos.EventRole;
 import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.pojos.Schedule;
 import com.revature.festivalapp.pojos.ScheduleEmbedded;
 import com.revature.festivalapp.pojos.Stage;
 import com.revature.festivalapp.pojos.User;
+import com.revature.festivalapp.services.ScheduleServices;
+import com.revature.festivalapp.services.ScheduleServicesImpl;
+import com.revature.festivalapp.services.StageServices;
+import com.revature.festivalapp.services.StageServicesImpl;
 import com.revature.festivalapp.services.UserService;
 import com.revature.festivalapp.services.UserServiceImpl;
 import com.revature.festivalapp.util.SessionFactoryUtil;
@@ -32,7 +39,17 @@ public class FestivalDriver {
 		UserDAO ud = new UserDAOImpl();
 		FestivalEventDAO fd = new FestivalEventDAOImpl();
 		StageDAO sd = new StageDAOImpl();	
-		ScheduleDAO schd= new ScheduleDAO();	
+		ScheduleDAO schd= new ScheduleDAOImpl();	
+		EventRoleDAO erd = new EventRoleDAOImpl();
+		StageServices stageServices = new StageServicesImpl();
+		ScheduleServices scheduleServices = new ScheduleServicesImpl();
+		
+		Stage s = sd.getStageById(1);
+		
+		for (Schedule sch : schd.getSchedulesByStage(s))
+			System.out.println(sch);
+		
+		
 
 		
 //		FestivalEvent fest = new FestivalEvent(
@@ -112,14 +129,14 @@ public class FestivalDriver {
 //		for (Schedule sch : schd.ViewAllSchedule())
 //			System.out.println(sch.getSe().getStageNumber());
 	
-		UserService us = new UserServiceImpl();
-		
-		System.out.println(ud.getUserByEmail("this@thatmail.com"));
-		
-		for (User u : ud.getAllUsers()) {
-			System.out.println(u);
-			us.loginUser(u);
-		}
+//		UserService us = new UserServiceImpl();
+//		
+//		System.out.println(ud.getUserByEmail("this@thatmail.com"));
+//		
+//		for (User u : ud.getAllUsers()) {
+//			System.out.println(u);
+//			us.loginUser(u);
+//		}
 		
 		System.out.println("Done!");
 	}

@@ -8,7 +8,12 @@ import javax.persistence.Convert;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.revature.festivalapp.util.LocalDateTimeAttributeConverter;
@@ -27,8 +32,18 @@ public class Schedule {
 	
 	
 	
-	@EmbeddedId
-	private ScheduleEmbedded se;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="schedule_id")
+	private int scheduleId;
+	
+	@OneToOne
+	@JoinColumn(name="stage_number")
+	private Stage  stageNumber;
+	
+	@Convert(converter=LocalDateTimeAttributeConverter.class)
+	@Column(name="start_time")
+	private LocalDateTime startTime;
 	
 	@Convert(converter=LocalDateTimeAttributeConverter.class)
 	@Column(name="end_time")
@@ -37,12 +52,49 @@ public class Schedule {
 	@Column(name="artist_name")
 	private String artistName;
 
-	public ScheduleEmbedded getSe() {
-		return se;
+	public Schedule() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setSe(ScheduleEmbedded se) {
-		this.se = se;
+	public Schedule(int scheduleId, Stage stageNumber, LocalDateTime startTime, LocalDateTime endTime,
+			String artistName) {
+		super();
+		this.scheduleId = scheduleId;
+		this.stageNumber = stageNumber;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.artistName = artistName;
+	}
+
+	@Override
+	public String toString() {
+		return "Schedule [scheduleId=" + scheduleId + ", stageNumber=" + stageNumber + ", startTime=" + startTime
+				+ ", endTime=" + endTime + ", artistName=" + artistName + "]";
+	}
+
+	public int getScheduleId() {
+		return scheduleId;
+	}
+
+	public void setScheduleId(int scheduleId) {
+		this.scheduleId = scheduleId;
+	}
+
+	public Stage getStageNumber() {
+		return stageNumber;
+	}
+
+	public void setStageNumber(Stage stageNumber) {
+		this.stageNumber = stageNumber;
+	}
+
+	public LocalDateTime getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(LocalDateTime startTime) {
+		this.startTime = startTime;
 	}
 
 	public LocalDateTime getEndTime() {
@@ -61,35 +113,51 @@ public class Schedule {
 		this.artistName = artistName;
 	}
 
-	public Schedule() {
-		super();
-		}
-
-	public Schedule(ScheduleEmbedded se, LocalDateTime endTime, String artistName) {
-		super();
-		this.se = se;
-		this.endTime = endTime;
-		this.artistName = artistName;
-	}
-	
-	public Schedule(Stage s, LocalDateTime startTime, LocalDateTime endTime, String artistName) {
-		super();
-
-		ScheduleEmbedded se = new ScheduleEmbedded(s, startTime);
-		
-		this.se = se;
-		this.endTime = endTime;
-		this.artistName = artistName;
-	}
-
-		
-	
-	
 	@Override
-	public String toString() {
-		return "Schedule [se=" + se + ", endTime=" + endTime + ", artistName=" + artistName + "]";
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((artistName == null) ? 0 : artistName.hashCode());
+		result = prime * result + ((endTime == null) ? 0 : endTime.hashCode());
+		result = prime * result + scheduleId;
+		result = prime * result + ((stageNumber == null) ? 0 : stageNumber.hashCode());
+		result = prime * result + ((startTime == null) ? 0 : startTime.hashCode());
+		return result;
 	}
-		
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Schedule other = (Schedule) obj;
+		if (artistName == null) {
+			if (other.artistName != null)
+				return false;
+		} else if (!artistName.equals(other.artistName))
+			return false;
+		if (endTime == null) {
+			if (other.endTime != null)
+				return false;
+		} else if (!endTime.equals(other.endTime))
+			return false;
+		if (scheduleId != other.scheduleId)
+			return false;
+		if (stageNumber == null) {
+			if (other.stageNumber != null)
+				return false;
+		} else if (!stageNumber.equals(other.stageNumber))
+			return false;
+		if (startTime == null) {
+			if (other.startTime != null)
+				return false;
+		} else if (!startTime.equals(other.startTime))
+			return false;
+		return true;
+	}
 }
 		 	
 
