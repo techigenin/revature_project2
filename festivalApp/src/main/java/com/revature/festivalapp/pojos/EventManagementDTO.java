@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class EventManagementDTO {
 	
 	private Stage[] stages;
-	private Schedule[] schedules;
+	private ScheduleDTO[] scheduleDTOs;
 	private EventRole[] eventRoles;
 	
 	public EventManagementDTO() {
@@ -13,16 +13,16 @@ public class EventManagementDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public EventManagementDTO(Stage[] stages, Schedule[] schedules, EventRole[] eventRoles) {
+	public EventManagementDTO(Stage[] stages, ScheduleDTO[] scheduleDTOs, EventRole[] eventRoles) {
 		super();
 		this.stages = stages;
-		this.schedules = schedules;
+		this.scheduleDTOs = scheduleDTOs;
 		this.eventRoles = eventRoles;
 	}
 
 	@Override
 	public String toString() {
-		return "EventManagementDTO [stages=" + Arrays.toString(stages) + ", schedules=" + Arrays.toString(schedules)
+		return "EventManagementDTO [stages=" + Arrays.toString(stages) + ", schedules=" + Arrays.toString(scheduleDTOs)
 				+ ", eventRoles=" + Arrays.toString(eventRoles) + "]";
 	}
 
@@ -31,7 +31,7 @@ public class EventManagementDTO {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + Arrays.hashCode(eventRoles);
-		result = prime * result + Arrays.hashCode(schedules);
+		result = prime * result + Arrays.hashCode(scheduleDTOs);
 		result = prime * result + Arrays.hashCode(stages);
 		return result;
 	}
@@ -47,7 +47,7 @@ public class EventManagementDTO {
 		EventManagementDTO other = (EventManagementDTO) obj;
 		if (!Arrays.equals(eventRoles, other.eventRoles))
 			return false;
-		if (!Arrays.equals(schedules, other.schedules))
+		if (!Arrays.equals(scheduleDTOs, other.scheduleDTOs))
 			return false;
 		if (!Arrays.equals(stages, other.stages))
 			return false;
@@ -62,12 +62,12 @@ public class EventManagementDTO {
 		this.stages = stages;
 	}
 
-	public Schedule[] getSchedules() {
-		return schedules;
+	public ScheduleDTO[] getSchedules() {
+		return scheduleDTOs;
 	}
 
-	public void setSchedules(Schedule[] schedules) {
-		this.schedules = schedules;
+	public void setSchedules(ScheduleDTO[] scheduleDTOs) {
+		this.scheduleDTOs = scheduleDTOs;
 	}
 
 	public EventRole[] getEventRoles() {

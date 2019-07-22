@@ -2,6 +2,7 @@ package com.revature.festivalapp.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +16,7 @@ import com.revature.festivalapp.pojos.EventManagementDTO;
 import com.revature.festivalapp.pojos.EventRole;
 import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.pojos.Schedule;
+import com.revature.festivalapp.pojos.ScheduleDTO;
 import com.revature.festivalapp.pojos.Stage;
 import com.revature.festivalapp.services.EventRoleService;
 import com.revature.festivalapp.services.FestivalEventServices;
@@ -80,14 +82,21 @@ public class EventManagementController {
 						emDTO.setStages(stageServices.getStagesByEvent(fe).toArray(new Stage[0]));
 						emDTO.setEventRoles(eventRoleService.getEventRolesByEvent(fe).toArray(new EventRole[0]));
 						
-						ArrayList<Schedule> schList = new ArrayList<>();
+						ArrayList<ScheduleDTO> schDTOList = new ArrayList<>();
 						
-						for (Stage s : emDTO.getStages()) 
-							schList.addAll(scheduleServices.getSchedulesByStage(s));
+						for (Stage s : emDTO.getStages()) {
 							
-						emDTO.setSchedules(schList.toArray(new Schedule[0]));
+							List<Schedule> schedList = scheduleServices.getSchedulesByStage(s);
+							
+							for (Schedule sched : schedList)
+								schDTOList.add(new ScheduleDTO(sched));
+						}
 						
-						return om.writeValueAsString(emDTO);	
+						emDTO.setSchedules(schDTOList.toArray(new ScheduleDTO[0]));
+						
+						String retString = om.writeValueAsString(emDTO);
+						
+						return retString;	
 					}
 				}
 		}catch (IOException e) {

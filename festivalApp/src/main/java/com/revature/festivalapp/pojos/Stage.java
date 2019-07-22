@@ -20,15 +20,17 @@ public class Stage {
 	@Column(name="stage_number")
 	private Integer stageNumber;
 	
-	@ManyToOne(cascade=CascadeType.REFRESH, fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="event_number")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private FestivalEvent festivalEvent;
 	
 	@Column(name="stage_name")
 	private String stageName;
 	
-	@OneToOne(cascade=CascadeType.REFRESH, fetch=FetchType.LAZY)
-	@JoinColumn(name="crew_id")
+	@OneToOne
+	@JoinColumn(name="crew_id", referencedColumnName="id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private User crew;
 
 

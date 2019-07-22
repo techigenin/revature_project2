@@ -88,9 +88,10 @@ public class StageDAOImpl implements StageDAO {
 			retList.add((Stage)o);
 		}
 		
-		for (Stage s : retList)
-			System.out.println(s);
-		
+		for (Stage s : retList) {
+			System.out.println(s.getCrew());
+			System.out.println(s.getFestivalEvent());
+		}
 		sess.close();
 		
 		return retList;
