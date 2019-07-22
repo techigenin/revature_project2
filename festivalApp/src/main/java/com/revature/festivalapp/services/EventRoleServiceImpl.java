@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.revature.festivalapp.dao.EventRoleDAO;
 import com.revature.festivalapp.pojos.EventRole;
+import com.revature.festivalapp.pojos.FestivalEvent;
+import com.revature.festivalapp.pojos.User;
 
 
 @Service
@@ -24,7 +26,12 @@ public class EventRoleServiceImpl implements EventRoleService {
 	}
 
 	@Override
-	public List<EventRole> getEventRolesByUserId(int i) {
-		return eventRoleDAO.getAllEventRolesByUserId(i);
+	public List<EventRole> getEventRolesByUser(User u) {
+		return eventRoleDAO.getAllEventRolesByUser(u);
+	}
+
+	@Override
+	public List<EventRole> getEventRolesbyEvent(FestivalEvent fe) {
+		return eventRoleDAO.getAllEventRolesByEvent(fe);
 	}
 }

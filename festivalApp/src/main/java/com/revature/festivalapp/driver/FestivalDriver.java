@@ -23,6 +23,10 @@ import com.revature.festivalapp.pojos.Schedule;
 import com.revature.festivalapp.pojos.ScheduleEmbedded;
 import com.revature.festivalapp.pojos.Stage;
 import com.revature.festivalapp.pojos.User;
+import com.revature.festivalapp.services.ScheduleServices;
+import com.revature.festivalapp.services.ScheduleServicesImpl;
+import com.revature.festivalapp.services.StageServices;
+import com.revature.festivalapp.services.StageServicesImpl;
 import com.revature.festivalapp.services.UserService;
 import com.revature.festivalapp.services.UserServiceImpl;
 import com.revature.festivalapp.util.SessionFactoryUtil;
@@ -37,9 +41,15 @@ public class FestivalDriver {
 		StageDAO sd = new StageDAOImpl();	
 		ScheduleDAO schd= new ScheduleDAOImpl();	
 		EventRoleDAO erd = new EventRoleDAOImpl();
+		StageServices stageServices = new StageServicesImpl();
+		ScheduleServices scheduleServices = new ScheduleServicesImpl();
 		
-		for (EventRole er : erd.getAllEventRoles())
-			System.out.println(er);
+		FestivalEvent fe = fd.getFestivalEventById(1);
+		scheduleServices.getSchedulesbyEvent(fe);
+		for (Schedule s : scheduleServices.getSchedulesbyEvent(fe).toArray(new Schedule[0]))
+			System.out.println(s);
+		
+		
 
 		
 //		FestivalEvent fest = new FestivalEvent(

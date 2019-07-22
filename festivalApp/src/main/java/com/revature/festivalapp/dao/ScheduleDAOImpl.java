@@ -1,6 +1,7 @@
 package com.revature.festivalapp.dao;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -8,8 +9,10 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
+import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.pojos.Schedule;
 import com.revature.festivalapp.pojos.ScheduleEmbedded;
 import com.revature.festivalapp.pojos.Stage;
@@ -81,6 +84,22 @@ public class ScheduleDAOImpl implements ScheduleDAO {
 		Schedule sch = (Schedule) sess.get(Schedule.class, i);
 		sess.close();
 		return sch;
+	}
+
+	@Override
+	public List<Schedule> getSchedulesbyEvent(FestivalEvent fe) {
+		Session sess = sf.openSession();
+		Criteria crit = sess.createCriteria(Schedule.class);
+		crit.add(Restrictions.eq("event", fe));
+		
+		List<Schedule> retList = new ArrayList<Schedule>();
+		
+		for (Object o : crit.list())
+			retList.add((Schedule)o);
+		
+		sess.close();
+		
+		return retList;
 	}
 
 }

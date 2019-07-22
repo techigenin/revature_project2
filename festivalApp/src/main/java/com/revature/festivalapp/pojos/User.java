@@ -239,5 +239,77 @@ public class User  {
 	public void setCurrentEvent(FestivalEvent currentEvent) {
 		this.currentEvent = currentEvent;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((artistName == null) ? 0 : artistName.hashCode());
+		result = prime * result + ((collectedRoles == null) ? 0 : collectedRoles.hashCode());
+		result = prime * result + ((currentEvent == null) ? 0 : currentEvent.hashCode());
+		result = prime * result + ((currentRole == null) ? 0 : currentRole.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((managerName == null) ? 0 : managerName.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((promoterName == null) ? 0 : promoterName.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (artistName == null) {
+			if (other.artistName != null)
+				return false;
+		} else if (!artistName.equals(other.artistName))
+			return false;
+		if (collectedRoles == null) {
+			if (other.collectedRoles != null)
+				return false;
+		} else if (!collectedRoles.equals(other.collectedRoles))
+			return false;
+		if (currentEvent == null) {
+			if (other.currentEvent != null)
+				return false;
+		} else if (!currentEvent.equals(other.currentEvent))
+			return false;
+		if (currentRole == null) {
+			if (other.currentRole != null)
+				return false;
+		} else if (!currentRole.equals(other.currentRole))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (id != other.id)
+			return false;
+		if (managerName == null) {
+			if (other.managerName != null)
+				return false;
+		} else if (!managerName.equals(other.managerName))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (promoterName == null) {
+			if (other.promoterName != null)
+				return false;
+		} else if (!promoterName.equals(other.promoterName))
+			return false;
+		return true;
+	}
+	
+	
 }
 	

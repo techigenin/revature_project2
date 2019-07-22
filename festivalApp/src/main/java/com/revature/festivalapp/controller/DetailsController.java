@@ -52,12 +52,12 @@ public class DetailsController {
 		
 		if (sess.getAttribute("user") != null) {
 			u = (User) sess.getAttribute("user");
-			List<EventRole> erList = userServices.getAllUserEventsAndRoles(u.getId());
+			List<EventRole> erList = userServices.getAllEventRolesByUser(u);
 			List<DetailsDTO> retList = new ArrayList<DetailsDTO>();
 			
 			for (EventRole er : erList) {
 				String role = er.getUserRole();
-				FestivalEvent event = festivalEventService.getFestivalEvent(er.getEventId());
+				FestivalEvent event = festivalEventService.getFestivalEvent(er.getEvent().getEventNumer());
 				String eventName = event.getEventName();
 				LocalDate startDate = event.getStartDate();
 				LocalDate endDate = event.getEndDate();

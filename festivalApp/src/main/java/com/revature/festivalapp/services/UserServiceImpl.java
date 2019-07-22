@@ -45,8 +45,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<EventRole> getAllUserEventsAndRoles(int id) {
-		return eventRoleDao.getAllEventRolesByUserId(id);
+	public List<EventRole> getAllEventRolesByUser(User u) {
+		return eventRoleDao.getAllEventRolesByUser(u);
 	}
 
 

@@ -83,7 +83,51 @@ public class Stage {
 		this.crew = crew;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((crew == null) ? 0 : crew.hashCode());
+		result = prime * result + ((festivalEvent == null) ? 0 : festivalEvent.hashCode());
+		result = prime * result + ((stageName == null) ? 0 : stageName.hashCode());
+		result = prime * result + ((stageNumber == null) ? 0 : stageNumber.hashCode());
+		return result;
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Stage other = (Stage) obj;
+		if (crew == null) {
+			if (other.crew != null)
+				return false;
+		} else if (!crew.equals(other.crew))
+			return false;
+		if (festivalEvent == null) {
+			if (other.festivalEvent != null)
+				return false;
+		} else if (!festivalEvent.equals(other.festivalEvent))
+			return false;
+		if (stageName == null) {
+			if (other.stageName != null)
+				return false;
+		} else if (!stageName.equals(other.stageName))
+			return false;
+		if (stageNumber == null) {
+			if (other.stageNumber != null)
+				return false;
+		} else if (!stageNumber.equals(other.stageNumber))
+			return false;
+		return true;
+	}
+
+
+	
 }
 
 	

@@ -126,5 +126,74 @@ public class FestivalEvent {
 				+ eventName + ", eventLocation=" + eventLocation + ", startDate=" + startDate + ", endDate=" + endDate
 				+ ", eventDescription=" + eventDescription + ", manager=" + manager + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((audienceCapacity == null) ? 0 : audienceCapacity.hashCode());
+		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
+		result = prime * result + ((eventDescription == null) ? 0 : eventDescription.hashCode());
+		result = prime * result + ((eventLocation == null) ? 0 : eventLocation.hashCode());
+		result = prime * result + ((eventName == null) ? 0 : eventName.hashCode());
+		result = prime * result + ((eventNumer == null) ? 0 : eventNumer.hashCode());
+		result = prime * result + ((manager == null) ? 0 : manager.hashCode());
+		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FestivalEvent other = (FestivalEvent) obj;
+		if (audienceCapacity == null) {
+			if (other.audienceCapacity != null)
+				return false;
+		} else if (!audienceCapacity.equals(other.audienceCapacity))
+			return false;
+		if (endDate == null) {
+			if (other.endDate != null)
+				return false;
+		} else if (!endDate.equals(other.endDate))
+			return false;
+		if (eventDescription == null) {
+			if (other.eventDescription != null)
+				return false;
+		} else if (!eventDescription.equals(other.eventDescription))
+			return false;
+		if (eventLocation == null) {
+			if (other.eventLocation != null)
+				return false;
+		} else if (!eventLocation.equals(other.eventLocation))
+			return false;
+		if (eventName == null) {
+			if (other.eventName != null)
+				return false;
+		} else if (!eventName.equals(other.eventName))
+			return false;
+		if (eventNumer == null) {
+			if (other.eventNumer != null)
+				return false;
+		} else if (!eventNumer.equals(other.eventNumer))
+			return false;
+		if (manager == null) {
+			if (other.manager != null)
+				return false;
+		} else if (!manager.equals(other.manager))
+			return false;
+		if (startDate == null) {
+			if (other.startDate != null)
+				return false;
+		} else if (!startDate.equals(other.startDate))
+			return false;
+		return true;
+	}
+	
+	
 	
 }

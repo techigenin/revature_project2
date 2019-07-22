@@ -20,6 +20,17 @@ public class FestivalEventDAOImpl implements FestivalEventDAO {
 	SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 
 	@Override
+	public FestivalEvent getFestivalEventById(int id) {
+		Session sess = sf.openSession();
+		FestivalEvent fe = (FestivalEvent) sess.get(FestivalEvent.class, id);
+		System.out.println(fe);
+		sess.close();
+		
+		return fe;
+	}
+	
+	
+	@Override
 	public void insertFestivalEvent(FestivalEvent fe) {
 		Session sess = sf.openSession();
 		Transaction tx = sess.beginTransaction();
@@ -46,14 +57,6 @@ public class FestivalEventDAOImpl implements FestivalEventDAO {
 		sess.close();
 	}
 	
-	@Override
-	public FestivalEvent getFestivalEventById(int id) {
-		Session sess = sf.openSession();
-		FestivalEvent fe = (FestivalEvent) sess.get(FestivalEvent.class, id);
-		sess.close();
-		
-		return fe;
-	}
 
 	@Override
 	public List<FestivalEvent> getAllFestivalEvents() {
@@ -62,10 +65,14 @@ public class FestivalEventDAOImpl implements FestivalEventDAO {
 		
 		List<FestivalEvent> results = new ArrayList<FestivalEvent>();
 		
-		for (Object o : crit.list())
+		for (Object o : crit.list()) {
 			if (o instanceof FestivalEvent)
 				results.add((FestivalEvent)o);
-			
+		}	
+		
+		for (FestivalEvent fe : results) {
+			System.out.println(fe);
+		}
 		sess.close();
 		return results;
 	}
@@ -85,6 +92,10 @@ public class FestivalEventDAOImpl implements FestivalEventDAO {
 		for (Object o : cr.list())
 			if (o instanceof FestivalEvent)
 				results.add((FestivalEvent)o);
+		
+		for (FestivalEvent fe : results) {
+			System.out.println(fe);
+		}
 		
 		sess.close();
 		return results;
