@@ -2,30 +2,28 @@ package com.revature.festivalapp.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.festivalapp.pojos.EventRole;
-import com.revature.festivalapp.pojos.Schedule;
 import com.revature.festivalapp.pojos.User;
 import com.revature.festivalapp.pojos.UserDTO;
 import com.revature.festivalapp.services.UserService;
 
-@Controller
+@RestController
 public class LoginController {
 	
 	UserService userServices;

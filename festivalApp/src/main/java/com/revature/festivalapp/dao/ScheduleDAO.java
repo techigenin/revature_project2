@@ -47,10 +47,14 @@ public class ScheduleDAO implements ScheduleDAOImpl {
 		
 		Session sess=sf.openSession();
 		Transaction tx=sess.beginTransaction();
-		
 		Criteria crit = sess.createCriteria(Schedule.class);
 		List<Schedule> result = crit.list();
-	
+			
+		for(Object o : crit.list())
+				if(o instanceof Schedule)
+					result.add((Schedule)o);
+				
+			
 		tx.commit();
 		sess.close();
 		return result;
@@ -76,6 +80,13 @@ public class ScheduleDAO implements ScheduleDAOImpl {
 		Query query = sess.createQuery(hql);
 		query.setParameter("artist_name", artist_name);
 		List<Schedule> result = query.list();
+		
+		for(Object o : query.list())
+			if(o instanceof Schedule)
+				result.add((Schedule)o);
+			
+		
+		
 		sess.close();
 		return result;
 	}
