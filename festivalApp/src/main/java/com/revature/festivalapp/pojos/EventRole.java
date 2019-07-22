@@ -26,39 +26,47 @@ public class EventRole {
 		super();
 	}
 
-	public EventRole(int id, int eventId, String userRole) {
+	public EventRole(int userId, int eventId, String userRole) {
 		super();
-		this.id = id;
+		this.userId = userId;
 		this.eventId = eventId;
 		this.userRole = userRole;
 	}
 
 	@Override
 	public String toString() {
-		return "EventRole [id=" + id + ", eventId=" + eventId + ", userRole=" + userRole + "]";
+		return "EventRole [id=" + id + ", userId=" + userId + ", eventId=" + eventId + ", userRole=" + userRole + "]";
 	}
 
-	int getId() {
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public int getId() {
 		return id;
 	}
 
-	void setId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	int getEventId() {
+	public int getEventId() {
 		return eventId;
 	}
 
-	void setEventId(int eventId) {
+	public void setEventId(int eventId) {
 		this.eventId = eventId;
 	}
 
-	String getUserRole() {
+	public String getUserRole() {
 		return userRole;
 	}
 
-	void setUserRole(String userRole) {
+	public void setUserRole(String userRole) {
 		this.userRole = userRole;
 	}
 }

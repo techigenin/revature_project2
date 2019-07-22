@@ -7,10 +7,12 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
 import com.revature.festivalapp.pojos.EventRole;
 import com.revature.festivalapp.util.SessionFactoryUtil;
 
+@Component
 public class EventRoleDAOImpl implements EventRoleDAO {
 
 	SessionFactory sf = SessionFactoryUtil.getSessionFactory();
@@ -18,7 +20,7 @@ public class EventRoleDAOImpl implements EventRoleDAO {
 	@Override
 	public EventRole getEventRole(int i) {
 		Session sess = sf.openSession();
-		EventRole er = (EventRole)sess.get(EventRole.class, 1);
+		EventRole er = (EventRole)sess.get(EventRole.class, i);
 		sess.close();
 		return er;
 	}
@@ -64,9 +66,9 @@ public class EventRoleDAOImpl implements EventRoleDAO {
 	@Override
 	public List<EventRole> getAllEventRolesByUserId(int id) {
 		Session sess = sf.openSession();
-		String hql = "from EventRole where id = :uId";
+		String hql = "from EventRole where userId = :uId";
 		Query q = sess.createQuery(hql);
-		q.setInteger("uid", id);
+		q.setInteger("uId", id);
 		
 		List<EventRole> er = q.list();
 		sess.close();

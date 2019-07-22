@@ -21,7 +21,11 @@ public class FestivalEventServicesImpl implements FestivalEventServices {
 	@Override
 	public void createFestivalEvent(FestivalEvent fe) {
 			festivalEventDao.insertFestivalEvent(fe);
-
+	}
+	
+	@Override
+	public FestivalEvent getFestivalEvent(int i) {
+		return festivalEventDao.getFestivalEventById(i);
 	}
 
 	@Override

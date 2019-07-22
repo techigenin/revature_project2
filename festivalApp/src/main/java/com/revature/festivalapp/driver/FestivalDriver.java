@@ -7,6 +7,8 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import com.revature.festivalapp.dao.EventRoleDAO;
+import com.revature.festivalapp.dao.EventRoleDAOImpl;
 import com.revature.festivalapp.dao.FestivalEventDAO;
 import com.revature.festivalapp.dao.FestivalEventDAOImpl;
 import com.revature.festivalapp.dao.ScheduleDAO;
@@ -15,6 +17,7 @@ import com.revature.festivalapp.dao.StageDAO;
 import com.revature.festivalapp.dao.StageDAOImpl;
 import com.revature.festivalapp.dao.UserDAO;
 import com.revature.festivalapp.dao.UserDAOImpl;
+import com.revature.festivalapp.pojos.EventRole;
 import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.pojos.Schedule;
 import com.revature.festivalapp.pojos.ScheduleEmbedded;
@@ -33,6 +36,10 @@ public class FestivalDriver {
 		FestivalEventDAO fd = new FestivalEventDAOImpl();
 		StageDAO sd = new StageDAOImpl();	
 		ScheduleDAO schd= new ScheduleDAOImpl();	
+		EventRoleDAO erd = new EventRoleDAOImpl();
+		
+		for (EventRole er : erd.getAllEventRoles())
+			System.out.println(er);
 
 		
 //		FestivalEvent fest = new FestivalEvent(
@@ -112,14 +119,14 @@ public class FestivalDriver {
 //		for (Schedule sch : schd.ViewAllSchedule())
 //			System.out.println(sch.getSe().getStageNumber());
 	
-		UserService us = new UserServiceImpl();
-		
-		System.out.println(ud.getUserByEmail("this@thatmail.com"));
-		
-		for (User u : ud.getAllUsers()) {
-			System.out.println(u);
-			us.loginUser(u);
-		}
+//		UserService us = new UserServiceImpl();
+//		
+//		System.out.println(ud.getUserByEmail("this@thatmail.com"));
+//		
+//		for (User u : ud.getAllUsers()) {
+//			System.out.println(u);
+//			us.loginUser(u);
+//		}
 		
 		System.out.println("Done!");
 	}
