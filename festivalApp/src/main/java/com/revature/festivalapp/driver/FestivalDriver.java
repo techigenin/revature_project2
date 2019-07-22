@@ -44,10 +44,10 @@ public class FestivalDriver {
 		StageServices stageServices = new StageServicesImpl();
 		ScheduleServices scheduleServices = new ScheduleServicesImpl();
 		
-		FestivalEvent fe = fd.getFestivalEventById(1);
-		scheduleServices.getSchedulesbyEvent(fe);
-		for (Schedule s : scheduleServices.getSchedulesbyEvent(fe).toArray(new Schedule[0]))
-			System.out.println(s);
+		Stage s = sd.getStageById(1);
+		
+		for (Schedule sch : schd.getSchedulesByStage(s))
+			System.out.println(sch);
 		
 		
 

@@ -73,43 +73,43 @@ public class Schedule {
 				+ ", endTime=" + endTime + ", artistName=" + artistName + "]";
 	}
 
-	int getScheduleId() {
+	public int getScheduleId() {
 		return scheduleId;
 	}
 
-	void setScheduleId(int scheduleId) {
+	public void setScheduleId(int scheduleId) {
 		this.scheduleId = scheduleId;
 	}
 
-	Stage getStageNumber() {
+	public Stage getStageNumber() {
 		return stageNumber;
 	}
 
-	void setStageNumber(Stage stageNumber) {
+	public void setStageNumber(Stage stageNumber) {
 		this.stageNumber = stageNumber;
 	}
 
-	LocalDateTime getStartTime() {
+	public LocalDateTime getStartTime() {
 		return startTime;
 	}
 
-	void setStartTime(LocalDateTime startTime) {
+	public void setStartTime(LocalDateTime startTime) {
 		this.startTime = startTime;
 	}
 
-	LocalDateTime getEndTime() {
+	public LocalDateTime getEndTime() {
 		return endTime;
 	}
 
-	void setEndTime(LocalDateTime endTime) {
+	public void setEndTime(LocalDateTime endTime) {
 		this.endTime = endTime;
 	}
 
-	String getArtistName() {
+	public String getArtistName() {
 		return artistName;
 	}
 
-	void setArtistName(String artistName) {
+	public void setArtistName(String artistName) {
 		this.artistName = artistName;
 	}
 

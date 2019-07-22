@@ -31,7 +31,7 @@ public class EventRoleServiceImpl implements EventRoleService {
 	}
 
 	@Override
-	public List<EventRole> getEventRolesbyEvent(FestivalEvent fe) {
+	public List<EventRole> getEventRolesByEvent(FestivalEvent fe) {
 		return eventRoleDAO.getAllEventRolesByEvent(fe);
 	}
 }

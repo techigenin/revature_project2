@@ -43,8 +43,8 @@ public class ScheduleServicesImpl implements ScheduleServices {
 	}
 
 	@Override
-	public List<Schedule> getSchedulesbyEvent(FestivalEvent fe) {
-		return scheduleDAO.getSchedulesbyEvent(fe);
+	public List<Schedule> getSchedulesByStage(Stage s) {
+		return scheduleDAO.getSchedulesByStage(s);
 	}
 
 }

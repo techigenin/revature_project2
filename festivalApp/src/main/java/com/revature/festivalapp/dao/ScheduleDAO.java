@@ -16,7 +16,5 @@ public interface ScheduleDAO {
 	
 	public List<Schedule> ViewAllSchedule();
 	public List<Schedule> SearchByName (String artist_name);// by artist name incase we gonna use it later 
-	public List<Schedule> getSchedulesbyEvent(FestivalEvent fe);
-
-	
+	public List<Schedule> getSchedulesByStage(Stage s);
 }

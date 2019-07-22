@@ -11,7 +11,6 @@ public interface EventRoleService {
 	
 	public List<EventRole> getEventRolesByUser(User u);
 
-	public List<EventRole> getEventRolesbyEvent(FestivalEvent fe);
-
+	public List<EventRole> getEventRolesByEvent(FestivalEvent fe);
 
 }

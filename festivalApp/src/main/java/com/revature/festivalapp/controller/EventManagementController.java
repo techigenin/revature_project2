@@ -1,6 +1,7 @@
 package com.revature.festivalapp.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
@@ -77,9 +78,15 @@ public class EventManagementController {
 					if (fe != null) {
 						EventManagementDTO emDTO = new EventManagementDTO();
 						emDTO.setStages(stageServices.getStagesByEvent(fe).toArray(new Stage[0]));
-						emDTO.setSchedules(scheduleServices.getSchedulesbyEvent(fe).toArray(new Schedule[0]));
-						emDTO.setEventRoles(eventRoleService.getEventRolesbyEvent(fe).toArray(new EventRole[0]));
-					
+						emDTO.setEventRoles(eventRoleService.getEventRolesByEvent(fe).toArray(new EventRole[0]));
+						
+						ArrayList<Schedule> schList = new ArrayList<>();
+						
+						for (Stage s : emDTO.getStages()) 
+							schList.addAll(scheduleServices.getSchedulesByStage(s));
+							
+						emDTO.setSchedules(schList.toArray(new Schedule[0]));
+						
 						return om.writeValueAsString(emDTO);	
 					}
 				}
