@@ -1,0 +1,145 @@
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://bulma.io">
+          <span class="icon">
+              <i class="fas fa-home"></i>
+          </span>
+        </a>
+    
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item has-text-primary" routerLink ="/" routerLinkActive="has-background-white" [routerLinkActiveOptions]="{exact: true}">
+            Home
+          </a>
+    
+          <a class="navbar-item has-text-primary" routerLink ="/createEvent" routerLinkActive="has-background-white">
+            Create Event
+          </a>
+          <a class="navbar-item has-text-primary" data-show="quickview" data-target="quickviewDefault">
+            View My Events     
+          </a>
+  
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link has-text-primary">
+              About App
+            </a>
+    
+            <div class="navbar-dropdown">
+              <a class="navbar-item" routerLink ="/schedule">
+                About
+              </a>
+              <a class="navbar-item">
+                Jobs
+              </a>
+              <a class="navbar-item">
+                Contact
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item">
+                Report an issue
+              </a>
+            </div>
+          </div>
+        </div>
+    
+        <div class="navbar-end">
+  
+          <div *ngIf="!loggedIn; else logout">
+              <form #login = "ngForm" (ngSubmit) = "onClickSubmit(login.value)" class="navbar-item">
+  
+                  <div class="navbar-item">
+                      <p class="control has-icons-left">
+                              <input class="input is-rounded has-text-primary" type="text" name = "username" placeholder="username" ngModel required email>
+                      <span class="icon is-small is-left">
+                          <i class="fas fa-at"></i>
+                      </span>
+                      </p>   
+                      <!-- <input class="input is-rounded" type="text" name = "emailid" placeholder="Email" ngModel required email> -->
+                  </div>
+  
+                  <div class="navbar-item">
+                                  <p class="control has-icons-left">
+                                          <input class="input is-rounded has-text-primary" type="password" name = "password" placeholder="Password" ngModel required>
+                                  <span class="icon is-small is-left">
+                                      <i class="fas fa-lock"></i>
+                                  </span>
+                                  </p>   
+                          <!-- <input class="input is-rounded" type="password" name = "passwd" placeholder="Password" ngModel required> -->
+                  </div>
+  
+                  <div class="navbar-item">
+                  <!-- <div class="buttons"> -->
+                      <!-- <a class="button is-primary">
+                      <strong>Sign up</strong>
+                      </a> -->
+                      <button class="button is-primary is-rounded" type="submit" value = "submit" [disabled]="!login.valid">
+                          <strong>Login</strong>
+                      </button>
+                  <!-- </div> -->
+                  </div>
+              </form>
+          </div>
+  
+          <ng-template #logout>
+              <div class="navbar-item">
+                  <button type="button" class="button is-primary is-rounded">
+                      <strong>Logout</strong>
+                  </button>
+              </div>
+          </ng-template>
+  
+        </div>
+      </div>
+</nav>
+
+<div type="button" class="button is-primary is-rounded" (click)="onTestClick()">
+    <strong>Testing(navbar.html)</strong>
+</div>
+
+
+<!--The below is for the side panel that opens up when you click view my events-->
+<div class="container">
+    <div id="quickviewDefault" class="quickview">
+        <header class="quickview-header">
+          <p class="title">Your Events</p>
+          <span class="delete" data-dismiss="quickview"></span>
+        </header>
+      
+        <div class="quickview-body">
+          <div class="quickview-block">
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Event Name</th>
+                    <th>Event Role</th>
+                    <th>Start/End Times</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    
+                  <tr *ngFor="let assignedEvent of assignedEvents">
+                    <td>{{assignedEvent.name}}</td>
+                    <td>{{assignedEvent.role}}</td>
+                    <td>{{assignedEvent.start +' - '+ assignedEvent.end}}</td>
+                  </tr>
+                    
+                </tbody>
+              </table>
+          </div>
+      </div>
+      
+        <footer class="quickview-footer">
+      
+        </footer>
+    </div>
+      
+      <!-- <button class="button is-primary" data-show="quickview" data-target="quickviewDefault">View My Events</button> -->
+</div>

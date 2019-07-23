@@ -35,7 +35,7 @@ public class LoginController {
 	
 	@GetMapping(value="/login")
 	public String loginGet() {
-		return "redirect:resources/login.html";
+		return "redirect:resources/angular/index.html";
 	}
 	
 	@PostMapping(value="/login")

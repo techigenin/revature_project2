@@ -18,8 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.services.FestivalEventServicesImpl;
 
-@RestController("/home")
-//@Controller
+@Controller
 public class HomeController {
 	
 	private FestivalEventServicesImpl eventService;
@@ -29,7 +28,7 @@ public class HomeController {
 		this.eventService = eventService;
 	}
 	
-	@GetMapping//(value="/home")
+	@GetMapping("/home")
 	public @ResponseBody String getAllFestivalEvents() {
 		ObjectMapper om = new ObjectMapper();
 		List<FestivalEvent> feList = eventService.viewAllEvents();

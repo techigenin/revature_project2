@@ -1,0 +1,14 @@
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+.navbar {
+    background-color: black;
+}
+
+.title {
+    text-align: center;
+}
+
+
+

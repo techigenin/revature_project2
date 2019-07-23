@@ -1,0 +1,11 @@
+html,body {
+    height:100%;
+}
+p.is-size-7 {
+    height:100%;
+}
+
+.columns {
+    display: flex;
+    height: 100%;
+  }
