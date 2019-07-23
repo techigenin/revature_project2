@@ -1,9 +1,155 @@
-<p>create-event works!</p>
-<div class="container">
-    <input type="date">
-</div>
+<!-- <p>create-event works!</p> -->
+<br>
+<ul class="steps is-balanced">
+    <li class="steps-segment is-active">
+      <span class="steps-marker"></span>
+      <div class="steps-content">
+        <p class="is-size-4">Step 1</p>
+        <p>Create your Event</p>
+      </div>
+    </li>
+    <li class="steps-segment">
+      <span class="steps-marker"></span>
+      <div class="steps-content">
+        <p class="is-size-4">Step 2</p>
+        <p>This is the second step. Once you complete the first step, you will end up here.</p>
+      </div>
+    </li>
+    <li class="steps-segment is-active">
+      <span class="steps-marker"></span>
+      <div class="steps-content">
+        <p class="is-size-4">Step 3</p>
+        <p>This is the third step. This is halfway between the start and the end.</p>
+      </div>
+    </li>
+    <li class="steps-segment">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">Step 4</p>
+          <p>Success!</p>
+        </div>
+    </li>
+    
+  </ul>
 
-<div class="container">
+
+
+<form> 
+
+    <div class="field">
+      <label class="label">Event Name</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="Your Event's Name Here">
+      </div>
+    </div>
+ 
+    <br>
+ 
+    <div class="field is-horizontal">
+    
+      <div class="field-body">
+
+        <div class="field has-addons">
+          <div class="control">
+            <a class="button is-static">
+              Start Date
+            </a>
+          </div>
+          <div class="control is-expanded">
+            <input class="input " placeholder="Please choose a date from calender" type="date">
+          </div>
+        </div>
+    
+        <div class="field has-addons">
+          <div class="control ">
+            <a class="button is-static">
+              End Date
+            </a>
+          </div>
+          <div class="control is-expanded">
+            <input class="input " placeholder="Leave blank if one day event" type="date">
+            <p class="help">Your Event will be one day(s)</p>
+          </div>
+        </div>
+    
+      </div>
+
+    </div>
+    
+    
+    
+    <div class="field">
+      <label class="label">Location</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="This will be displayed to customers">
+      </div>
+    </div>
+    
+    
+    
+    
+    <div class="field">
+      <label class="label">Event Description</label>
+      <div class="control">
+        <textarea class="textarea" placeholder="Make it good!"></textarea>
+      </div>
+    </div>
+  
+    
+    <br>
+
+    <div class="field is-horizontal">
+    
+      <div class="field-body">
+        
+        <div class="field has-addons">
+          <div class="control">
+            <a class="button is-static">
+              Audience Capacity
+            </a>
+          </div>
+          <div class="control ">
+            <input class="input " placeholder="Enter max capacity" type="text">
+          </div>
+        </div>
+    
+        <div class="field is-grouped">
+          <div class="control">
+            <a class="button is-info">
+              Previous
+            </a>
+          </div>
+          <div class="control">
+            <a class="button is-info">
+              Next
+            </a>
+          </div>
+          <div class="control">
+            <a class="button is-primary">
+              Save Changes
+            </a>
+          </div>
+          <div class="control">
+            <a class="button is-danger">
+              Cancel
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+</form> 
+
+
+
+
+
+
+<!-- <div class="container">
+    <input type="date">
+</div> -->
+
+<!-- <div class="container">
     <div id="quickviewDefault" class="quickview">
         <header class="quickview-header">
           <p class="title">Quickview title</p>
@@ -48,10 +194,10 @@
         <footer class="quickview-footer">
       
         </footer>
-      </div>
+    </div>
       
       <button class="button is-primary" data-show="quickview" data-target="quickviewDefault">Show quickview</button>
-</div>
+</div> -->
 
 <!-- <div class="calendar">
     <div class="calendar-nav">

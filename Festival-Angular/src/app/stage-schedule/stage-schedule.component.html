@@ -1,0 +1,132 @@
+<!-- <div class="has-background-black">
+<div class="container is-centered">
+    <div class="columns is-gapless is-mobile">
+
+        <div class="column is-{{this.columnSize}}"  *ngFor="let performance of performances">
+    <div class="box has-background-primary has-text-centered has-text-white"><p class="is-size-7">{{performance.start}} <br>  -  <br> {{performance.end}}</p></div>
+        </div>
+    </div>
+
+    <div class="columns is-gapless is-marginless is-mobile" *ngFor="let performance of performances">
+        <div ngClass="column is-{{this.columnSize}} is-offset-{{this.columnSize * performance.number}}">
+        
+        <div class="box has-background-info has-text-centered has-text-white"><p class="is-size-7">{{performance.artist}}</p></div>
+        
+        </div>
+    </div> 
+</div>
+</div> -->
+
+
+
+
+
+
+
+<!-- 
+
+<div class="columns is-gapless is-marginless is-mobile is-outlined is-vcentered">
+
+        <div class="column is-3">
+      <div class="box has-background-black has-text-white has-text-centered"><p class="is-size-7">Stage One</p></div>
+        </div>
+      </div>   
+      
+      
+      
+      <div class="columns is-gapless is-mobile is-marginless is-outlined is-vcentered">
+      
+        <div class="column is-1">
+      <div class="box has-background-info has-text-white"><p class="is-size-7">Start</p></div>
+        </div>
+        
+        <div class="column is-1">
+      <div class="box has-background-info has-text-white"><p class="is-size-7">End</p></div>
+        </div>  
+      
+       <div class="column is-1" >
+        
+          <div class="box has-background-info has-text-centered "><p class="is-size-7">Artist</p></div>
+          
+        </div>
+      </div>   
+
+
+
+
+<div class="columns is-gapless is-mobile is-marginless is-outlined" *ngFor="let performance of performances">
+
+    <div class="column is-1">
+    <div class="box has-background-success has-text-white"><p class="is-size-7">{{performance.start}}</p></div>
+    </div>
+    
+    
+    <div class="column is-1">
+    <div class="box has-background-warning has-text-white"><p class="is-size-7">{{performance.end}}</p></div>
+    </div>  
+    
+    <div class="column is-1" >
+    
+        <div class="box has-background-danger has-text-centered "><p class="is-size-7">{{performance.artist}}</p></div>
+        
+    </div>
+</div>   -->
+
+
+
+
+
+
+<!--below is multi-stages next to each other; is-6 means 2 stages fit together (12/6)-->
+
+
+<div class="columns is-gapless is-marginless is-mobile is-outlined is-vcentered is-multiline">
+   <!---------------------first for loop within a for loop below---------->
+    <div class="column is-6" *ngFor="let stage of stages">
+
+        <div class="columns is-gapless is-marginless is-mobile is-outlined is-vcentered">
+            <div class="column">
+                <div class="box has-background-black has-text-white has-text-centered"><p class="is-size-7">{{stage.name}}</p></div>
+            </div>
+        </div>   
+        
+            
+            
+        <div class="columns is-gapless is-mobile is-marginless is-outlined is-vcentered">
+        
+            <div class="column ">
+                <div class="box has-background-info has-text-centered has-text-black"><p class="is-size-7">Start</p></div>
+            </div>
+            
+            <div class="column ">
+                <div class="box has-background-info has-text-centered has-text-black"><p class="is-size-7">End</p></div>
+            </div>  
+        
+            <div class="column " >
+                <div class="box has-background-info has-text-centered has-text-black"><p class="is-size-7">Artist</p></div>
+            </div>
+        </div>   
+
+
+
+                         <!-----------------------------------------------for loop within a for loop below---------->
+        <div class="columns is-gapless is-mobile is-marginless is-outlined" *ngFor="let performance of stage.performances">
+
+            <div class="column ">
+            <div class="box has-background-success has-text-centered has-text-black"><p class="is-size-7">{{performance.start}}</p></div>
+            </div>
+            
+            
+            <div class="column ">
+            <div class="box has-background-warning has-text-centered has-text-black"><p class="is-size-7">{{performance.end}}</p></div>
+            </div>  
+            
+            <div class="column " >
+            
+                <div class="box has-background-danger has-text-centered "><p class="is-size-7">{{performance.artist}}</p></div>
+                
+            </div>
+        </div> 
+
+    </div>
+</div>
