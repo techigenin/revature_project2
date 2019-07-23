@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.services.FestivalEventServicesImpl;
 
 @RestController("/home")
+//@Controller
 public class HomeController {
 	
 	private FestivalEventServicesImpl eventService;
@@ -26,9 +29,18 @@ public class HomeController {
 		this.eventService = eventService;
 	}
 	
-	@GetMapping(value="/home")
-	public List<FestivalEvent> getAllFestivalEvents() {
-		return eventService.viewAllEvents();
+	@GetMapping//(value="/home")
+	public @ResponseBody String getAllFestivalEvents() {
+		ObjectMapper om = new ObjectMapper();
+		List<FestivalEvent> feList = eventService.viewAllEvents();
+		
+		try {
+			return om.writeValueAsString(feList);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
