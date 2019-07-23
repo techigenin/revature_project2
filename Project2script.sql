@@ -1,37 +1,9 @@
-drop table manager, customer, crew, promoter, artist, users, event_role, roles, festival_event, stage, schedule;
-
+drop table users, event_role, festival_event, stage, schedule, add_role;
 
 select * from users;
 select * from festival_event;
---select * from manager;
-
---create table manager
---(
---	id serial primary key,
---	manager_name varchar(50)	
---);
---
---create table customer (
---	id serial PRIMARY key
---);
---
---create table crew
---(
---	id serial primary key
---);
---
---create table promoter
---(
---	id serial primary key,
---	promo_name varchar(50)
---);
---
---create table artist 
---(
---	id serial primary key,
---	artist_name varchar(50)
---);
-
+select * from stage;
+select * from schedule;
 create table users -- user pojo
 (
 	id serial primary key,
@@ -49,18 +21,6 @@ create table event_role (
 	event_id serial,
 	user_role varchar
 );
-
--- We could/should probably delete this...
---create table roles (
---	role_num integer unique,
---	role_description varchar(20)
---);
---
---insert into roles values (1, 'manager');
---insert into roles values (2, 'promoter');
---insert into roles values (3, 'artist');
---insert into roles values (4, 'crew');
---insert into roles values (5, 'customer');
 
 create table festival_event 
 (
@@ -114,3 +74,43 @@ alter table artist add foreign key (id) references users(id);
 alter table event_role add foreign key (id) references users(id);
 alter table event_role add foreign key (event_id) references festival_event(event_number);
 
+--select * from manager;
+
+--create table manager
+--(
+--	id serial primary key,
+--	manager_name varchar(50)	
+--);
+--
+--create table customer (
+--	id serial PRIMARY key
+--);
+--
+--create table crew
+--(
+--	id serial primary key
+--);
+--
+--create table promoter
+--(
+--	id serial primary key,
+--	promo_name varchar(50)
+--);
+--
+--create table artist 
+--(
+--	id serial primary key,
+--	artist_name varchar(50)
+--);
+
+-- We could/should probably delete this...
+--create table roles (
+--	role_num integer unique,
+--	role_description varchar(20)
+--);
+--
+--insert into roles values (1, 'manager');
+--insert into roles values (2, 'promoter');
+--insert into roles values (3, 'artist');
+--insert into roles values (4, 'crew');
+--insert into roles values (5, 'customer');
