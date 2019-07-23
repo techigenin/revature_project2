@@ -24,8 +24,8 @@ export class NavbarComponent implements OnInit {
   // angular http client will take our object (data) and automatically convert to JSON data
   // must subscribe to request, otherwise angular assumes no one is interested in response and
   // not bother sending it
-  // don't need to unsubscribe for observables provided by angular emailid passwd
-  onClickSubmit(data: { emailid: string; passwd: string }) {
+  // don't need to unsubscribe for observables provided by angular 
+  onClickSubmit(data: { username: string; password: string }) {
     // sending http request
     this.http.post('url', data).subscribe(responseData => {
       // angular will give you the response body 
@@ -37,7 +37,7 @@ export class NavbarComponent implements OnInit {
       console.log(responseData);
     });
     console.log(data);
-    alert('Entered Password : ' + data.passwd);
+    alert('Entered Password : ' + data.password);
  }
 
  //testing click event binding as well as .navigate() method
