@@ -10,6 +10,8 @@
 	<context:annotation-config></context:annotation-config>
 	<context:component-scan base-package="com.revature"></context:component-scan>
 	<mvc:annotation-driven></mvc:annotation-driven>
+	
+	 <!-- it is the location of static resourses -->
 	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
 
 		<!-- Configure ViewResolver -->

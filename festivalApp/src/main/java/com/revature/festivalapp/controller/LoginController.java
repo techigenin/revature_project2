@@ -36,11 +36,14 @@ public class LoginController {
 		return "redirect:resources/login.html";
 	}
 	
-	@PostMapping(value="/login")
-	public @ResponseBody boolean loginPost(@RequestBody String userIn, HttpSession sess) {
+	
+	@PostMapping(value="/login")// response to the body http response / takeing the info from the body of http post request
+	//responsebody it takes the user to the page
+	public @ResponseBody boolean loginPost(@RequestBody String userIn, HttpSession sess) {// userIn it holds the JSON
 		ObjectMapper om = new ObjectMapper();
 		UserDTO u;
-		try {
+		
+		try { //readValue it convert the JSON to an object
 			u = (UserDTO) om.readValue(userIn, UserDTO.class);
 			
 			User validUser = userServices.loginUser(new User(u));
