@@ -9,7 +9,7 @@ public interface UserService {
 	
 	public User loginUser(User u);
 	
-	public void registerUser(User u);
+	public void insertUser(User u);
 
 	List<EventRole> getAllEventRolesByUser(User u);
 	

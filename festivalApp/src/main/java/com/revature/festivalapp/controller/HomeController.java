@@ -1,14 +1,6 @@
 package com.revature.festivalapp.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
-
-public class HomeController {
-	
-	
-	@GetMapping(value="/home")
-	public String loginGet() {
-		return "redirect:resources/angular/index.html";
-
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -38,6 +30,11 @@ public class HomeController {
 	}
 	
 	@GetMapping("/home")
+	public String loginGet() {
+		return "redirect:resources/angular/index.html";
+	}
+	
+	@PostMapping("/home")
 	public @ResponseBody String getAllFestivalEvents() {
 		ObjectMapper om = new ObjectMapper();
 		List<FestivalEvent> feList = eventService.viewAllEvents();
