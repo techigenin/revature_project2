@@ -8,19 +8,21 @@ public class RegInfo {
 
 	@Id
 	@Column(name="req_num")
-	private int reqNum;
+	private Integer reqNum;
 	
 	@Column(name="role_type")
 	private String roleType;
 	
+	@ManyToOne
 	@JoinColumn(name="event_num", referencedColumnName="event_number")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private FestivalEvent event;
 	
 	@Column
-	private boolean accepted;
+	private Boolean accepted;
 	
 	@Column
-	private boolean valid;
+	private Boolean valid;
 
 	public RegInfo() {
 		super();

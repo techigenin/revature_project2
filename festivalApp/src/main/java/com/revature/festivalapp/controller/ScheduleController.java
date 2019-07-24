@@ -17,15 +17,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.festivalapp.pojos.Schedule;
 import com.revature.festivalapp.pojos.ScheduleDTO;
 import com.revature.festivalapp.pojos.Stage;
+import com.revature.festivalapp.services.ScheduleServices;
 import com.revature.festivalapp.services.ScheduleServicesImpl;
 
 @Controller
 public class ScheduleController {
-	private ScheduleServicesImpl scheduleService;
-	
+	private ScheduleServices scheduleService;
 	
 	@Autowired
-	public void setScheduleService(ScheduleServicesImpl scheduleService) {
+	public void setScheduleService(ScheduleServices scheduleService) {
 		this.scheduleService = scheduleService;
 	}
 	
@@ -42,9 +42,6 @@ public class ScheduleController {
 				
 				ScheduleDTO schedule = new ScheduleDTO();
 				ArrayList<ScheduleDTO> schDTOList = new ArrayList<>();
-				
-				
-				
 			}
 		} catch (JsonMappingException e) {
 			e.printStackTrace();

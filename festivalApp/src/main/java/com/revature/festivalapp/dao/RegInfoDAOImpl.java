@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.*;
+import org.springframework.stereotype.Component;
 
 import com.revature.festivalapp.pojos.RegInfo;
 import com.revature.festivalapp.util.SessionFactoryUtil;
 
+@Component
 public class RegInfoDAOImpl implements RegInfoDAO {
 
 	SessionFactory sf = SessionFactoryUtil.getSessionFactory();

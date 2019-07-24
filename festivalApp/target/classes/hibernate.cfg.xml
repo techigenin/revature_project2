@@ -11,6 +11,7 @@
 		<mapping class="com.revature.festivalapp.pojos.User" />
 		<mapping class="com.revature.festivalapp.pojos.EventRole" />
 		<mapping class="com.revature.festivalapp.pojos.FestivalEvent" />
+		<mapping class="com.revature.festivalapp.pojos.RegInfo"/>
 		<mapping class="com.revature.festivalapp.pojos.Stage"/>
 		<mapping class="com.revature.festivalapp.pojos.Schedule"/>
 		<mapping class="com.revature.festivalapp.util.LocalDateAttributeConverter" />
