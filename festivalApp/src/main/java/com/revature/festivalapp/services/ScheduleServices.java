@@ -18,6 +18,8 @@ public interface ScheduleServices {
 
 	public List<Schedule> getSchedulesByStage(Stage s);
 	
+	public void SaveOrUpdate(Schedule schedule);
+	
 	
 
 }

@@ -111,5 +111,16 @@ public class ScheduleDAO implements ScheduleDAOImpl {
 	}
 
 
+	@Override
+	public void SaveOrUpdate(Schedule schedule) {
+		Session sess=sf.openSession();
+		Transaction tx=sess.beginTransaction();
+		sess.saveOrUpdate(schedule);
+		tx.commit();
+		sess.close();
+		
+	}
+
+
 
 }

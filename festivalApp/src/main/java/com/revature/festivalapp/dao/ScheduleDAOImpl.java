@@ -28,5 +28,6 @@ public interface ScheduleDAOImpl  {
 		public List<Schedule> ViewAllSchedule();
 		public List<Schedule> SearchByName (String artist_name);// by artist name incase we gonna use it later 
 		public List<Schedule> getSchedulesByStage(Stage s);
+		public void SaveOrUpdate(Schedule schedule);
 
 }

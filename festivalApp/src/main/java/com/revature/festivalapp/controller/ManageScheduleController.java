@@ -26,15 +26,71 @@ public class ManageScheduleController {
 	}
 
 
-	@PostMapping(value="/schedule")
-	public @ResponseBody boolean StagePost(@RequestBody Schedule schedule, HttpSession sess) {
+	@PostMapping(value="/schedule" ,consumes= {"application/json"})
+	public @ResponseBody boolean CreateStagePost(@RequestBody Schedule schedule, HttpSession sess) {
 
-
-		User user =(User) sess.getAttribute("users");
-	//	schedule.setArtistName(user);
-		scheduleServices.createSchedule(schedule);
 		
-
+		User user =(User) sess.getAttribute("users");
+		
+		if (user != null) {
+		
+		scheduleServices.createSchedule(schedule);
 		return true;
+		
+		}
+
+		return false;
+		}
+	
+	@PostMapping(value="/schedule" ,consumes= {"application/json"})
+	public @ResponseBody boolean UpdateStagePost(@RequestBody Schedule schedule, HttpSession sess) {
+
+		
+		User user =(User) sess.getAttribute("users");
+		
+		if (user != null) {
+		
+		scheduleServices.updateSchedule(schedule);
+		return true;
+		
+		}
+
+		return false;
 	}
+	
+	
+	@PostMapping(value="/schedule" ,consumes= {"application/json"})
+	public @ResponseBody boolean DeleteStagePost(@RequestBody Schedule schedule, HttpSession sess) {
+
+		
+		User user =(User) sess.getAttribute("users");
+		
+		if (user != null) {
+		
+		scheduleServices.deleteSchedule(schedule);
+		return true;
+		
+		}
+
+		return false;
+	}
+	
+	@PostMapping(value="/schedule" ,consumes= {"application/json"})
+	public @ResponseBody boolean SaveOrUpdateStagePost(@RequestBody Schedule schedule, HttpSession sess) {
+
+		
+		User user =(User) sess.getAttribute("users");
+		
+		if (user != null) {
+		
+		scheduleServices.SaveOrUpdate(schedule);
+		return true;
+		
+		}
+
+		return false;
+	}
+	
+	
+	
 }

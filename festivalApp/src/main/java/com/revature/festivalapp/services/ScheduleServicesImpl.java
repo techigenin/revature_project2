@@ -13,7 +13,9 @@ import com.revature.festivalapp.pojos.Stage;
 
 @Service
 public class ScheduleServicesImpl implements ScheduleServices {
-	private ScheduleDAO scheduleDAO = new ScheduleDAOImpl();
+	private ScheduleDAO scheduleDAO ;
+	
+	
 	
 	@Autowired
 	public void setScheduleDAO(ScheduleDAO scheduleDAO) {
@@ -45,6 +47,11 @@ public class ScheduleServicesImpl implements ScheduleServices {
 	@Override
 	public List<Schedule> getSchedulesByStage(Stage s) {
 		return scheduleDAO.getSchedulesByStage(s);
+	}
+
+	@Override
+	public void SaveOrUpdate(Schedule schedule) {
+		scheduleDAO.SaveOrUpdate(schedule);
 	}
 
 }
