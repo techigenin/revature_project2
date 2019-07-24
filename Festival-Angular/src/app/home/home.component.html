@@ -156,7 +156,7 @@
     <div class="row columns is-multiline">
 
 
-            <div class="column is-one-third" *ngFor="let event of events">
+            <div class="column is-one-third" #selectedEvent (click)="onSelectEvent(selectedEvent.children)" *ngFor="let event of events">
                 <div class="card large round">
                     <header class="card-header">
                         <p class="card-header-title is-centered">

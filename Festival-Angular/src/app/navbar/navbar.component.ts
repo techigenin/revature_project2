@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import bulmaQuickview from '../../../node_modules/bulma-quickview/dist/js/bulma-quickview.js';
 import { HttpClient } from '@angular/common/http';
 import { AssignedEvent } from '../shared/assigned-event.model';
@@ -17,6 +17,11 @@ import { map } from 'rxjs/operators';
 })
 export class NavbarComponent implements OnInit {
   loggedIn = false;
+//@viewChild('serverContentInput', {static: true}) serverContentInput: ElementRef;
+//If you DON'T access the selected element in ngOnInit (but anywhere else in your component),
+// set static: false instead!
+//  @ViewChild('assignedName', {static: false}) assignedName: ElementRef;
+ // call this.assignedName.nativeElement to get underlying element
   // private assignedEvent:AssignedEvent;
   // private assignedEvents: AssignedEvent[] = [
   //   new AssignedEvent('Lollapalooza', 'Manager', '8/7/19', '8/10/19'),
@@ -51,6 +56,16 @@ export class NavbarComponent implements OnInit {
  onTestClick() {
    this.router.navigate(['/createEvent']);
    alert('the click event works');
+ }
+
+ onSelectRow(selectedRow: HTMLCollection) {
+
+  console.log(selectedRow[0].innerHTML);
+  console.log(selectedRow[1].innerHTML);
+  console.log(selectedRow[2].innerHTML);
+
+ // let d = e.children;
+ // alert(d.children[0].innerText);
  }
 
  private fetchUserEvents() {

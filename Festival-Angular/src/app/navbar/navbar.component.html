@@ -126,12 +126,12 @@
               
                 </thead>
                 <tbody>
-                  <tr *ngFor="let assignedEvent of this.assignedEvents">
-                      <a>
-                    <td><a class="button"></a>{{assignedEvent.name}}</td>
-                    <td>{{assignedEvent.role}}</td>
-                    <td>{{assignedEvent.start +' - '+ assignedEvent.end}}</td>
-                  </a>
+                  <tr #selectedRow *ngFor="let assignedEvent of this.assignedEvents" (click)="onSelectRow(selectedRow.children)">
+                      
+                    <td >{{assignedEvent.name}}</td>
+                    <td >{{assignedEvent.role}}</td>
+                    <td >{{assignedEvent.start +' - '+ assignedEvent.end}}</td>
+                  
                   </tr>
                 
                     

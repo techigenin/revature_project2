@@ -1,5 +1,6 @@
 package com.revature.festivalapp.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -7,10 +8,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Component;
 
-import com.revature.festival.util.SessionFactoryUtil;
+import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.pojos.Stage;
+import com.revature.festivalapp.util.SessionFactoryUtil;
 
+@Component
 public class StageDAOImpl implements StageDAO {
 	SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 
@@ -63,11 +67,33 @@ public class StageDAOImpl implements StageDAO {
 		
 	}
 
-	public Stage getStagebyName(String stagename) {
+	@Override
+	public Stage getStagebyName(String stageName) {
 		Session sess = sf.openSession();
-		Criteria crit = sess.createCriteria(Stage.class).add(Restrictions.eq("stageName", stagename));
+		Criteria crit = sess.createCriteria(Stage.class).add(Restrictions.eq("stageName", stageName));
 		Stage stage = (Stage) crit.uniqueResult();
 		sess.close();
 		return stage;
+	}
+
+	@Override
+	public List<Stage> getStagesByEvent(FestivalEvent fe) {
+		Session sess = sf.openSession();
+		Criteria crit = sess.createCriteria(Stage.class);
+		crit.add(Restrictions.eq("festivalEvent", fe));
+		
+		List<Stage> retList = new ArrayList<Stage>();
+		
+		for (Object o : crit.list()) {
+			retList.add((Stage)o);
+		}
+		
+		for (Stage s : retList) {
+			System.out.println(s.getCrew());
+			System.out.println(s.getFestivalEvent());
+		}
+		sess.close();
+		
+		return retList;
 	}
 }

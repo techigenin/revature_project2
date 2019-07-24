@@ -8,25 +8,13 @@
 		<property name="hibernate.format_sql">true</property>
 		<property name="hibernate.connection.pool_size">5</property>
 
-
-
-	<mapping class="com.revature.festivalapp.pojos.User" />
-	<mapping class="com.revature.festivalapp.pojos.EventRole" />
-	<mapping class="com.revature.festivalapp.pojos.FestivalEvent" />
-	
-	<mapping class="com.revature.festivalapp.pojos.Stage"/>
-	<mapping class="com.revature.festivalapp.pojos.Schedule"/>
-	
-	
-	<mapping class="com.revature.festival.util.LocalDateAttributeConverter" />
- 	<mapping class="com.revature.festival.util.LocalDateTimeAttributeConverter" />
-
-
-
-		
-		
-
-		
+		<mapping class="com.revature.festivalapp.pojos.User" />
+		<mapping class="com.revature.festivalapp.pojos.EventRole" />
+		<mapping class="com.revature.festivalapp.pojos.FestivalEvent" />
+		<mapping class="com.revature.festivalapp.pojos.Stage"/>
+		<mapping class="com.revature.festivalapp.pojos.Schedule"/>
+		<mapping class="com.revature.festivalapp.util.LocalDateAttributeConverter" />
+	 	<mapping class="com.revature.festivalapp.util.LocalDateTimeAttributeConverter" />
 
 <!--  		<mapping class="com.revature.festivalapp.pojos.EventRole"/>
  		<mapping class="com.revature.festivalapp.pojos.FestivalEvent"/>
@@ -34,7 +22,6 @@
 		<mapping class="com.revature.festival.util.LocalDateTimeAttributeConverter"/> -->
 	
 		 <!--<mapping class="com.revature.festivalapp.pojos.Schedule"/>-->
-		 <mapping class="com.revature.festivalapp.pojos.Stage"/>
 		
 		<!-- <mapping class="com.revature.festivalapp.pojos.Manager"/>
  		<mapping class="com.revature.festivalapp.pojos.Promoter"/>

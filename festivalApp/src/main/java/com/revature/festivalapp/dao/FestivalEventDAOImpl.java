@@ -8,15 +8,28 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Component;
 
-import com.revature.festival.util.SessionFactoryUtil;
 import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.pojos.User;
+import com.revature.festivalapp.util.SessionFactoryUtil;
 
+@Component
 public class FestivalEventDAOImpl implements FestivalEventDAO {
 
 	SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 
+	@Override
+	public FestivalEvent getFestivalEventById(int id) {
+		Session sess = sf.openSession();
+		FestivalEvent fe = (FestivalEvent) sess.get(FestivalEvent.class, id);
+		System.out.println(fe);
+		sess.close();
+		
+		return fe;
+	}
+	
+	
 	@Override
 	public void insertFestivalEvent(FestivalEvent fe) {
 		Session sess = sf.openSession();
@@ -44,14 +57,6 @@ public class FestivalEventDAOImpl implements FestivalEventDAO {
 		sess.close();
 	}
 	
-	@Override
-	public FestivalEvent getFestivalEventById(int id) {
-		Session sess = sf.openSession();
-		FestivalEvent fe = (FestivalEvent) sess.get(FestivalEvent.class, id);
-		sess.close();
-		
-		return fe;
-	}
 
 	@Override
 	public List<FestivalEvent> getAllFestivalEvents() {
@@ -60,10 +65,14 @@ public class FestivalEventDAOImpl implements FestivalEventDAO {
 		
 		List<FestivalEvent> results = new ArrayList<FestivalEvent>();
 		
-		for (Object o : crit.list())
+		for (Object o : crit.list()) {
 			if (o instanceof FestivalEvent)
 				results.add((FestivalEvent)o);
-			
+		}	
+		
+		for (FestivalEvent fe : results) {
+			System.out.println(fe);
+		}
 		sess.close();
 		return results;
 	}
@@ -83,6 +92,10 @@ public class FestivalEventDAOImpl implements FestivalEventDAO {
 		for (Object o : cr.list())
 			if (o instanceof FestivalEvent)
 				results.add((FestivalEvent)o);
+		
+		for (FestivalEvent fe : results) {
+			System.out.println(fe);
+		}
 		
 		sess.close();
 		return results;
