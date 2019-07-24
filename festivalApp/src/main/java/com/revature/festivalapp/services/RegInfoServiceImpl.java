@@ -3,10 +3,12 @@ package com.revature.festivalapp.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.revature.festivalapp.dao.RegInfoDAO;
 import com.revature.festivalapp.pojos.RegInfo;
 
+@Service
 public class RegInfoServiceImpl implements RegInfoService {
 
 	RegInfoDAO regInfoDAO;

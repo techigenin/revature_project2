@@ -5,13 +5,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
+@Controller("/logout")
 public class LogoutController {
 
-	@GetMapping("/logout")
+	@GetMapping
 	public String logout(HttpSession sess) {
 		sess.invalidate();
-		return "redirect:resources/login.html";
+		return "redirect:/resources/angular/index.html";
 	}
 	
 }

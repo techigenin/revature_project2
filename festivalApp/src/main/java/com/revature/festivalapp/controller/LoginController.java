@@ -27,12 +27,12 @@ public class LoginController {
 		this.userServices = userServices;
 	}
 	
-	@GetMapping
-	public String loginGet() {
-		return "redirect:resources/login.html";
-	}
+//	@GetMapping
+//	public String loginGet() {
+//		return "redirect:resources/login.html";
+//	}
 	
-	@PostMapping(consumes={"application/json"})
+	@PostMapping(path="/login", consumes={"application/json"})
 	public @ResponseBody boolean loginPost(@RequestBody UserDTO u, HttpSession sess) {
 		User validUser = userServices.loginUser(new User(u));
 		
