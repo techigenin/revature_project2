@@ -33,6 +33,8 @@ public class LoginController {
 		this.userServices = userServices;
 	}
 	
+feature-ScheduleController
+	
 	@GetMapping(value="/login")
 	public String loginGet() {
 		return "redirect:resources/angular/index.html";

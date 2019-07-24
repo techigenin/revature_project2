@@ -10,6 +10,7 @@ import com.revature.festivalapp.dao.ScheduleDAOImpl;
 import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.pojos.Schedule;
 import com.revature.festivalapp.pojos.Stage;
+import com.revature.festivalapp.pojos.User;
 
 @Service
 public class ScheduleServicesImpl implements ScheduleServices {
@@ -45,6 +46,11 @@ public class ScheduleServicesImpl implements ScheduleServices {
 	@Override
 	public List<Schedule> getSchedulesByStage(Stage s) {
 		return scheduleDAO.getSchedulesByStage(s);
+	}
+
+	@Override
+	public List<Schedule> getScheduleByUsers(User user) {
+		return scheduleDAO.getScheudlesByUser(user);
 	}
 
 }

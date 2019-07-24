@@ -6,6 +6,7 @@ import java.util.List;
 import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.pojos.Schedule;
 import com.revature.festivalapp.pojos.Stage;
+import com.revature.festivalapp.pojos.User;
 
 public interface ScheduleDAO {
 	
@@ -17,4 +18,5 @@ public interface ScheduleDAO {
 	public List<Schedule> ViewAllSchedule();
 	public List<Schedule> SearchByName (String artist_name);// by artist name incase we gonna use it later 
 	public List<Schedule> getSchedulesByStage(Stage s);
+	public List<Schedule> getScheudlesByUser(User user);
 }
