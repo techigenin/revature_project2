@@ -33,10 +33,7 @@ public class LoginController {
 		this.userServices = userServices;
 	}
 	
-	@GetMapping(value="/login")
-	public String loginGet() {
-		return "redirect:resources/login.html";
-	}
+	
 	
 	@PostMapping(value="/login")
 	public @ResponseBody boolean loginPost(@RequestBody String userIn, HttpSession sess) {

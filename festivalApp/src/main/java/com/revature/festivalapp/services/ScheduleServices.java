@@ -5,6 +5,7 @@ import java.util.List;
 import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.pojos.Schedule;
 import com.revature.festivalapp.pojos.Stage;
+import com.revature.festivalapp.pojos.User;
 
 public interface ScheduleServices {
 	
@@ -17,6 +18,8 @@ public interface ScheduleServices {
 	public void deleteSchedule(Schedule schedule);
 
 	public List<Schedule> getSchedulesByStage(Stage s);
+	
+	public List<Schedule> getScheduleByUsers(User user);
 	
 	
 

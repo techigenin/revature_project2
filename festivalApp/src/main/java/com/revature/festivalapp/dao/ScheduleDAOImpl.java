@@ -12,10 +12,12 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
+import com.revature.festivalapp.pojos.EventRole;
 import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.pojos.Schedule;
 import com.revature.festivalapp.pojos.ScheduleEmbedded;
 import com.revature.festivalapp.pojos.Stage;
+import com.revature.festivalapp.pojos.User;
 import com.revature.festivalapp.util.SessionFactoryUtil;
 
 @Component
@@ -103,6 +105,26 @@ public class ScheduleDAOImpl implements ScheduleDAO {
 		sess.close();
 		
 		return retList;
+	}
+
+	@Override
+	public List<Schedule> getScheudlesByUser(User user) {
+		Session sess = sf.openSession();
+		Criteria crit = sess.createCriteria(Schedule.class);
+		crit.add(Restrictions.eq("user_id", user));
+		
+		List<Schedule> sch = new ArrayList<>();
+		
+		for (Object o : crit.list())
+			if (o instanceof Schedule)
+			sch.add((Schedule)o);
+		
+		for (Schedule s : sch )
+			System.out.println(s);
+		
+		sess.close();
+		
+		return sch;
 	}
 
 }
