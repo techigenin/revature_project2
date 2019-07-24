@@ -35,7 +35,8 @@ public class FestivalEvent {
 	@Column(name="event_desc")
 	private String eventDescription;
 	
-	@ManyToOne(cascade= {CascadeType.REFRESH}, fetch=FetchType.LAZY)
+	//@ManyToOne(cascade= {CascadeType.REFRESH}, fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="manager_id")
 	private User manager;
 
