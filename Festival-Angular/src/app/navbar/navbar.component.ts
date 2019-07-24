@@ -34,7 +34,7 @@ export class NavbarComponent implements OnInit {
   // don't need to unsubscribe for observables provided by angular 
   onClickSubmit(data: { username: string; password: string }) {
     // sending http request
-    this.http.post('/login', data).subscribe(responseData => {
+    this.http.post('/festivalApp/login', data).subscribe(responseData => {
       // angular will give you the response body 
       // if response is false, alert user invalid login
       // bool: Boolean = responseData;
