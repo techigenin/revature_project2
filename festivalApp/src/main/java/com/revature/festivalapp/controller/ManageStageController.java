@@ -18,30 +18,8 @@ public class ManageStageController {
 		this.stageServices = stageServices;
 	}
 
-	@PostMapping(value="/stage", consumes= {"application/json"})
-	public @ResponseBody boolean UpdateStagePost(@RequestBody Stage stage, HttpSession sess) {
-
-		User user =(User) sess.getAttribute("users");
-		
-		if (user != null) {
-		stageServices.updateStage(stage);
-		return true;
-		}
-		return false;
-	}
 	
-	@PostMapping(value="/stage", consumes= {"application/json"})
-	public @ResponseBody boolean CreateStagePost(@RequestBody Stage stage, HttpSession sess) {
 
-		User user =(User) sess.getAttribute("users");
-		
-		if (user != null) {
-		stageServices.createStage(stage);	
-		
-		return true;
-		}
-		return false;
-	}
 	
 	@PostMapping(value="/stage", consumes= {"application/json"})
 	public @ResponseBody boolean SaveOrUpdateStagePost(@RequestBody Stage stage, HttpSession sess) {
@@ -56,16 +34,5 @@ public class ManageStageController {
 		return false;
 	}
 	
-	@PostMapping(value="/stage", consumes= {"application/json"})
-	public @ResponseBody boolean DeleteStagePost(@RequestBody Stage stage, HttpSession sess) {
-
-		User user =(User) sess.getAttribute("users");
-		
-		if (user != null) {
-		stageServices.deleteStage(stage);		
-		return true;
-		}
-		return false;
-	}
 	
 }
