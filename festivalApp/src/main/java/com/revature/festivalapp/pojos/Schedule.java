@@ -73,46 +73,91 @@ public class Schedule {
 				+ ", endTime=" + endTime + ", artistName=" + artistName + "]";
 	}
 
-	int getScheduleId() {
+	public int getScheduleId() {
 		return scheduleId;
 	}
 
-	void setScheduleId(int scheduleId) {
+	public void setScheduleId(int scheduleId) {
 		this.scheduleId = scheduleId;
 	}
 
-	Stage getStageNumber() {
+	public Stage getStageNumber() {
 		return stageNumber;
 	}
 
-	void setStageNumber(Stage stageNumber) {
+	public void setStageNumber(Stage stageNumber) {
 		this.stageNumber = stageNumber;
 	}
 
-	LocalDateTime getStartTime() {
+	public LocalDateTime getStartTime() {
 		return startTime;
 	}
 
-	void setStartTime(LocalDateTime startTime) {
+	public void setStartTime(LocalDateTime startTime) {
 		this.startTime = startTime;
 	}
 
-	LocalDateTime getEndTime() {
+	public LocalDateTime getEndTime() {
 		return endTime;
 	}
 
-	void setEndTime(LocalDateTime endTime) {
+	public void setEndTime(LocalDateTime endTime) {
 		this.endTime = endTime;
 	}
 
-	String getArtistName() {
+	public String getArtistName() {
 		return artistName;
 	}
 
-	void setArtistName(String artistName) {
+	public void setArtistName(String artistName) {
 		this.artistName = artistName;
 	}
-		
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((artistName == null) ? 0 : artistName.hashCode());
+		result = prime * result + ((endTime == null) ? 0 : endTime.hashCode());
+		result = prime * result + scheduleId;
+		result = prime * result + ((stageNumber == null) ? 0 : stageNumber.hashCode());
+		result = prime * result + ((startTime == null) ? 0 : startTime.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Schedule other = (Schedule) obj;
+		if (artistName == null) {
+			if (other.artistName != null)
+				return false;
+		} else if (!artistName.equals(other.artistName))
+			return false;
+		if (endTime == null) {
+			if (other.endTime != null)
+				return false;
+		} else if (!endTime.equals(other.endTime))
+			return false;
+		if (scheduleId != other.scheduleId)
+			return false;
+		if (stageNumber == null) {
+			if (other.stageNumber != null)
+				return false;
+		} else if (!stageNumber.equals(other.stageNumber))
+			return false;
+		if (startTime == null) {
+			if (other.startTime != null)
+				return false;
+		} else if (!startTime.equals(other.startTime))
+			return false;
+		return true;
+	}
 }
 		 	
 

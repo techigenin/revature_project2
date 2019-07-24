@@ -5,6 +5,8 @@ import java.util.List;
 import com.revature.festivalapp.pojos.FestivalEvent;
 
 public interface FestivalEventServices {
+	
+	public FestivalEvent getFestivalEvent(int i);
 
 	public void createFestivalEvent(FestivalEvent fe);
 	

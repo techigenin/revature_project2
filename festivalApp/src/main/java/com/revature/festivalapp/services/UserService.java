@@ -11,7 +11,7 @@ public interface UserService {
 	
 	public void registerUser(User u);
 
-	public List<EventRole> getAllUserEventsAndRoles(int i);
+	List<EventRole> getAllEventRolesByUser(User u);
 	
 }
 

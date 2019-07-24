@@ -5,41 +5,56 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.festivalapp.dao.StageDAO;
 import com.revature.festivalapp.dao.StageDAOImpl;
+import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.pojos.Stage;
 
 @Service
 public class StageServicesImpl implements StageServices {
 	
-	private StageDAOImpl stageDao;
+	private StageDAO stageDAO = new StageDAOImpl();
 	
+	public StageDAO getStageDAO() {
+		return stageDAO;
+	}
+
 	@Autowired
-	public void setStageDao(StageDAOImpl stageDao) {
-		this.stageDao = stageDao;
+	public void setStageDAO(StageDAO stageDAO) {
+		this.stageDAO = stageDAO;
 	}
 
 	@Override
 	public void createStage(Stage stage) {
-		stageDao.insertStage(stage);
+		stageDAO.insertStage(stage);
 
 	}
 
 	@Override
 	public void updateStage(Stage stage) {
-		stageDao.updateStage(stage);
+		stageDAO.updateStage(stage);
 
 	}
 
 	@Override
 	public List<Stage> viewAllStages() {
-		// TODO Auto-generated method stub
-		return stageDao.getAllStages();
+		return stageDAO.getAllStages();
 	}
 
 	@Override
 	public void deleteStage(Stage stage) {
-		stageDao.deleteStage(stage);
+		stageDAO.deleteStage(stage);
 
+	}
+
+	@Override
+	public List<Stage> getStagesByEvent(FestivalEvent fe) {
+		return stageDAO.getStagesByEvent(fe);
+	}
+
+	@Override
+	public Stage getStage(int i) {
+		return stageDAO.getStageById(i);
 	}
 
 }
