@@ -84,8 +84,6 @@ insert into schedule
 	(stage_number, start_time, end_time, artist_name)
 		values
 			(1, '2019-09-01T21:15:00', '2019-09-01T22:00:00', 'Carl Carlston');
-			
-select * from event_role;	
 
 insert into event_role
 	(user_id, event_id, user_role)
