@@ -1,0 +1,264 @@
+<!-- <p>create-event works!</p> -->
+<br>
+<ul class="steps is-balanced">
+    <li class="steps-segment is-active">
+      <span class="steps-marker"></span>
+      <div class="steps-content">
+        <p class="is-size-4">Step 1</p>
+        <p>Create your Event</p>
+      </div>
+    </li>
+    <li class="steps-segment">
+      <span class="steps-marker"></span>
+      <div class="steps-content">
+        <p class="is-size-4">Step 2</p>
+        <p>This is the second step. Once you complete the first step, you will end up here.</p>
+      </div>
+    </li>
+    <li class="steps-segment is-active">
+      <span class="steps-marker"></span>
+      <div class="steps-content">
+        <p class="is-size-4">Step 3</p>
+        <p>This is the third step. This is halfway between the start and the end.</p>
+      </div>
+    </li>
+    <li class="steps-segment">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">Step 4</p>
+          <p>Success!</p>
+        </div>
+    </li>
+    
+  </ul>
+
+
+
+<form> 
+
+    <div class="field">
+      <label class="label">Event Name</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="Your Event's Name Here">
+      </div>
+    </div>
+ 
+    <br>
+ 
+    <div class="field is-horizontal">
+    
+      <div class="field-body">
+
+        <div class="field has-addons">
+          <div class="control">
+            <a class="button is-static">
+              Start Date
+            </a>
+          </div>
+          <div class="control is-expanded">
+            <input class="input " placeholder="Please choose a date from calender" type="date">
+          </div>
+        </div>
+    
+        <div class="field has-addons">
+          <div class="control ">
+            <a class="button is-static">
+              End Date
+            </a>
+          </div>
+          <div class="control is-expanded">
+            <input class="input " placeholder="Leave blank if one day event" type="date">
+            <p class="help">Your Event will be one day(s)</p>
+          </div>
+        </div>
+    
+      </div>
+
+    </div>
+    
+    
+    
+    <div class="field">
+      <label class="label">Location</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="This will be displayed to customers">
+      </div>
+    </div>
+    
+    
+    
+    
+    <div class="field">
+      <label class="label">Event Description</label>
+      <div class="control">
+        <textarea class="textarea" placeholder="Make it good!"></textarea>
+      </div>
+    </div>
+  
+    
+    <br>
+
+    <div class="field is-horizontal">
+    
+      <div class="field-body">
+        
+        <div class="field has-addons">
+          <div class="control">
+            <a class="button is-static">
+              Audience Capacity
+            </a>
+          </div>
+          <div class="control ">
+            <input class="input " placeholder="Enter max capacity" type="text">
+          </div>
+        </div>
+    
+        <div class="field is-grouped">
+          <div class="control">
+            <a class="button is-info">
+              Previous
+            </a>
+          </div>
+          <div class="control">
+            <a class="button is-info">
+              Next
+            </a>
+          </div>
+          <div class="control">
+            <a class="button is-primary">
+              Save Changes
+            </a>
+          </div>
+          <div class="control">
+            <a class="button is-danger">
+              Cancel
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+</form> 
+
+
+
+
+
+
+<!-- <div class="container">
+    <input type="date">
+</div> -->
+
+<!-- <div class="container">
+    <div id="quickviewDefault" class="quickview">
+        <header class="quickview-header">
+          <p class="title">Quickview title</p>
+          <span class="delete" data-dismiss="quickview"></span>
+        </header>
+      
+        <div class="quickview-body">
+          <div class="quickview-block">
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Event Name</th>
+                    <th>Event Role</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Three</td>
+                    <td>Four</td>
+                  </tr>
+                  <tr>
+                    <td>Five</td>
+                    <td>Six</td>
+                  </tr>
+                  <tr>
+                    <td>Seven</td>
+                    <td>Eight</td>
+                  </tr>
+                  <tr>
+                    <td>Nine</td>
+                    <td>Ten</td>
+                  </tr>
+                  <tr>
+                    <td>Eleven</td>
+                    <td>Twelve</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+      
+        <footer class="quickview-footer">
+      
+        </footer>
+    </div>
+      
+      <button class="button is-primary" data-show="quickview" data-target="quickviewDefault">Show quickview</button>
+</div> -->
+
+<!-- <div class="calendar">
+    <div class="calendar-nav">
+      <div class="calendar-nav-previous-month">
+        <button class="button is-text">
+          <i class="fa fa-chevron-left"></i>
+        </button>
+      </div>
+      <div>March 2017</div>
+      <div class="calendar-nav-next-month">
+        <button class="button is-text">
+          <i class="fa fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <div class="calendar-date">Sun</div>
+        <div class="calendar-date">Mon</div>
+        <div class="calendar-date">Tue</div>
+        <div class="calendar-date">Wed</div>
+        <div class="calendar-date">Thu</div>
+        <div class="calendar-date">Fri</div>
+        <div class="calendar-date">Sat</div>
+      </div>
+      <div class="calendar-body">
+        <div class="calendar-date is-disabled"><button class="date-item">26</button></div>
+        <div class="calendar-date is-disabled"><button class="date-item">27</button></div>
+        <div class="calendar-date is-disabled"><button class="date-item">28</button></div>
+        <div class="calendar-date"><button class="date-item">1</button></div>
+        <div class="calendar-date"><button class="date-item">2</button></div>
+        <div class="calendar-date"><button class="date-item">3</button></div>
+        <div class="calendar-date tooltip" data-tooltip="Today"><button class="date-item is-today">4</button></div>
+        <div class="calendar-date tooltip" data-tooltip="Not available" disabled=""><button class="date-item">5</button></div>
+        <div class="calendar-date"><button class="date-item">6</button></div>
+        <div class="calendar-date"><button class="date-item">7</button></div>
+        <div class="calendar-date tooltip" data-tooltip="You have appointments"><button class="date-item">8</button></div>
+        <div class="calendar-date"><button class="date-item">9</button></div>
+        <div class="calendar-date"><button class="date-item">10</button></div>
+        <div class="calendar-date"><button class="date-item">11</button></div>
+        <div class="calendar-date"><button class="date-item">12</button></div>
+        <div class="calendar-date"><button class="date-item">13</button></div>
+        <div class="calendar-date"><button class="date-item">14</button></div>
+        <div class="calendar-date"><button class="date-item">15</button></div>
+        <div class="calendar-date calendar-range calendar-range-start"><button class="date-item is-active">16</button></div>
+        <div class="calendar-date calendar-range"><button class="date-item">17</button></div>
+        <div class="calendar-date calendar-range"><button class="date-item">18</button></div>
+        <div class="calendar-date calendar-range"><button class="date-item">19</button></div>
+        <div class="calendar-date calendar-range calendar-range-end"><button class="date-item is-active">20</button></div>
+        <div class="calendar-date"><button class="date-item">21</button></div>
+        <div class="calendar-date"><button class="date-item">22</button></div>
+        <div class="calendar-date"><button class="date-item">23</button></div>
+        <div class="calendar-date"><button class="date-item">24</button></div>
+        <div class="calendar-date"><button class="date-item">25</button></div>
+        <div class="calendar-date"><button class="date-item">26</button></div>
+        <div class="calendar-date"><button class="date-item">27</button></div>
+        <div class="calendar-date"><button class="date-item">28</button></div>
+        <div class="calendar-date"><button class="date-item">29</button></div>
+        <div class="calendar-date"><button class="date-item">30</button></div>
+        <div class="calendar-date"><button class="date-item">31</button></div>
+        <div class="calendar-date is-disabled"><button class="date-item">1</button></div>
+      </div>
+    </div>
+  </div> -->
