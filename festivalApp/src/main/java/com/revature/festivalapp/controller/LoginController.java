@@ -13,7 +13,7 @@ import com.revature.festivalapp.pojos.User;
 import com.revature.festivalapp.pojos.UserDTO;
 import com.revature.festivalapp.services.UserService;
 
-@Controller
+@Controller("/login")
 public class LoginController {
 	
 	UserService userServices;
@@ -27,13 +27,12 @@ public class LoginController {
 		this.userServices = userServices;
 	}
 	
-	@GetMapping(value="/login")
+	@GetMapping
 	public String loginGet() {
 		return "redirect:resources/login.html";
 	}
 	
-	@PostMapping(value="/login",
-		consumes={"application/json"})
+	@PostMapping(consumes={"application/json"})
 	public @ResponseBody boolean loginPost(@RequestBody UserDTO u, HttpSession sess) {
 		User validUser = userServices.loginUser(new User(u));
 		
@@ -45,7 +44,4 @@ public class LoginController {
 		
 		return false;
 	}
-	
-	
-
 }
