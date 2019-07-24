@@ -13,6 +13,8 @@ public interface StageServices {
 	
 	public void updateStage(Stage stage);
 	
+	public void saveOrUpdateStage(Stage stage);
+	
 	public List <Stage> viewAllStages();
 	
 	public void deleteStage(Stage stage);

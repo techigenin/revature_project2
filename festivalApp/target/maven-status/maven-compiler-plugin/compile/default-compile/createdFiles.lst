@@ -12,11 +12,13 @@ com\revature\festivalapp\pojos\Schedule.class
 com\revature\festivalapp\services\StageServicesImpl.class
 com\revature\festivalapp\services\ScheduleServices.class
 com\revature\festivalapp\services\UserService.class
+com\revature\festivalapp\controller\HomeController.class
 com\revature\festivalapp\pojos\EventManagementDTO.class
 com\revature\festivalapp\dao\StageDAOImpl.class
 com\revature\festivalapp\driver\FestivalDriver.class
 com\revature\festivalapp\util\LocalDateTimeAttributeConverter.class
 com\revature\festivalapp\dao\UserDAO.class
+com\revature\festivalapp\controller\PerRoleSchecdule.class
 com\revature\festivalapp\services\EventRoleServiceImpl.class
 com\revature\festivalapp\dao\StageDAO.class
 com\revature\festivalapp\util\SessionFactoryUtil.class
@@ -28,6 +30,7 @@ com\revature\festivalapp\services\ScheduleServicesImpl.class
 com\revature\festivalapp\controller\LogoutController.class
 com\revature\festivalapp\services\FestivalEventServicesImpl.class
 com\revature\festivalapp\dao\FestivalEventDAOImpl.class
+com\revature\festivalapp\pojos\ScheduleDTO.class
 com\revature\festivalapp\dao\EventRoleDAOImpl.class
 com\revature\festivalapp\pojos\ScheduleEmbedded.class
 com\revature\festivalapp\services\StageServices.class
@@ -35,4 +38,5 @@ com\revature\festivalapp\util\LocalDateAttributeConverter.class
 com\revature\festivalapp\dao\ScheduleDAOImpl.class
 com\revature\festivalapp\controller\EventManagementController.class
 com\revature\festivalapp\controller\DetailsController.class
+com\revature\festivalapp\controller\EventHomeController.class
 com\revature\festivalapp\pojos\DetailsDTO.class

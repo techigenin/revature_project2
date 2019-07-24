@@ -35,6 +35,11 @@ public class StageServicesImpl implements StageServices {
 		stageDAO.updateStage(stage);
 
 	}
+	
+	@Override
+	public void saveOrUpdateStage(Stage s) {
+		stageDAO.saveOrUpdateStage(s);
+	}
 
 	@Override
 	public List<Stage> viewAllStages() {

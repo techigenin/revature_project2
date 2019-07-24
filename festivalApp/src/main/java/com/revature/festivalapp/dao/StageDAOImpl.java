@@ -96,4 +96,13 @@ public class StageDAOImpl implements StageDAO {
 		
 		return retList;
 	}
+
+	@Override
+	public void saveOrUpdateStage(Stage s) {
+		Session sess = sf.openSession();
+		Transaction tx = sess.beginTransaction();
+		sess.saveOrUpdate(s);
+		tx.commit();
+		sess.close();
+	}
 }
