@@ -65,7 +65,7 @@ public class EventManagementController {
 		this.stageServices = stageServices;
 	}
 
-	@GetMapping(path = "manage_event", 
+	@GetMapping(path = "/manage_event", 
 			produces={"application/json"})
 	public @ResponseBody EventManagementDTO getManageEvent(Integer id, HttpSession sess) {
 		EventManagementDTO emDTO = new EventManagementDTO();
