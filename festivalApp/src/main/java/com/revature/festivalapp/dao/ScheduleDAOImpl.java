@@ -1,6 +1,5 @@
 package com.revature.festivalapp.dao;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,10 +11,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
-import com.revature.festivalapp.pojos.EventRole;
-import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.pojos.Schedule;
-import com.revature.festivalapp.pojos.ScheduleEmbedded;
 import com.revature.festivalapp.pojos.Stage;
 import com.revature.festivalapp.pojos.User;
 import com.revature.festivalapp.util.SessionFactoryUtil;

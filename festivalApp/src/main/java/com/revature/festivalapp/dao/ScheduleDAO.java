@@ -1,9 +1,7 @@
 package com.revature.festivalapp.dao;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
-import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.pojos.Schedule;
 import com.revature.festivalapp.pojos.Stage;
 import com.revature.festivalapp.pojos.User;

@@ -2,7 +2,6 @@ package com.revature.festivalapp.dao;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
 
 import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.pojos.User;
