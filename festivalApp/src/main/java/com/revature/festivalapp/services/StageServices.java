@@ -1,4 +1,4 @@
-package com.revature.festival.services;
+package com.revature.festivalapp.services;
 
 import com.revature.festivalapp.pojos.Stage;
 

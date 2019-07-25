@@ -1,4 +1,4 @@
-package com.revature.festival.driver;
+package com.revature.festivalapp.driver;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -7,7 +7,6 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import com.revature.festival.util.SessionFactoryUtil;
 import com.revature.festivalapp.dao.FestivalEventDAO;
 import com.revature.festivalapp.dao.FestivalEventDAOImpl;
 import com.revature.festivalapp.dao.ScheduleDAO;
@@ -20,6 +19,10 @@ import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.pojos.Schedule;
 import com.revature.festivalapp.pojos.ScheduleEmbedded;
 import com.revature.festivalapp.pojos.Stage;
+import com.revature.festivalapp.pojos.User;
+import com.revature.festivalapp.services.UserService;
+import com.revature.festivalapp.services.UserServiceImpl;
+import com.revature.festivalapp.util.SessionFactoryUtil;
 
 public class FestivalDriver {
 	
@@ -31,7 +34,7 @@ public class FestivalDriver {
 		StageDAO sd = new StageDAOImpl();	
 		ScheduleDAO schd= new ScheduleDAO();	
 
-		/*
+		
 //		FestivalEvent fest = new FestivalEvent(
 //				2000, 
 //				"fun Days", 
@@ -42,8 +45,10 @@ public class FestivalDriver {
 //				ud.getUserByEmail("this@thatmail.com"));
 //		
 //		fd.insertFestivalEvent(fest);
-		
-	//User u = new User("this@thatmail.com", "myPassword", "manager, artist", "Rolando Casos", "Pisco Sour", null);
+//		
+//	User u = new User("this@thatmail.com", "myPassword", "manager, artist", "Rolando Casos", "Pisco Sour", null);
+//				ud.insertUser(u);
+//				
 				
 		
 		 
@@ -77,7 +82,7 @@ public class FestivalDriver {
 //		 getStageById(int id);
 //		
 //		public List<Stage> getAllStages();
-*/
+
 	
 	
 	
@@ -104,9 +109,18 @@ public class FestivalDriver {
 //		
 //		System.out.println(s.ViewAllSchedule());
 		
-		for (Schedule sch : schd.ViewAllSchedule())
-			System.out.println(sch.getSe().getStageNumber());
+//		for (Schedule sch : schd.ViewAllSchedule())
+//			System.out.println(sch.getSe().getStageNumber());
 	
+		UserService us = new UserServiceImpl();
+		
+		System.out.println(ud.getUserByEmail("this@thatmail.com"));
+		
+		for (User u : ud.getAllUsers()) {
+			System.out.println(u);
+			us.loginUser(u);
+		}
+		
 		System.out.println("Done!");
 	}
 }

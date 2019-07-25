@@ -46,8 +46,7 @@ create table users -- user pojo
 create table event_role (
 	id serial, -- user id
 	event_id serial,
-	user_role varchar,
-	primary key (id, event_id)
+	user_role varchar
 );
 
 -- We could/should probably delete this...

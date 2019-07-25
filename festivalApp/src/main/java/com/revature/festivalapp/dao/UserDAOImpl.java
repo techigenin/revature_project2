@@ -3,17 +3,22 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-import com.revature.festival.util.SessionFactoryUtil;
 import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.pojos.User;
+import com.revature.festivalapp.util.SessionFactoryUtil;
 
+@Component
 public class UserDAOImpl implements UserDAO {
 
 	SessionFactory sf = SessionFactoryUtil.getSessionFactory();
