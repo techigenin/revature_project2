@@ -11,6 +11,9 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { StageScheduleComponent } from './stage-schedule/stage-schedule.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { EditEventComponent } from './edit-event/edit-event.component';
+import { RegisterComponent } from './register/register.component';
+import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
 
 
 @NgModule({
@@ -19,7 +22,10 @@ import { NavbarComponent } from './navbar/navbar.component';
     HomeComponent,
     CreateEventComponent,
     StageScheduleComponent,
-    NavbarComponent
+    NavbarComponent,
+    EditEventComponent,
+    RegisterComponent,
+    ManagerDashboardComponent
   ],
   imports: [
     BrowserModule,

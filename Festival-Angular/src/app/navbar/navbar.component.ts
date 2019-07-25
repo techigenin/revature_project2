@@ -17,6 +17,7 @@ import { map } from 'rxjs/operators';
 })
 export class NavbarComponent implements OnInit {
   loggedIn = false;
+  edit = false;
 //@viewChild('serverContentInput', {static: true}) serverContentInput: ElementRef;
 //If you DON'T access the selected element in ngOnInit (but anywhere else in your component),
 // set static: false instead!
@@ -55,6 +56,7 @@ export class NavbarComponent implements OnInit {
  //testing click event binding as well as .navigate() method
  onTestClick() {
    this.router.navigate(['/createEvent']);
+   alert(""+this.router.url);
    alert('the click event works');
  }
 
@@ -89,8 +91,6 @@ export class NavbarComponent implements OnInit {
       new AssignedEvent('Lollapalooza', 'Manager', '8/7/19', '8/10/19'),
       new AssignedEvent('Bonnaroo', 'Artist', '11/7/19', '12/10/19')
     ];
-
-
-
   }
+
 }
