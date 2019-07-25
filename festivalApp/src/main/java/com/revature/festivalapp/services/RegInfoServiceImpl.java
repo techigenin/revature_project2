@@ -6,12 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.festivalapp.dao.RegInfoDAO;
+import com.revature.festivalapp.dao.RegInfoDAOImpl;
 import com.revature.festivalapp.pojos.RegInfo;
 
 @Service
 public class RegInfoServiceImpl implements RegInfoService {
 
-	RegInfoDAO regInfoDAO;
+	RegInfoDAO regInfoDAO = new RegInfoDAOImpl();
 	
 	@Autowired
 	public void setRegInfoDAO(RegInfoDAO regInfoDAO) {

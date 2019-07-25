@@ -61,6 +61,7 @@ public class EventHomeController {
 	@GetMapping(path = "/event_home", 
 			produces={"application/json"})
 	public @ResponseBody EventHomeDTO getManageEvent(Integer id) {
+
 		EventHomeDTO ehDTO = new EventHomeDTO();
 		if (id != null) {	
 			FestivalEvent fe = festivalEventServices.getFestivalEvent(id);

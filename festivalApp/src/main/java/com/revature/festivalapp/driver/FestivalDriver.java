@@ -44,6 +44,9 @@ public class FestivalDriver {
 
 		rs.updateRegInfo(reg);
 		
+		for (Schedule s : scheduleServices.getArtistStageSchedules(stageServices.getStage(1), ud.getUser(2)))
+			System.out.println(s);
+		
 //		rs.insertRegInfo(reg);
 //		
 //		FestivalEvent fest = new FestivalEvent(

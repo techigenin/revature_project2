@@ -17,4 +17,5 @@ public interface ScheduleDAO {
 	public List<Schedule> SearchByName (String artist_name);// by artist name incase we gonna use it later 
 	public List<Schedule> getSchedulesByStage(Stage s);
 	public List<Schedule> getScheudlesByUser(User user);
+	public List<Schedule> getArtistStageSchedules(Stage s, User artist);
 }
