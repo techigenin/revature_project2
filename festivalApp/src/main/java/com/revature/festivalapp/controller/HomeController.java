@@ -31,7 +31,7 @@ public class HomeController {
 	
 	@GetMapping("/home")
 	public String loginGet() {
-		return "redirect:resources/angular/index.html";
+		return "redirect:/resources/angular/index.html";
 	}
 	
 	@PostMapping("/home")

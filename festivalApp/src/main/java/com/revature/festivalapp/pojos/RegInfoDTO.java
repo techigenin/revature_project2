@@ -9,6 +9,8 @@ public class RegInfoDTO {
 	private String password;
 	
 	private String name;
+	
+	private FestivalEvent festivalEvent;
 
 	public RegInfoDTO() {
 		super();
@@ -102,5 +104,15 @@ public class RegInfoDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public FestivalEvent getFestivalEvent() {
+		return festivalEvent;
+	}
+
+	public void setFestivalEvent(FestivalEvent festivalEvent) {
+		this.festivalEvent = festivalEvent;
+	}
+	
+	
 
 }

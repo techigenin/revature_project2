@@ -8,25 +8,28 @@ public class RegInfo {
 
 	@Id
 	@Column(name="req_num")
-	private int reqNum;
+	private long reqNum;
 	
 	@Column(name="role_type")
 	private String roleType;
 	
+	@ManyToOne
 	@JoinColumn(name="event_num", referencedColumnName="event_number")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private FestivalEvent event;
 	
 	@Column
-	private boolean accepted;
+	private Boolean accepted;
 	
 	@Column
-	private boolean valid;
+	private Boolean valid;
 
 	public RegInfo() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public RegInfo(int reqNum, String roleType, FestivalEvent event, boolean accepted, boolean valid) {
+	public RegInfo(long reqNum, String roleType, FestivalEvent event, Boolean accepted, Boolean valid) {
 		super();
 		this.reqNum = reqNum;
 		this.roleType = roleType;
@@ -37,7 +40,7 @@ public class RegInfo {
 
 	@Override
 	public String toString() {
-		return "AddRole [reqNum=" + reqNum + ", roleType=" + roleType + ", event=" + event + ", accepted=" + accepted
+		return "RegInfo [reqNum=" + reqNum + ", roleType=" + roleType + ", event=" + event + ", accepted=" + accepted
 				+ ", valid=" + valid + "]";
 	}
 
@@ -45,11 +48,11 @@ public class RegInfo {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (accepted ? 1231 : 1237);
+		result = prime * result + ((accepted == null) ? 0 : accepted.hashCode());
 		result = prime * result + ((event == null) ? 0 : event.hashCode());
-		result = prime * result + reqNum;
+		result = prime * result + (int) (reqNum ^ (reqNum >>> 32));
 		result = prime * result + ((roleType == null) ? 0 : roleType.hashCode());
-		result = prime * result + (valid ? 1231 : 1237);
+		result = prime * result + ((valid == null) ? 0 : valid.hashCode());
 		return result;
 	}
 
@@ -62,7 +65,10 @@ public class RegInfo {
 		if (getClass() != obj.getClass())
 			return false;
 		RegInfo other = (RegInfo) obj;
-		if (accepted != other.accepted)
+		if (accepted == null) {
+			if (other.accepted != null)
+				return false;
+		} else if (!accepted.equals(other.accepted))
 			return false;
 		if (event == null) {
 			if (other.event != null)
@@ -76,16 +82,19 @@ public class RegInfo {
 				return false;
 		} else if (!roleType.equals(other.roleType))
 			return false;
-		if (valid != other.valid)
+		if (valid == null) {
+			if (other.valid != null)
+				return false;
+		} else if (!valid.equals(other.valid))
 			return false;
 		return true;
 	}
 
-	public int getReqNum() {
+	public long getReqNum() {
 		return reqNum;
 	}
 
-	public void setReqNum(int reqNum) {
+	public void setReqNum(long reqNum) {
 		this.reqNum = reqNum;
 	}
 
@@ -105,19 +114,21 @@ public class RegInfo {
 		this.event = event;
 	}
 
-	public boolean isAccepted() {
+	public Boolean getAccepted() {
 		return accepted;
 	}
 
-	public void setAccepted(boolean accepted) {
+	public void setAccepted(Boolean accepted) {
 		this.accepted = accepted;
 	}
 
-	public boolean isValid() {
+	public Boolean getValid() {
 		return valid;
 	}
 
-	public void setValid(boolean valid) {
+	public void setValid(Boolean valid) {
 		this.valid = valid;
 	}
+
+	
 }
