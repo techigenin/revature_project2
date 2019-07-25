@@ -1,8 +1,7 @@
 package com.revature.festivalapp.controller;
 
-import org.springframework.stereotype.Controller;
 
-@Controller
+//@Controller
 public class PerRoleSchecdule {
 	
 	//@GetMapping("/schedule")
