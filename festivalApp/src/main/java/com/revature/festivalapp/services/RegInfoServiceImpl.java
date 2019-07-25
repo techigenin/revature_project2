@@ -12,7 +12,7 @@ import com.revature.festivalapp.pojos.RegInfo;
 @Service
 public class RegInfoServiceImpl implements RegInfoService {
 
-	RegInfoDAO regInfoDAO = new RegInfoDAOImpl();
+	RegInfoDAO regInfoDAO;// = new RegInfoDAOImpl();
 	
 	@Autowired
 	public void setRegInfoDAO(RegInfoDAO regInfoDAO) {

@@ -67,23 +67,25 @@ insert into stage
 	(event_number, stage_name, crew_id)
 		values
 			(4, 'Outside Stage', 2);
+
+select * from schedule;
 		
 insert into schedule
-	(stage_number, start_time, end_time, artist_name)
+	(stage_number, start_time, end_time, artist)
 		values
-			(1, '2019-09-01T18:00:00', '2019-09-01T19:00:00', 'Betty Bonzai');
+			(1, '2019-09-01T18:00:00', '2019-09-01T19:00:00', 2);
 insert into schedule
-	(stage_number, start_time, end_time, artist_name)
+	(stage_number, start_time, end_time, artist)
 		values
-			(1, '2019-09-01T19:00:00', '2019-09-01T19:45:00', 'Carl Carlston');
+			(1, '2019-09-01T19:00:00', '2019-09-01T19:45:00', 3);
 insert into schedule
-	(stage_number, start_time, end_time, artist_name)
+	(stage_number, start_time, end_time, artist)
 		values
-			(1, '2019-09-01T20:00:00', '2019-09-01T21:00:00', 'Betty Bonzai');
+			(1, '2019-09-01T20:00:00', '2019-09-01T21:00:00', 2);
 insert into schedule
-	(stage_number, start_time, end_time, artist_name)
+	(stage_number, start_time, end_time, artist)
 		values
-			(1, '2019-09-01T21:15:00', '2019-09-01T22:00:00', 'Carl Carlston');
+			(1, '2019-09-01T21:15:00', '2019-09-01T22:00:00', 3);
 
 insert into event_role
 	(user_id, event_id, user_role)
