@@ -6,7 +6,6 @@ import { Component, OnInit, Output } from '@angular/core';
   styleUrls: ['./manager-dashboard.component.css']
 })
 export class ManagerDashboardComponent implements OnInit {
-  @Output()
 
   constructor() { }
 
