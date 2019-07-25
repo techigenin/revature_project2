@@ -123,4 +123,21 @@ public class ScheduleDAOImpl implements ScheduleDAO {
 		return sch;
 	}
 
+	@Override
+	public List<Schedule> getArtistStageSchedules(Stage s, User a) {
+		Session sess = sf.openSession();
+		Criteria crit = sess.createCriteria(Schedule.class);
+		crit.add(Restrictions.and(Restrictions.eq("stage", s), Restrictions.eq("artist", a)));
+		
+		List<Schedule> schedList = new ArrayList<>();
+		
+		for (Object o : crit.list())
+			if (o instanceof Schedule)
+				schedList.add((Schedule)o);
+		
+		sess.close();
+		
+		return schedList;
+	}
+
 }
