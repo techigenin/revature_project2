@@ -73,8 +73,8 @@
 
 <br>
 <button (click)="onEditCell()" class="button">I is button</button> -->
-<div class="columns is-gapless is-marginless is-mobile is-vcentered is-multiline">
-    <div class="column is-12 is-size-6" *ngFor="let day of eventDays"> <div class="box has-background-black has-text-white has-text-centered is-marginless"><p class="">{{day.day | date:'shortDate'}}</p></div> 
+<div class="columns is-gapless is-marginless is-mobile is-vcentered is-multiline ">
+    <div class="column is-12 is-size-6" (click)="onEditCell()" *ngFor="let day of eventDays"> <div class="box has-background-black has-text-white has-text-centered is-marginless"><p class="">{{day.day | date:'shortDate'}}</p></div> 
     <!-- <div class="column"> -->
         <div class="columns is-gapless is-marginless is-mobile is-outlined is-vcentered is-multiline">
         <!---------------------first for loop within a for loop below---------->
