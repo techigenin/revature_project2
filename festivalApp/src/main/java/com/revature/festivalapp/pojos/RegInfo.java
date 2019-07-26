@@ -8,7 +8,7 @@ public class RegInfo {
 
 	@Id
 	@Column(name="req_num")
-	private Integer reqNum;
+	private long reqNum;
 	
 	@Column(name="role_type")
 	private String roleType;
@@ -24,11 +24,18 @@ public class RegInfo {
 	@Column
 	private Boolean valid;
 
+	
+	
+
 	public RegInfo() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public RegInfo(int reqNum, String roleType, FestivalEvent event, boolean accepted, boolean valid) {
+	
+	
+	
+	public RegInfo(long reqNum, String roleType, FestivalEvent event, Boolean accepted, Boolean valid) {
 		super();
 		this.reqNum = reqNum;
 		this.roleType = roleType;
@@ -37,23 +44,33 @@ public class RegInfo {
 		this.valid = valid;
 	}
 
+
+
+
 	@Override
 	public String toString() {
-		return "AddRole [reqNum=" + reqNum + ", roleType=" + roleType + ", event=" + event + ", accepted=" + accepted
+		return "RegInfo [reqNum=" + reqNum + ", roleType=" + roleType + ", event=" + event + ", accepted=" + accepted
 				+ ", valid=" + valid + "]";
 	}
+
+
+	
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (accepted ? 1231 : 1237);
+		result = prime * result + ((accepted == null) ? 0 : accepted.hashCode());
 		result = prime * result + ((event == null) ? 0 : event.hashCode());
-		result = prime * result + reqNum;
+		result = prime * result + (int) (reqNum ^ (reqNum >>> 32));
 		result = prime * result + ((roleType == null) ? 0 : roleType.hashCode());
-		result = prime * result + (valid ? 1231 : 1237);
+		result = prime * result + ((valid == null) ? 0 : valid.hashCode());
 		return result;
 	}
+
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -64,7 +81,10 @@ public class RegInfo {
 		if (getClass() != obj.getClass())
 			return false;
 		RegInfo other = (RegInfo) obj;
-		if (accepted != other.accepted)
+		if (accepted == null) {
+			if (other.accepted != null)
+				return false;
+		} else if (!accepted.equals(other.accepted))
 			return false;
 		if (event == null) {
 			if (other.event != null)
@@ -78,12 +98,18 @@ public class RegInfo {
 				return false;
 		} else if (!roleType.equals(other.roleType))
 			return false;
-		if (valid != other.valid)
+		if (valid == null) {
+			if (other.valid != null)
+				return false;
+		} else if (!valid.equals(other.valid))
 			return false;
 		return true;
 	}
 
-	public int getReqNum() {
+
+
+
+	public long getReqNum() {
 		return reqNum;
 	}
 
