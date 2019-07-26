@@ -5,7 +5,9 @@ select setval('event_role_user_id_seq', 1, false);
 select setval('festival_event_event_number_seq', 1, false);
 select setval('festival_event_manager_id_seq', 1, false);
 select setval('stage_crew_id_seq', 1, false);
+select setval('schedule_artist_seq', 1, false);
 select setval('schedule_schedule_id_seq', 1, false);
+select setval('schedule_stage_number_seq', 1, false);
 select setval('stage_stage_number_seq', 1, false);
 select setval('users_id_seq', 1, false);
 
@@ -31,8 +33,6 @@ insert into users
 	(val_email, val_password, collected_roles, manager_name, artist_name, promoter_name) 
 		values
 			('customer@email.com', '1029', 'customer', null, null, null);
-		
-truncate festival_event, event_role;
 		
 insert into festival_event
 	(audience_capacity, event_name, event_location, event_start_date, event_end_date, event_desc, manager_id)
@@ -67,8 +67,6 @@ insert into stage
 	(event_number, stage_name, crew_id)
 		values
 			(4, 'Outside Stage', 2);
-
-select * from schedule;
 		
 insert into schedule
 	(stage_number, start_time, end_time, artist)

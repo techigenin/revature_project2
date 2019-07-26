@@ -4,7 +4,6 @@ select * from users;
 select * from festival_event;
 select * from stage;
 select * from schedule;
-select * from event_role;	
 select * from add_role;
 create table users -- user pojo
 (
@@ -33,8 +32,11 @@ create table festival_event
 	event_start_date date,
 	event_end_date date,
 	event_desc varchar(500),
-	manager_id serial
+	manager_id serial,
+	image_url varchar
 );
+
+select * from schedule;
 
 create table stage
 (
@@ -54,7 +56,7 @@ create table schedule
 );
 
 create table add_role (
-	req_num 	integer primary key,
+	req_num 	bigint primary key,
 	role_type	varchar,
 	event_num	serial,
 	accepted	boolean,
