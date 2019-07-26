@@ -25,12 +25,10 @@ export class EditEventComponent implements OnInit {
   constructor(private userEventsService: UserEventsService) { }
 
   ngOnInit() {
-    this.userEventsService.assignedEventSelected.subscribe(event => {
-      this.assignedEvent = event;
-      console.log(event);
-    });
-    // console.log(this.assignedEvent);
-    // console.log(this.userEventsService.retrieveSelectedEvent().event);
+   console.log(this.userEventsService.retrieveSelectedEvent());
+   this.userEventsService.assignedEventSelected.subscribe((event: AssignedEvent) => {
+     alert(event);
+   });
     this.eventDays = [
       new EventDay(new Date(), [
         new Stage('Stage One', [

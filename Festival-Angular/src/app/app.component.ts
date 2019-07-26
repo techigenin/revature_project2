@@ -5,7 +5,7 @@ import { UserEventsService } from './user-events.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [UserEventsService]
+  providers: []
 })
 export class AppComponent {
   constructor(private userEventsService: UserEventsService) {

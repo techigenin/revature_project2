@@ -1,27 +1,23 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter, Output } from '@angular/core';
 import { AssignedEvent } from './shared/assigned-event.model';
+import { BehaviorSubject } from 'rxjs';
+import { Event } from '../app/shared/event.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+
+@Injectable()
 export class UserEventsService {
+  @Output() assignedEvent: AssignedEvent[];
   assignedEventSelected = new EventEmitter<AssignedEvent>();
-  private assignedEvent: AssignedEvent;
 
   onSelectAssignedEvent(assignedEvent: AssignedEvent) {
-    this.assignedEvent = assignedEvent;
-    this.assignedEventSelected.emit(assignedEvent);
-    // console.log(assignedEvent);
-    // console.log(this.assignedEvent);
+    this.assignedEvent.push(assignedEvent);
   }
 
   retrieveSelectedEvent() {
-    this.assignedEventSelected.emit(this.assignedEvent);
-    //return 42342;
-    // console.log(this.assignedEvent);
-    // alert(this.assignedEvent);
-    // return this.assignedEvent;
+     return this.assignedEvent.pop();
   }
 
-  constructor() { }
+  constructor() {
+    this.assignedEvent = [];
+   }
 }

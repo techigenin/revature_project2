@@ -72,6 +72,7 @@ export class NavbarComponent implements OnInit {
 
  onSelectRow(assignedEvent: AssignedEvent) {
    //console.log(assignedEvent);
+   this.userEventsService.assignedEventSelected.emit(assignedEvent);
    this.userEventsService.onSelectAssignedEvent(assignedEvent);
    this.router.navigate(['/edit']);
   // this.rowClicked.emit(assignedEvent);
