@@ -8,6 +8,8 @@ import { Time } from '@angular/common';
 })
 export class ManagerDashboardComponent implements OnInit {
 
+  date: Date;
+
 
   onAddStage(data) {
     console.log(data);
@@ -58,6 +60,7 @@ export class ManagerDashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.date = new Date();
   }
 
 }

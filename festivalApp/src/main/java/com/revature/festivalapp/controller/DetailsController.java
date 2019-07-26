@@ -44,8 +44,9 @@ public class DetailsController {
 		this.userServices = userServices;
 	}
 
-	@GetMapping(value="/details")
-	public @ResponseBody String sendUserDetails(HttpSession sess) {
+	@GetMapping(value="/details"
+			, produces= {"application/json"})
+	public @ResponseBody DetailsDTO[] sendUserDetails(HttpSession sess) {
 		
 		User u = (User) sess.getAttribute("user");
 		System.out.println(sess.getId());
@@ -64,20 +65,10 @@ public class DetailsController {
 				
 				retList.add(new DetailsDTO(role, eventName, startDate, endDate));
 			}
-			
-			ObjectMapper om = new ObjectMapper();
-			try {
-				DetailsDTO[] retArray = retList.toArray(new DetailsDTO[0]);
-				
-				String retString = om.writeValueAsString(retArray);
-				
-				return retString;
-			} catch (JsonProcessingException e) {
-				e.printStackTrace();
+				return retList.toArray(new DetailsDTO[0]);
 			}
 			
-		}
-		return null;
+		return new DetailsDTO[0];
 	}
 
 }

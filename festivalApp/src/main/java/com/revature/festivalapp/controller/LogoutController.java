@@ -11,7 +11,7 @@ public class LogoutController {
 	@GetMapping("/logout")
 	public String logout(HttpSession sess) {
 		sess.invalidate();
-		return "redirect:resources/login.html";
+		return "redirect:/resources/angular/index.html";
 	}
 	
 }

@@ -1,6 +1,5 @@
 package com.revature.festivalapp.services;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import com.revature.festivalapp.dao.EventRoleDAOImpl;
 import com.revature.festivalapp.dao.UserDAO;
 import com.revature.festivalapp.dao.UserDAOImpl;
 import com.revature.festivalapp.pojos.EventRole;
-import com.revature.festivalapp.pojos.Schedule;
 import com.revature.festivalapp.pojos.User;
 
 @Component
@@ -36,7 +34,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public void registerUser(User user) {
+	public void insertUser(User user) {
 		userDAO.insertUser(user);
 	}
 

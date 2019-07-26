@@ -12,5 +12,11 @@ public interface EventRoleService {
 	public List<EventRole> getEventRolesByUser(User u);
 
 	public List<EventRole> getEventRolesByEvent(FestivalEvent fe);
+	
+	public void insertEventRole(EventRole er);
+	
+	public void updateEventRole(EventRole er);
+	
+	public void deleteEventRole(EventRole er);
 
 }

@@ -1,6 +1,5 @@
 package com.revature.festivalapp.dao;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,10 +11,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
-import com.revature.festivalapp.pojos.EventRole;
-import com.revature.festivalapp.pojos.FestivalEvent;
 import com.revature.festivalapp.pojos.Schedule;
-import com.revature.festivalapp.pojos.ScheduleEmbedded;
 import com.revature.festivalapp.pojos.Stage;
 import com.revature.festivalapp.pojos.User;
 import com.revature.festivalapp.util.SessionFactoryUtil;
@@ -92,12 +88,13 @@ public class ScheduleDAOImpl implements ScheduleDAO {
 	public List<Schedule> getSchedulesByStage(Stage s) {
 		Session sess = sf.openSession();
 		Criteria crit = sess.createCriteria(Schedule.class);
-		crit.add(Restrictions.eq("stageNumber", s));
+		crit.add(Restrictions.eq("stage", s));
 		
 		List<Schedule> retList = new ArrayList<Schedule>();
 		
 		for (Object o : crit.list())
-			retList.add((Schedule)o);
+			if (o instanceof Schedule)
+				retList.add((Schedule)o);
 		
 		for (Schedule sch : retList)
 			System.out.println(sch);
@@ -125,6 +122,23 @@ public class ScheduleDAOImpl implements ScheduleDAO {
 		sess.close();
 		
 		return sch;
+	}
+
+	@Override
+	public List<Schedule> getArtistStageSchedules(Stage s, User a) {
+		Session sess = sf.openSession();
+		Criteria crit = sess.createCriteria(Schedule.class);
+		crit.add(Restrictions.and(Restrictions.eq("stage", s), Restrictions.eq("artist", a)));
+		
+		List<Schedule> schedList = new ArrayList<>();
+		
+		for (Object o : crit.list())
+			if (o instanceof Schedule)
+				schedList.add((Schedule)o);
+		
+		sess.close();
+		
+		return schedList;
 	}
 
 }

@@ -53,4 +53,9 @@ public class ScheduleServicesImpl implements ScheduleServices {
 		return scheduleDAO.getScheudlesByUser(user);
 	}
 
+	@Override
+	public List<Schedule> getArtistStageSchedules(Stage s, User artist) {
+		return scheduleDAO.getArtistStageSchedules(s, artist);
+	}
+
 }

@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
   // ];
   assignedEvents: AssignedEvent[];
 
-  constructor(private http: HttpClient, private router: Router ) {
+  constructor(private http: HttpClient, public router: Router ) {
 
   }
 

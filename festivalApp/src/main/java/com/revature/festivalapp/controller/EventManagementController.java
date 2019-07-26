@@ -1,6 +1,5 @@
 package com.revature.festivalapp.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.festivalapp.pojos.EventManagementDTO;
 import com.revature.festivalapp.pojos.EventRole;
 import com.revature.festivalapp.pojos.FestivalEvent;
@@ -67,42 +65,33 @@ public class EventManagementController {
 		this.stageServices = stageServices;
 	}
 
-	@GetMapping(value="/manage_event")
-	public @ResponseBody String getManageEvent(String val, HttpSession sess) {
-		ObjectMapper om = new ObjectMapper();
-		
-		try {
-				Integer id = (Integer) om.readValue(val, Integer.class);
+	@GetMapping(path = "/manage_event", 
+			produces={"application/json"})
+	public @ResponseBody EventManagementDTO getManageEvent(Integer id, HttpSession sess) {
+		EventManagementDTO emDTO = new EventManagementDTO();
+		if (id != null && sess.getAttribute("user") != null) {	
+			FestivalEvent fe = festivalEventServices.getFestivalEvent(id);
+			
+			if (fe != null) {
 				
-				if (id != null) {	
-					FestivalEvent fe = festivalEventServices.getFestivalEvent(id);
+				emDTO.setStages(stageServices.getStagesByEvent(fe).toArray(new Stage[0]));
+				emDTO.setEventRoles(eventRoleService.getEventRolesByEvent(fe).toArray(new EventRole[0]));
+				
+				ArrayList<ScheduleDTO> schDTOList = new ArrayList<>();
+				
+				for (Stage s : emDTO.getStages()) {
 					
-					if (fe != null) {
-						EventManagementDTO emDTO = new EventManagementDTO();
-						emDTO.setStages(stageServices.getStagesByEvent(fe).toArray(new Stage[0]));
-						emDTO.setEventRoles(eventRoleService.getEventRolesByEvent(fe).toArray(new EventRole[0]));
-						
-						ArrayList<ScheduleDTO> schDTOList = new ArrayList<>();
-						
-						for (Stage s : emDTO.getStages()) {
-							
-							List<Schedule> schedList = scheduleServices.getSchedulesByStage(s);
-							
-							for (Schedule sched : schedList)
-								schDTOList.add(new ScheduleDTO(sched));
-						}
-						
-						emDTO.setSchedules(schDTOList.toArray(new ScheduleDTO[0]));
-						
-						String retString = om.writeValueAsString(emDTO);
-						
-						return retString;	
-					}
+					List<Schedule> schedList = scheduleServices.getSchedulesByStage(s);
+					
+					for (Schedule sched : schedList)
+						schDTOList.add(new ScheduleDTO(sched));
 				}
-		}catch (IOException e) {
-			e.printStackTrace();
-		}
-		
+				
+				emDTO.setSchedules(schDTOList.toArray(new ScheduleDTO[0]));
+			
+				return emDTO;
+			}
+		}		
 		return null;
 	}
 }
