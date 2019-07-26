@@ -70,13 +70,14 @@ export class NavbarComponent implements OnInit {
   console.log(selectedRow[0].innerHTML);
   console.log(selectedRow[1].innerHTML);
   console.log(selectedRow[2].innerHTML);
+  this.http.get('/manage_event')
 
  // let d = e.children;
  // alert(d.children[0].innerText);
  }
 
  private fetchUserEvents() {
-  this.http.get<AssignedEvent[]>('/').subscribe(events => {
+  this.http.get<AssignedEvent[]>('/details').subscribe(events => {
     this.assignedEvents = events;
   });
    //     angle brackets<> tell ts what kind of object you're getting back; avoids Type errors
@@ -95,6 +96,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     const quickviews = bulmaQuickview.attach();
     //const assignedEvents: AssignedEvent[];
+  // this.http.get<>
     this.assignedEvents = [
       new AssignedEvent('Lollapalooza', 'Manager', '8/7/19', '8/10/19'),
       new AssignedEvent('Bonnaroo', 'Artist', '11/7/19', '12/10/19')
