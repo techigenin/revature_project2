@@ -1,4 +1,4 @@
 export class Event {
-    constructor(public eventNumer: number, public name: string, public location: string,
-                public start: string, public end: string, public desc: string) {}             
+    constructor(public eventNumer: number, audienceCapacity: number, public eventName: string, public eventLocation: string,
+                public startDate: string, public endDate: string, public eventDescription: string) {}             
 }
