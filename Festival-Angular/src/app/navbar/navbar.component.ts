@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
   // ];
   assignedEvents: AssignedEvent[];
 
-  constructor(private http: HttpClient, private router: Router ) {
+  constructor(private http: HttpClient, public router: Router ) {
 
   }
 
@@ -41,6 +41,11 @@ export class NavbarComponent implements OnInit {
   onClickSubmit(data: { username: string; password: string }) {
     // sending http request
     this.http.post('/festivalApp/login', data).subscribe(responseData => {
+      if (responseData === 'true') {
+        this.fetchUserEvents();
+      } else {
+        alert('invalid login');
+      }
       // angular will give you the response body 
       // if response is false, alert user invalid login
       // bool: Boolean = responseData;
@@ -65,28 +70,33 @@ export class NavbarComponent implements OnInit {
   console.log(selectedRow[0].innerHTML);
   console.log(selectedRow[1].innerHTML);
   console.log(selectedRow[2].innerHTML);
+  this.http.get('/manage_event')
 
  // let d = e.children;
  // alert(d.children[0].innerText);
  }
 
  private fetchUserEvents() {
+  this.http.get<AssignedEvent[]>('/details').subscribe(events => {
+    this.assignedEvents = events;
+  });
    //     angle brackets<> tell ts what kind of object you're getting back; avoids Type errors
-   this.http.get<AssignedEvent>('/').pipe(map(responseData => {
-     const postsArray: AssignedEvent[] = [];
-     for (const key in responseData) {
-       postsArray.push({ ...responseData[key]});
-     }
-     return postsArray;
-   })).subscribe(events => {
-     console.log(events);
-     this.assignedEvents = events;
-   });
+  //  this.http.get<AssignedEvent[]>('/').pipe(map(responseData => {
+  //    const postsArray: AssignedEvent[] = [];
+  //    for (const key in responseData) {
+  //      postsArray.push({ ...responseData[key]});
+  //    }
+  //    return postsArray;
+  //  })).subscribe(events => {
+  //    console.log(events);
+  //    this.assignedEvents = events;
+  //  });
  }
 
   ngOnInit() {
     const quickviews = bulmaQuickview.attach();
     //const assignedEvents: AssignedEvent[];
+  // this.http.get<>
     this.assignedEvents = [
       new AssignedEvent('Lollapalooza', 'Manager', '8/7/19', '8/10/19'),
       new AssignedEvent('Bonnaroo', 'Artist', '11/7/19', '12/10/19')

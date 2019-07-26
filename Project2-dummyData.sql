@@ -11,7 +11,7 @@ select setval('schedule_stage_number_seq', 1, false);
 select setval('stage_stage_number_seq', 1, false);
 select setval('users_id_seq', 1, false);
 
-truncate table add_role, event_role, festival_event, roles, schedule, stage, users;
+truncate table add_role, event_role, festival_event, schedule, stage, users;
 
 insert into users 
 	(val_email, val_password, collected_roles, manager_name, artist_name, promoter_name) 
@@ -105,3 +105,8 @@ insert into event_role
 	(user_id, event_id, user_role)
 		values
 			(3, 4, 'artist');
+		
+insert into add_role
+	(req_num, valid)
+		values
+			(1234, true);
