@@ -25,7 +25,7 @@ public class RegInfoServiceImpl implements RegInfoService {
 	}
 
 	@Override
-	public RegInfo getRegInfo(int i) {
+	public RegInfo getRegInfo(long i) {
 		return regInfoDAO.getRegInfo(i);
 	}
 

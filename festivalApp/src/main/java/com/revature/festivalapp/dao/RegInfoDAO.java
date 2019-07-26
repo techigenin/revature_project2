@@ -8,7 +8,7 @@ public interface RegInfoDAO {
 	
 	public void insertRegInfo(RegInfo a);
 	
-	public RegInfo getRegInfo(int i);
+	public RegInfo getRegInfo(long i);
 
 	public List<RegInfo> getAllRegInfo();
 	

@@ -2,7 +2,7 @@ package com.revature.festivalapp.pojos;
 
 public class RegInfoDTO {
 	
-	private Integer requestNumber;
+	private Long requestNumber;
 	
 	private String email;
 	
@@ -10,15 +10,35 @@ public class RegInfoDTO {
 	
 	private String name;
 
-	public RegInfoDTO() {
-		super();
+	public Long getRequestNumber() {
+		return requestNumber;
 	}
 
-	public RegInfoDTO(Integer requestNumber, String email, String password, String name) {
-		super();
+	public void setRequestNumber(Long requestNumber) {
 		this.requestNumber = requestNumber;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -71,36 +91,18 @@ public class RegInfoDTO {
 		return true;
 	}
 
-	public Integer getRequestNumber() {
-		return requestNumber;
-	}
-
-	public void setRequestNumber(Integer requestNumber) {
+	public RegInfoDTO(Long requestNumber, String email, String password, String name) {
+		super();
 		this.requestNumber = requestNumber;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
 		this.name = name;
 	}
 
+	public RegInfoDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	
 }
