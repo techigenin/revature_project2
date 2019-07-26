@@ -88,12 +88,13 @@ public class ScheduleDAOImpl implements ScheduleDAO {
 	public List<Schedule> getSchedulesByStage(Stage s) {
 		Session sess = sf.openSession();
 		Criteria crit = sess.createCriteria(Schedule.class);
-		crit.add(Restrictions.eq("stageNumber", s));
+		crit.add(Restrictions.eq("stage", s));
 		
 		List<Schedule> retList = new ArrayList<Schedule>();
 		
 		for (Object o : crit.list())
-			retList.add((Schedule)o);
+			if (o instanceof Schedule)
+				retList.add((Schedule)o);
 		
 		for (Schedule sch : retList)
 			System.out.println(sch);
