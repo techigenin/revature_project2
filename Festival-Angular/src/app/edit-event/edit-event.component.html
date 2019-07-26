@@ -1,0 +1,136 @@
+<br>
+
+<form>
+    <div class="field is-horizontal ">
+        <!-- <div class="field-label is-normal">
+            <label class="label">Stage Name</label>
+        </div> -->
+        <div class="field-body">
+            <div class="field">
+            <p class="control">
+                <input class="input is-rounded" type="text" placeholder="Enter Stage Name">
+    
+            </p>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary is-rounded">
+                    AddStage
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<br>
+
+
+
+<form>
+        <div class="field is-horizontal ">
+            
+            <!-- <div class="field-label is-normal">
+                <label class="label">Add Stage</label>
+            </div> -->
+            <div class="field-body">
+                    <div class="field">
+                            <p class="control is-expanded has-icons-left">
+                              <input class="input is-rounded" type="text" placeholder="example@email.com">
+                              <span class="icon is-small is-left">
+                                <i class="fas fa-at"></i>
+                              </span>
+                            </p>
+                          </div>
+                <div class="field">
+                <p class="control">
+                    <input class="input is-rounded" type="text" placeholder="Enter Role Type">
+        
+                </p>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary is-rounded">
+                        Add Role
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+<br>
+<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <thead>
+        
+        <tr>
+        <th>Name</th>
+        <th>Role</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr> 
+        <td >Name</td>
+        <td >Role</td>          
+        </tr>   
+    </tbody>
+</table>
+
+
+<br>
+<button (click)="onEditCell()" class="button">I is button</button>
+<div class="columns is-gapless is-marginless is-mobile is-vcentered is-multiline">
+    <div class="column is-12" *ngFor="let day of eventDays"> <div class="box has-background-black has-text-white has-text-centered is-marginless"><p class="is-size-7">{{day.day | date:'shortDate'}}</p></div> 
+    <!-- <div class="column"> -->
+        <div class="columns is-gapless is-marginless is-mobile is-outlined is-vcentered is-multiline">
+        <!---------------------first for loop within a for loop below---------->
+            <div class="column" *ngFor="let stage of day.stages">
+
+                <div class="columns is-gapless is-marginless is-mobile is-outlined is-vcentered">
+                    <div class="column">
+                        <div class="box has-background-link has-text-black has-text-centered"><input type="text" class="input is-rounded is-static is-link has-text-black has-text-centered" [(ngModel)]="stage.name" placeholder="{{stage.name}}"></div>
+                    </div>
+                </div>   
+                
+                    
+                    
+                <div class="columns is-gapless is-mobile is-marginless is-outlined is-vcentered">
+                
+                    <div class="column ">
+                        <div class="box has-background-info has-text-centered has-text-black"><p class="is-size-7">Start</p></div>
+                    </div>
+                    
+                    <div class="column ">
+                        <div class="box has-background-info has-text-centered has-text-black"><p class="is-size-7">End</p></div>
+                    </div>  
+                
+                    <div class="column " >
+                        <div class="box has-background-info has-text-centered has-text-black"><p class="is-size-7">Artist</p></div>
+                    </div>
+                </div>   
+
+
+
+                                <!-----------------------------------------------for loop within a for loop below---------->
+                <div class="columns is-gapless is-mobile is-marginless is-outlined" *ngFor="let performance of stage.performances">
+
+                    <div class="column ">
+                    <div class="box has-background-success has-text-centered has-text-black"><input type="text" class="input is-rounded is-static is-link has-text-black has-text-centered" [(ngModel)]="performance.start" placeholder="{{performance.start}}"></div>
+                    </div>
+                    
+                    
+                    <div class="column ">
+                    <div class="box has-background-warning has-text-centered has-text-black"><input type="text" class="input is-rounded is-static is-link has-text-black has-text-centered" [(ngModel)]="performance.end" placeholder="{{performance.end}}"></div>
+                    </div>  
+                    
+                    <div class="column " >
+                    
+                        <div class="box has-background-danger has-text-centered "><input type="text" class="input is-rounded is-static is-link has-text-black has-text-centered" [(ngModel)]="performance.artist" placeholder="{{performance.artist}}"></div>
+                        
+                    </div>
+                </div> 
+
+            </div>
+        </div>
+        <br>
+    </div>
+</div>

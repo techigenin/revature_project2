@@ -20,7 +20,7 @@ import com.revature.festivalapp.services.ScheduleServices;
 import com.revature.festivalapp.services.StageServices;
 
 @Controller
-public class PerRoleSchecdule {
+public class PerRoleSchedule {
 	
 	ScheduleServices scheduleServices;
 	FestivalEventServices festivalEventServices;
@@ -41,7 +41,7 @@ public class PerRoleSchecdule {
 		this.stageServices = stageServices;
 	}
 
-	@PostMapping(path="/schedule", consumes="application/json", produces="application/json")
+	@GetMapping(path="/schedule", consumes="application/json", produces="application/json")
 	public @ResponseBody Schedule[] getRoleSchedules(RoleScheduleDTO dto, HttpSession sess ) {
 		User u = (User) sess.getAttribute("user");
 		FestivalEvent fe = festivalEventServices.getFestivalEvent(dto.getEventNum());
