@@ -137,11 +137,11 @@
     <div class="row columns is-multiline">
 
 
-            <div class="column is-one-third" #selectedEvent (click)="onSelectEvent(selectedEvent.children)" *ngFor="let event of events">
+            <div class="column is-one-third" #selectedEvent (click)="onSelectEvent(e)" *ngFor="let e of events">
                 <div class="card large round">
                     <header class="card-header">
                         <p class="card-header-title is-centered">
-                                {{event.eventName}}
+                                {{e.eventName}}
                         </p>
                     </header>
                     <div class="card-image ">
@@ -153,12 +153,12 @@
                        
                         
                         <div class="content">
-                            {{event.eventDescription}}
+                            {{e.eventDescription}}
                         </div>
                     </div>
                     <footer class="card-footer">
-                        <p class="card-footer-item is-pulled-left">{{event.startDate + ' - ' + event.endDate}}</p>  
-                        <p class="card-footer-item is-pulled-right">{{event.eventDescription}}</p>
+                        <p class="card-footer-item is-pulled-left">{{e.startDate + ' - ' + e.endDate}}</p>  
+                        <p class="card-footer-item is-pulled-right">{{e.eventLocation}}</p>
                     </footer>
                 </div>
             </div>
