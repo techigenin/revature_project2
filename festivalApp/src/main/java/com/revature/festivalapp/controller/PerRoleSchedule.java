@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.revature.festivalapp.pojos.FestivalEvent;
@@ -21,43 +22,46 @@ import com.revature.festivalapp.services.StageServices;
 
 @Controller
 public class PerRoleSchedule {
-	
+
 	ScheduleServices scheduleServices;
 	FestivalEventServices festivalEventServices;
 	StageServices stageServices;
-	
+
 	@Autowired
 	public void setScheduleServices(ScheduleServices scheduleServices) {
 		this.scheduleServices = scheduleServices;
 	}
-	
+
 	@Autowired
 	public void setFestivalEventServices(FestivalEventServices festivalEventServices) {
 		this.festivalEventServices = festivalEventServices;
 	}
-	
+
 	@Autowired
 	public void setStageServices(StageServices stageServices) {
 		this.stageServices = stageServices;
 	}
 
 	@GetMapping(path="/schedule", consumes="application/json", produces="application/json")
-	public @ResponseBody Schedule[] getRoleSchedules(RoleScheduleDTO dto, HttpSession sess ) {
+	public @ResponseBody Schedule[] getRoleSchedules(@RequestBody RoleScheduleDTO dto, HttpSession sess ) {
 		User u = (User) sess.getAttribute("user");
-		FestivalEvent fe = festivalEventServices.getFestivalEvent(dto.getEventNum());
-		List<Stage> stages = stageServices.getStagesByEvent(fe);
-		
 		List<Schedule> schedList = new ArrayList<Schedule>();
-		
+
 		if ( u != null ) {
-			if (dto.getRole().equalsIgnoreCase("artist")) 
-				getArtistSchedules(u, fe, stages, schedList);
-			else if (dto.getRole().equalsIgnoreCase("crew"))
-				getCrewSchedules(u, fe, stages, schedList);
-			else if (dto.getRole().equalsIgnoreCase("promoter"))
-				getPromoterSchedule(stages, schedList);
+			FestivalEvent fe = festivalEventServices.getFestivalEvent(dto.getEventNum());
+
+			if (fe != null) {
+				List<Stage> stages = stageServices.getStagesByEvent(fe);
+	
+				if (dto.getRole().equalsIgnoreCase("artist")) 
+					getArtistSchedules(u, fe, stages, schedList);
+				else if (dto.getRole().equalsIgnoreCase("crew"))
+					getCrewSchedules(u, fe, stages, schedList);
+				else if (dto.getRole().equalsIgnoreCase("promoter"))
+					getPromoterSchedule(stages, schedList);
+			}
 		}
-		
+
 		return schedList.toArray(new Schedule[0]);
 	}
 

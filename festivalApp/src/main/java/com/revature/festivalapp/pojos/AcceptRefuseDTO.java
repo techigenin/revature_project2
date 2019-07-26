@@ -2,15 +2,15 @@ package com.revature.festivalapp.pojos;
 
 public class AcceptRefuseDTO {
 	
-	private int requestNumber;
-	private boolean accept;
+	private Long requestNumber;
+	private Boolean accept;
 	
 	public AcceptRefuseDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public AcceptRefuseDTO(int requestNumber, boolean accept) {
+
+	public AcceptRefuseDTO(long requestNumber, boolean accept) {
 		super();
 		this.requestNumber = requestNumber;
 		this.accept = accept;
@@ -26,7 +26,7 @@ public class AcceptRefuseDTO {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (accept ? 1231 : 1237);
-		result = prime * result + requestNumber;
+		result = prime * result + (int) (requestNumber ^ (requestNumber >>> 32));
 		return result;
 	}
 
@@ -46,11 +46,11 @@ public class AcceptRefuseDTO {
 		return true;
 	}
 
-	public int getRequestNumber() {
+	public long getRequestNumber() {
 		return requestNumber;
 	}
 
-	public void setRequestNumber(int requestNumber) {
+	public void setRequestNumber(long requestNumber) {
 		this.requestNumber = requestNumber;
 	}
 
@@ -61,6 +61,8 @@ public class AcceptRefuseDTO {
 	public void setAccept(boolean accept) {
 		this.accept = accept;
 	}
+	
+	
 	
 	
 

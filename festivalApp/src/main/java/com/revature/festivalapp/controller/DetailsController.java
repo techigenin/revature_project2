@@ -59,11 +59,10 @@ public class DetailsController {
 			for (EventRole er : erList) {
 				String role = er.getUserRole();
 				FestivalEvent event = festivalEventService.getFestivalEvent(er.getEvent().getEventNumer());
-				String eventName = event.getEventName();
 				LocalDate startDate = event.getStartDate();
 				LocalDate endDate = event.getEndDate();
 				
-				retList.add(new DetailsDTO(role, eventName, startDate, endDate));
+				retList.add(new DetailsDTO(role, event, startDate, endDate));
 			}
 				return retList.toArray(new DetailsDTO[0]);
 			}

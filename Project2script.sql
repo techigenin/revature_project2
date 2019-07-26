@@ -1,6 +1,7 @@
 drop table users, event_role, festival_event, stage, schedule, add_role;
 
 select * from users;
+select * from event_role;
 select * from festival_event;
 select * from stage;
 select * from schedule;

@@ -24,7 +24,7 @@ public class RegInfoDAOImpl implements RegInfoDAO {
 	}
 
 	@Override
-	public RegInfo getRegInfo(int i) {
+	public RegInfo getRegInfo(long i) {
 		Session sess = sf.openSession();
 		RegInfo rf = (RegInfo) sess.get(RegInfo.class, i);
 		sess.close();

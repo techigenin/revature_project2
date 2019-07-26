@@ -106,7 +106,12 @@ insert into event_role
 		values
 			(3, 4, 'artist');
 		
+
+truncate table add_role;
 insert into add_role
-	(req_num, valid)
+	(req_num, role_type, event_num, valid)
 		values
-			(1234, true);
+			(1234, 'artist', 1, true);
+
+delete from users where artist_name = 'Dan Daniels';
+update add_role set valid = true where req_num = 1234;
