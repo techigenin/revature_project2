@@ -76,7 +76,7 @@ public class AddRoleController {
                 mimeMsgHelperObj.setText(emailMessage);
                 
                 
-                RegInfo eUser = new RegInfo(timeMilli, roles.getRole(), eventService.getFestivalEvent(roles.getEventNum()), null, null);
+                RegInfo eUser = new RegInfo(timeMilli, roles.getRole(), eventService.getFestivalEvent(2), null, null);
                 
                 regInfoService.insertRegInfo(eUser);
                 		
