@@ -22,4 +22,6 @@ public interface ScheduleServices {
 	public List<Schedule> getScheduleByUsers(User user);
 	
 	public List<Schedule> getArtistStageSchedules(Stage s, User artist);
+
+	public void saveOrUpdate(Schedule schedule);
 }

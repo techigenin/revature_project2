@@ -21,18 +21,12 @@ public class ManageStageController {
 	
 
 	
-	@PostMapping(value="/stage", consumes= {"application/json"})
-	public @ResponseBody boolean SaveOrUpdateStagePost(@RequestBody Stage stage, HttpSession sess) {
+	@PostMapping(value="/manage_stage", consumes= {"application/json"})
+	public void SaveOrUpdateStagePost(@RequestBody Stage stage, HttpSession sess) {
 
-		User user =(User) sess.getAttribute("users");
+		User user =(User) sess.getAttribute("user");
 		
-		if (user != null) {
-		stageServices.SaveOrUpdateStage(stage);	
-		
-		return true;
-		}
-		return false;
+		if (user != null)
+			stageServices.saveOrUpdateStage(stage);	
 	}
-	
-	
 }

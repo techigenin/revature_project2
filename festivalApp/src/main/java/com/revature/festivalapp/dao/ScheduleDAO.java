@@ -18,4 +18,5 @@ public interface ScheduleDAO {
 	public List<Schedule> getSchedulesByStage(Stage s);
 	public List<Schedule> getScheudlesByUser(User user);
 	public List<Schedule> getArtistStageSchedules(Stage s, User artist);
+	public void saveOrUpdate(Schedule schedule);
 }

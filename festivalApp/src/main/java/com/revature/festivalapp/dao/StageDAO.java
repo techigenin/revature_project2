@@ -21,4 +21,6 @@ public interface StageDAO {
 	
 	public List<Stage> getStagesByEvent(FestivalEvent fe);
 
+	public void saveOrUpdateStage(Stage stage);
+
 }

@@ -58,4 +58,9 @@ public class ScheduleServicesImpl implements ScheduleServices {
 		return scheduleDAO.getArtistStageSchedules(s, artist);
 	}
 
+	@Override
+	public void saveOrUpdate(Schedule schedule) {
+		scheduleDAO.saveOrUpdate(schedule);
+	}
+
 }

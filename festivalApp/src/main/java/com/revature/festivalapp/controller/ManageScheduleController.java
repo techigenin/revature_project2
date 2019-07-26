@@ -28,20 +28,13 @@ public class ManageScheduleController {
 
 
 	
-	@PostMapping(value="/schedule" ,consumes= {"application/json"})
-	public @ResponseBody boolean SaveOrUpdateStagePost(@RequestBody Schedule schedule, HttpSession sess) {
+	@PostMapping(path="/manage_schedule" , consumes= {"application/json"})
+	public void SaveOrUpdateStagePost(@RequestBody Schedule schedule, HttpSession sess) {
 
+		User user =(User) sess.getAttribute("user");
 		
-		User user =(User) sess.getAttribute("users");
-		
-		if (user != null) {
-		
-		scheduleServices.SaveOrUpdate(schedule);
-		return true;
-		
-		}
-
-		return false;
+		if (user != null)
+			scheduleServices.saveOrUpdate(schedule);
 	}
 	
 	

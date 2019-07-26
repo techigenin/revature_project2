@@ -57,4 +57,9 @@ public class StageServicesImpl implements StageServices {
 		return stageDAO.getStageById(i);
 	}
 
+	@Override
+	public void saveOrUpdateStage(Stage stage) {
+		stageDAO.saveOrUpdateStage(stage);
+	}
+
 }
