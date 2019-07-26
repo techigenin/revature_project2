@@ -25,7 +25,7 @@ public class EventsHomeController {
 		this.eventService = eventService;
 	}
 	
-	@GetMapping(path="/events/home",produces = {"application/json"})
+	@GetMapping(path="/home/events", produces = "application/json")
 	public @ResponseBody String getAllFestivalEvents() {
 		ObjectMapper om = new ObjectMapper();
 		List<FestivalEvent> feList = eventService.viewAllEvents();
