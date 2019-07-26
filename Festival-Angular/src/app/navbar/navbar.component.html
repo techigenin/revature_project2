@@ -161,11 +161,11 @@
         
           </thead>
           <tbody>
-            <tr #selectedRow *ngFor="let assignedEvent of this.assignedEvents" (click)="onSelectRow(selectedRow.children)">
+            <tr *ngFor="let assignedEvent of this.assignedEvents" (click)="onSelectRow(assignedEvent)">
                 
-              <td >{{assignedEvent.name}}</td>
-              <td >{{assignedEvent.role}}</td>
-              <td >{{assignedEvent.start +' - '+ assignedEvent.end}}</td>
+              <td >{{assignedEvent.event.eventName}}</td>
+              <td >{{assignedEvent.eventRole}}</td>
+              <td >{{assignedEvent.eventStartDate +' - '+ assignedEvent.eventEndDate}}</td>
             
             </tr>
           

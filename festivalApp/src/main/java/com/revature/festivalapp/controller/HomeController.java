@@ -28,18 +28,18 @@ public class HomeController {
 		return "redirect:/resources/angular/index.html";
 	}
 	
-	@PostMapping("/home")
-	public @ResponseBody String getAllFestivalEvents() {
-		ObjectMapper om = new ObjectMapper();
-		List<FestivalEvent> feList = eventService.viewAllEvents();
-		
-		try {
-			return om.writeValueAsString(feList);
-		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
+//	@PostMapping("/home")
+//	public @ResponseBody String getAllFestivalEvents() {
+//		ObjectMapper om = new ObjectMapper();
+//		List<FestivalEvent> feList = eventService.viewAllEvents();
+//		
+//		try {
+//			return om.writeValueAsString(feList);
+//		} catch (JsonProcessingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return null;
+//	}
 
 }

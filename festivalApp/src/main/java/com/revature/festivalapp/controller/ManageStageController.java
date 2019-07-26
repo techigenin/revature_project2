@@ -2,13 +2,14 @@ package com.revature.festivalapp.controller;
 
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import com.revature.festivalapp.pojos.Stage;
 import com.revature.festivalapp.pojos.User;
 import com.revature.festivalapp.services.StageServices;
 
+@Controller
 public class ManageStageController {
 
 	StageServices stageServices;

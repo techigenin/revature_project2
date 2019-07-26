@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Performance } from '../shared/performance.model';
 import { Stage } from '../shared/stage.model';
 import { EventDay } from '../shared/day.model';
+import { UserEventsService } from '../user-events.service';
+import { AssignedEvent } from '../shared/assigned-event.model';
 
 
 let d = new Date();
@@ -12,6 +14,7 @@ d.setDate(24);
   styleUrls: ['./edit-event.component.css']
 })
 export class EditEventComponent implements OnInit {
+  assignedEvent: AssignedEvent;
   eventDays: EventDay[];
   perfNumber = 0;
 
@@ -19,9 +22,15 @@ export class EditEventComponent implements OnInit {
     console.log(this.eventDays);
   }
 
-  constructor() { }
+  constructor(private userEventsService: UserEventsService) { }
 
   ngOnInit() {
+    this.userEventsService.assignedEventSelected.subscribe(event => {
+      this.assignedEvent = event;
+      console.log(event);
+    });
+    // console.log(this.assignedEvent);
+    // console.log(this.userEventsService.retrieveSelectedEvent().event);
     this.eventDays = [
       new EventDay(new Date(), [
         new Stage('Stage One', [

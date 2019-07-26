@@ -14,6 +14,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { EditEventComponent } from './edit-event/edit-event.component';
 import { RegisterComponent } from './register/register.component';
 import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
+import { UserEventsService } from './user-events.service';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard
     HttpClientModule,
     AngularFontAwesomeModule
   ],
-  providers: [],
+  providers: [UserEventsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

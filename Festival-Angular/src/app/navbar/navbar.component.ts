@@ -1,9 +1,12 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import bulmaQuickview from '../../../node_modules/bulma-quickview/dist/js/bulma-quickview.js';
 import { HttpClient } from '@angular/common/http';
 import { AssignedEvent } from '../shared/assigned-event.model';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { Event } from '../shared/event.model';
+import { UserEventsService } from '../user-events.service.js';
+
 
   // assignedEvents: AssignedEvent[] = [
   //   new AssignedEvent('Lollapalooza', 'Manager', '8/7/19', '8/10/19'),
@@ -18,6 +21,8 @@ import { map } from 'rxjs/operators';
 export class NavbarComponent implements OnInit {
   loggedIn = false;
   edit = false;
+ // @Output() rowClicked = new EventEmitter<AssignedEvent>();
+
 //@viewChild('serverContentInput', {static: true}) serverContentInput: ElementRef;
 //If you DON'T access the selected element in ngOnInit (but anywhere else in your component),
 // set static: false instead!
@@ -30,7 +35,7 @@ export class NavbarComponent implements OnInit {
   // ];
   assignedEvents: AssignedEvent[];
 
-  constructor(private http: HttpClient, public router: Router ) {
+  constructor(private http: HttpClient, public router: Router, private userEventsService: UserEventsService ) {
 
   }
 
@@ -65,20 +70,23 @@ export class NavbarComponent implements OnInit {
    alert('the click event works');
  }
 
- onSelectRow(selectedRow: HTMLCollection) {
-
-  console.log(selectedRow[0].innerHTML);
-  console.log(selectedRow[1].innerHTML);
-  console.log(selectedRow[2].innerHTML);
-  this.http.get('/manage_event')
+ onSelectRow(assignedEvent: AssignedEvent) {
+   //console.log(assignedEvent);
+   this.userEventsService.onSelectAssignedEvent(assignedEvent);
+   this.router.navigate(['/edit']);
+  // this.rowClicked.emit(assignedEvent);
+  // console.log(selectedRow[0].innerHTML);
+  // console.log(selectedRow[1].innerHTML);
+  // console.log(selectedRow[2].innerHTML);
+  //this.http.get('/manage_event');
 
  // let d = e.children;
  // alert(d.children[0].innerText);
  }
 
  private fetchUserEvents() {
-  this.http.get<AssignedEvent[]>('/details').subscribe(events => {
-    this.assignedEvents = events;
+  this.http.get<AssignedEvent[]>('/festivalApp/details').subscribe(assignedEvents => {
+    this.assignedEvents = assignedEvents;
   });
    //     angle brackets<> tell ts what kind of object you're getting back; avoids Type errors
   //  this.http.get<AssignedEvent[]>('/').pipe(map(responseData => {
@@ -96,10 +104,11 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     const quickviews = bulmaQuickview.attach();
     //const assignedEvents: AssignedEvent[];
-  // this.http.get<>
+    let event = new Event(1, 2, 'Lollapalooza', 'Tampa, Fl', '8/7/19', '8/10/19', 'consectetur adipisicing elit. Dolorum sapiente explicabo, corporis totam! Labore reprehenderit beatae');
+    let eventTwo = new Event(55, 2, 'Lollapalooza', 'Tampa, Fl', '8/7/19', '8/10/19', 'consectetur adipisicing elit. Dolorum sapiente explicabo, corporis totam! Labore reprehenderit beatae');
     this.assignedEvents = [
-      new AssignedEvent('Lollapalooza', 'Manager', '8/7/19', '8/10/19'),
-      new AssignedEvent('Bonnaroo', 'Artist', '11/7/19', '12/10/19')
+      new AssignedEvent('Manager', event, '8/7/19', '8/10/19'),
+      new AssignedEvent('Artist', eventTwo, '11/7/19', '12/10/19')
     ];
   }
 

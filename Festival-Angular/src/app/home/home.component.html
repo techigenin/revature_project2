@@ -141,7 +141,7 @@
                 <div class="card large round">
                     <header class="card-header">
                         <p class="card-header-title is-centered">
-                                {{event.name}}
+                                {{event.eventName}}
                         </p>
                     </header>
                     <div class="card-image ">
@@ -153,12 +153,12 @@
                        
                         
                         <div class="content">
-                            {{event.desc}}
+                            {{event.eventDescription}}
                         </div>
                     </div>
                     <footer class="card-footer">
-                        <p class="card-footer-item is-pulled-left">{{event.start + ' - ' + event.end}}</p>  
-                        <p class="card-footer-item is-pulled-right">{{event.location}}</p>
+                        <p class="card-footer-item is-pulled-left">{{event.startDate + ' - ' + event.endDate}}</p>  
+                        <p class="card-footer-item is-pulled-right">{{event.eventDescription}}</p>
                     </footer>
                 </div>
             </div>
