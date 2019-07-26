@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.revature.festivalapp.logs.LoggingUtil;
 import com.revature.festivalapp.pojos.RegInfo;
 import com.revature.festivalapp.pojos.RoleDTO;
 import com.revature.festivalapp.services.FestivalEventServicesImpl;
@@ -34,9 +35,7 @@ public class AddRoleController {
 	public void setEventService(FestivalEventServicesImpl eventService) {
 		this.eventService = eventService;
 	}
-//	Date date = new Date();
   
-    long timeMilli = System.currentTimeMillis();
  
     static String emailToRecipient, emailSubject, emailMessage;
     static final String emailFromRecipient = "festivalapp1905@gmail.com";
@@ -48,17 +47,15 @@ public class AddRoleController {
  
  
     // This Method Is Used To Prepare The Email Message And Send It To The Client
-    @PostMapping(value ="/add_role", consumes={"application/json"})
-    public ModelAndView sendEmailToClient(@RequestBody RoleDTO roles, HttpSession sess) {
+    @PostMapping(value ="/add_role", consumes="application/json")
+    public void sendEmailToRole(@RequestBody RoleDTO roles, HttpSession sess) {
  
-        // Reading Email Form Input Parameters      
-//    	mimeMsgHelperObj.setTo(emailToRecipient);
-//        mimeMsgHelperObj.setFrom(emailFromRecipient);               
-//        mimeMsgHelperObj.setText(emailMessage);
-//        mimeMsgHelperObj.setSubject(emailSubject);
+   
+    	long timeMilli = System.currentTimeMillis();
+    	String link = "<a href=\"http://ec2-54-215-220-80.us-west-1.compute.amazonaws.com:8080/festivalApp/role_reg/?val=" + timeMilli+ "\">Register</a>";
         
     	emailMessage = "Hello! \n We would like you to join our event as " + ((roles.getRole().equalsIgnoreCase("artist")) ? "an " : "a ") + roles.getRole() 
-        + ". Click this link to begin the process." +"http://ec2-54-215-220-80.us-west-1.compute.amazonaws.com:8080/festivalApp/role_reg/?val="+ timeMilli;
+        + ". Click this link to begin the process. " + link;
         
     	emailToRecipient = roles.getEmail();
     	
@@ -69,14 +66,15 @@ public class AddRoleController {
  
         mailSenderObj.send(new MimeMessagePreparator() {
             public void prepare(MimeMessage mimeMessage) throws Exception {
- 
+                
+
                 MimeMessageHelper mimeMsgHelperObj = new MimeMessageHelper(mimeMessage, true, "UTF-8");             
                 mimeMsgHelperObj.setTo(emailToRecipient);
                 mimeMsgHelperObj.setFrom(emailFromRecipient);
-                mimeMsgHelperObj.setText(emailMessage);
+                mimeMsgHelperObj.setText(emailMessage, true);
                 
                 
-                RegInfo eUser = new RegInfo(timeMilli, roles.getRole(), eventService.getFestivalEvent(2), null, null);
+                RegInfo eUser = new RegInfo(timeMilli, roles.getRole(), eventService.getFestivalEvent(roles.getEventNum()), null, true);
                 
                 regInfoService.insertRegInfo(eUser);
                 		
@@ -88,9 +86,9 @@ public class AddRoleController {
                 
             }
         });
-        System.out.println("\nMessage Send Successfully.... Hurrey!\n");
+        LoggingUtil.trace("\nMessage Send Successfully.... Hurrey!\n");
+        LoggingUtil.trace(link);
  
-        modelViewObj = new ModelAndView("success","messageObj","Thank You! Your Email Has Been Sent!");
-        return  modelViewObj;   
+          
     }
 }
