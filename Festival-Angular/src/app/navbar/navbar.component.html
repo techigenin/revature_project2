@@ -24,7 +24,7 @@
             Create Event
           </a>
           <a class="navbar-item has-text-primary" data-show="quickview" data-target="quickviewDefault">
-            <p *ngIf="this.router.url=='/edit'; else viewEventsNav">Edit Event</p>
+            <!-- <p *ngIf="this.router.url=='/edit'; else viewEventsNav">Edit Event</p> -->
             <ng-template #viewEventsNav>
                 <p>View My Events</p>
             </ng-template>
@@ -120,7 +120,7 @@
 </section>
 
 <div type="button" class="button is-primary is-rounded" (click)="onTestClick()">
-    <strong>Testing(navbar.html) {{this.router.url}}</strong>
+    <!-- <strong>Testing(navbar.html) {{this.router.url}}</strong> -->
 </div>
 
 
@@ -128,7 +128,7 @@
 <div class="container">
     <div id="quickviewDefault" class="quickview">
         <header class="quickview-header">
-          <p *ngIf="this.router.url=='/edit'; else viewEventsTitle" class="title">Edit Event</p>
+          <!-- <p *ngIf="this.router.url=='/edit'; else viewEventsTitle" class="title">Edit Event</p> -->
           <ng-template #viewEventsTitle>
               <p class="title">Your Events</p>
           </ng-template>
@@ -138,7 +138,7 @@
       
         <div class="quickview-body">
           <div class="quickview-block">
-            <app-manager-dashboard *ngIf="this.router.url=='/edit'; else viewEvents"></app-manager-dashboard>
+            <!-- <app-manager-dashboard *ngIf="this.router.url=='/edit'; else viewEvents"></app-manager-dashboard> -->
            
           </div>
       </div>
