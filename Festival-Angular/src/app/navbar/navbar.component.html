@@ -24,7 +24,11 @@
             Create Event
           </a>
           <a class="navbar-item has-text-primary" data-show="quickview" data-target="quickviewDefault">
-            View My Events     
+            <p *ngIf="this.router.url=='/edit'; else viewEventsNav">Edit Event</p>
+            <ng-template #viewEventsNav>
+                <p>View My Events</p>
+            </ng-template>
+                
           </a>
   
           <div class="navbar-item has-dropdown is-hoverable">
@@ -76,14 +80,17 @@
                   </div>
   
                   <div class="navbar-item">
-                  <!-- <div class="buttons"> -->
+                    <div class="buttons">
                       <!-- <a class="button is-primary">
                       <strong>Sign up</strong>
                       </a> -->
-                      <button class="button is-primary is-rounded" type="submit" value = "submit" [disabled]="!login.valid">
+                      <button class="button is-primary is-rounded " type="submit" value = "submit" [disabled]="!login.valid">
                           <strong>Login</strong>
                       </button>
-                  <!-- </div> -->
+                      <a class="button is-primary is-rounded" routerLink ="/register">
+                          <strong>Sign up</strong>
+                      </a>
+                    </div>
                   </div>
               </form>
           </div>
@@ -100,8 +107,20 @@
       </div>
 </nav>
 
+
+<!--HERO BANNER-->
+<section class="hero is-small is-primary is-bold">
+    <div class="hero-body">
+        <div class="container">
+        <h1 class="title is-1 has-text-black">
+            Festival App
+        </h1>
+        </div>
+    </div>
+</section>
+
 <div type="button" class="button is-primary is-rounded" (click)="onTestClick()">
-    <strong>Testing(navbar.html)</strong>
+    <strong>Testing(navbar.html) {{this.router.url}}</strong>
 </div>
 
 
@@ -109,41 +128,50 @@
 <div class="container">
     <div id="quickviewDefault" class="quickview">
         <header class="quickview-header">
-          <p class="title">Your Events</p>
+          <p *ngIf="this.router.url=='/edit'; else viewEventsTitle" class="title">Edit Event</p>
+          <ng-template #viewEventsTitle>
+              <p class="title">Your Events</p>
+          </ng-template>
+         
           <span class="delete" data-dismiss="quickview"></span>
         </header>
       
         <div class="quickview-body">
           <div class="quickview-block">
-            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-                <thead>
-                  
-                  <tr>
-                    <th>Event Name</th>
-                    <th>Event Role</th>
-                    <th>Start/End Times</th>
-                  </tr>
-              
-                </thead>
-                <tbody>
-                  <tr *ngFor="let assignedEvent of this.assignedEvents">
-                      <a>
-                    <td><a class="button"></a>{{assignedEvent.name}}</td>
-                    <td>{{assignedEvent.role}}</td>
-                    <td>{{assignedEvent.start +' - '+ assignedEvent.end}}</td>
-                  </a>
-                  </tr>
-                
-                    
-                </tbody>
-              </table>
+            <app-manager-dashboard *ngIf="this.router.url=='/edit'; else viewEvents"></app-manager-dashboard>
+           
           </div>
       </div>
       
-        <footer class="quickview-footer">
+        <!-- <footer class="quickview-footer">
       
-        </footer>
+        </footer> -->
     </div>
       
+
+    <ng-template #viewEvents>
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+          <thead>
+            
+            <tr>
+              <th>Event Name</th>
+              <th>Event Role</th>
+              <th>Start/End Times</th>
+            </tr>
+        
+          </thead>
+          <tbody>
+            <tr #selectedRow *ngFor="let assignedEvent of this.assignedEvents" (click)="onSelectRow(selectedRow.children)">
+                
+              <td >{{assignedEvent.name}}</td>
+              <td >{{assignedEvent.role}}</td>
+              <td >{{assignedEvent.start +' - '+ assignedEvent.end}}</td>
+            
+            </tr>
+          
+              
+          </tbody>
+        </table>
+    </ng-template>
       <!-- <button class="button is-primary" data-show="quickview" data-target="quickviewDefault">View My Events</button> -->
 </div>

@@ -4,6 +4,7 @@ select * from users;
 select * from festival_event;
 select * from stage;
 select * from schedule;
+select * from add_role;
 create table users -- user pojo
 (
 	id serial primary key,
@@ -31,8 +32,11 @@ create table festival_event
 	event_start_date date,
 	event_end_date date,
 	event_desc varchar(500),
-	manager_id serial
+	manager_id serial,
+	image_url varchar
 );
+
+select * from schedule;
 
 create table stage
 (
@@ -48,11 +52,11 @@ create table schedule
 	stage_number serial,
 	start_time timestamp,
 	end_time timestamp,
-	artist_name varchar(50)
+	artist serial
 );
 
 create table add_role (
-	req_num 	integer primary key,
+	req_num 	bigint primary key,
 	role_type	varchar,
 	event_num	serial,
 	accepted	boolean,

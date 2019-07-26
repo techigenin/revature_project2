@@ -40,9 +40,8 @@ public class FestivalDriver {
 		ScheduleServices scheduleServices = new ScheduleServicesImpl();
 		RegInfoService rs = new RegInfoServiceImpl();
 		
-		RegInfo reg = new RegInfo(1234, "artist", fd.getFestivalEventById(1), false, false);
-
-		rs.updateRegInfo(reg);
+		for (Schedule s:scheduleServices.getSchedulesByStage(sd.getStageById(1)))
+			System.out.println(s);
 		
 //		rs.insertRegInfo(reg);
 //		

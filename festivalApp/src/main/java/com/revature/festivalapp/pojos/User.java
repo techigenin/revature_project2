@@ -197,24 +197,29 @@ public class User  {
 	 */
 	public String addRole(String role) {
 		Set<String> roles = new HashSet<String>();
+		
+		
+		if (collectedRoles != null) {
 		roles.addAll(Arrays.asList(collectedRoles.split(",")));
 		
 		roles.add(role.toLowerCase());
 		
-		String ret = "";
 		
-		if (roles.size() > 0) {
-			Iterator<String> iterator = roles.iterator();
-			
-			ret += iterator.next();
-			
-			while(iterator.hasNext()) 
-				ret += ", " + iterator.next();
+		
+			if (roles.size() > 0) {
+				String ret = "";
+				Iterator<String> iterator = roles.iterator();
+				
+				ret += iterator.next();
+				
+				while(iterator.hasNext()) 
+					ret += ", " + iterator.next();
+			}
 		}
 		
 		collectedRoles = role;
 		
-		return ret;
+		return collectedRoles;
 	}
 	
 

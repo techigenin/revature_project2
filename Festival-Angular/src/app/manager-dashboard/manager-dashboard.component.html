@@ -1,0 +1,160 @@
+<br>
+
+<form #newStage= "ngForm" (ngSubmit) = "onAddStage(newStage.value)">
+    <div class="field is-horizontal ">
+        <!-- <div class="field-label is-normal">
+            <label class="label">Stage Name</label>
+        </div> -->
+        <div class="field-body">
+            <div class="field">
+            <p class="control">
+                <input class="input is-rounded" type="text" name="stageName" placeholder="Enter Stage Name" ngModel>
+    
+            </p>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary is-rounded" type="submit" value = "submit">
+                    AddStage
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<br>
+
+
+
+<form #newRole= "ngForm" (ngSubmit) = "onAddRole(newRole.value)">
+        <div class="field is-horizontal ">
+            
+            <!-- <div class="field-label is-normal">
+                <label class="label">Add Stage</label>
+            </div> -->
+            <div class="field-body">
+                <div class="field">
+                    <p class="control is-expanded has-icons-left">
+                        <input class="input is-rounded" type="text" name="email" placeholder="example@email.com" ngModel required email>
+                        <span class="icon is-small is-left">
+                        <i class="fas fa-at"></i>
+                        </span>
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control">
+                        <input class="input is-rounded" type="text" name="userRole" placeholder="Enter Role Type" ngModel>
+                    </p>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary is-rounded" type="submit" value = "submit">
+                        Add Role
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+<br>
+
+
+
+
+<form #newPerformance = "ngForm" (ngSubmit)=onAddPerformance(newPerformance.value)>
+    <div class="field is-horizontal ">
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                        <div class="select is-rounded">
+                            <select name="stageName" ngModel>
+                            <option>Select Stage</option>
+                            <option>Stage One</option>
+                            </select>
+                        </div>
+                </div>
+            </div>
+            <div class="field">
+                <p class="control has-icons-left">
+                    <input class="input is-rounded" name="artistName" type="text" placeholder="Enter Artist Name" ngModel>
+                    <span class="icon  is-left">
+                        <i class="fas fa-music"></i>
+                    </span>
+                </p>
+                <p class="help">Artist Name</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="field is-horizontal ">
+        <div class="field-body">        
+            <div class="field">
+                <p class="control has-icons-left">
+                    <input class="input is-rounded" name="startTime" type="time" placeholder="" ngModel>
+                    <span class="icon is-small is-left">
+                        <i class="far fa-clock"></i>
+                    </span>
+                </p>
+                <p class="help">Start Time</p>
+            </div>
+            <div class="field">
+                <p class="control has-icons-left">
+                    <input class="input is-rounded" name="endTime" type="time" placeholder="" ngModel>
+                    <span class="icon is-small is-left">
+                        <i class="far fa-clock"></i>
+                    </span>
+                </p>
+                <p class="help">End Time</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="field is-horizontal ">
+        <div class="field-body">  
+
+            <div class="field">
+                <div class="control">
+                    <div class="select is-rounded">
+                        <select name="date" ngModel>
+                            <option>Select Date</option>
+                            <option>{{date | date:'shortDate'}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary is-rounded" type="submit" value = "submit">
+                    Add Performance
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+<br>
+<br>
+
+
+
+
+
+<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <thead>
+        
+        <tr>
+        <th>Name</th>
+        <th>Role</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr> 
+        <td >Name</td>
+        <td >Role</td>          
+        </tr>   
+    </tbody>
+</table>

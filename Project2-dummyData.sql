@@ -5,11 +5,13 @@ select setval('event_role_user_id_seq', 1, false);
 select setval('festival_event_event_number_seq', 1, false);
 select setval('festival_event_manager_id_seq', 1, false);
 select setval('stage_crew_id_seq', 1, false);
+select setval('schedule_artist_seq', 1, false);
 select setval('schedule_schedule_id_seq', 1, false);
+select setval('schedule_stage_number_seq', 1, false);
 select setval('stage_stage_number_seq', 1, false);
 select setval('users_id_seq', 1, false);
 
-truncate table add_role, event_role, festival_event, roles, schedule, stage, users;
+truncate table add_role, event_role, festival_event, schedule, stage, users;
 
 insert into users 
 	(val_email, val_password, collected_roles, manager_name, artist_name, promoter_name) 
@@ -31,8 +33,6 @@ insert into users
 	(val_email, val_password, collected_roles, manager_name, artist_name, promoter_name) 
 		values
 			('customer@email.com', '1029', 'customer', null, null, null);
-		
-truncate festival_event, event_role;
 		
 insert into festival_event
 	(audience_capacity, event_name, event_location, event_start_date, event_end_date, event_desc, manager_id)
@@ -69,21 +69,21 @@ insert into stage
 			(4, 'Outside Stage', 2);
 		
 insert into schedule
-	(stage_number, start_time, end_time, artist_name)
+	(stage_number, start_time, end_time, artist)
 		values
-			(1, '2019-09-01T18:00:00', '2019-09-01T19:00:00', 'Betty Bonzai');
+			(1, '2019-09-01T18:00:00', '2019-09-01T19:00:00', 2);
 insert into schedule
-	(stage_number, start_time, end_time, artist_name)
+	(stage_number, start_time, end_time, artist)
 		values
-			(1, '2019-09-01T19:00:00', '2019-09-01T19:45:00', 'Carl Carlston');
+			(1, '2019-09-01T19:00:00', '2019-09-01T19:45:00', 3);
 insert into schedule
-	(stage_number, start_time, end_time, artist_name)
+	(stage_number, start_time, end_time, artist)
 		values
-			(1, '2019-09-01T20:00:00', '2019-09-01T21:00:00', 'Betty Bonzai');
+			(1, '2019-09-01T20:00:00', '2019-09-01T21:00:00', 2);
 insert into schedule
-	(stage_number, start_time, end_time, artist_name)
+	(stage_number, start_time, end_time, artist)
 		values
-			(1, '2019-09-01T21:15:00', '2019-09-01T22:00:00', 'Carl Carlston');
+			(1, '2019-09-01T21:15:00', '2019-09-01T22:00:00', 3);
 
 insert into event_role
 	(user_id, event_id, user_role)
@@ -105,3 +105,8 @@ insert into event_role
 	(user_id, event_id, user_role)
 		values
 			(3, 4, 'artist');
+		
+insert into add_role
+	(req_num, valid)
+		values
+			(1234, true);

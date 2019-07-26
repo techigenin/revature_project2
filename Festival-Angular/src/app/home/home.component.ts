@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Event } from '../shared/event.model';
 import { AssignedEvent } from '../shared/assigned-event.model';
@@ -23,7 +23,15 @@ export class HomeComponent implements OnInit {
   ];
 
 
+  onSelectEvent(selectedEvent: HTMLCollection) {
+    console.log(selectedEvent[0].firstChild.firstChild.textContent);
+    console.log(selectedEvent[0].children[2].firstChild.textContent);
+    console.log(selectedEvent[0].children[3].firstChild.textContent);
+    console.log(selectedEvent[0].children[3].lastChild.textContent);
+
+  }
   constructor(private http: HttpClient) {}
+
 
 
 

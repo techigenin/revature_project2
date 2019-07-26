@@ -48,6 +48,9 @@ public class RegRoleController {
 			userService.insertUser(newUser);
 			eventRoleService.insertEventRole(er);
 			
+			regInfo.setValid(false);
+			regInfoService.updateRegInfo(regInfo);
+			
 			sess.setAttribute("user", newUser);
 		}
 		

@@ -24,7 +24,7 @@ public class ScheduleDTO {
 		this.stageNumber = sched.getStageNumber();
 		this.startTime = sched.getStartTime().toString();
 		this.endTime = sched.getEndTime().toString();
-		this.artistname = sched.getArtistName();
+		this.artistname = sched.getArtist().getArtistName();
 	}
 
 	@Override
